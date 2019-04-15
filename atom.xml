@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cjylxj121221.github.io/"/>
-  <updated>2019-04-15T00:41:48.936Z</updated>
+  <updated>2019-04-15T23:48:25.506Z</updated>
   <id>https://cjylxj121221.github.io/</id>
   
   <author>
@@ -17,11 +17,33 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>树莓派屏幕休眠</title>
+    <title>三、无线连接（命令行界面下）</title>
+    <link href="https://cjylxj121221.github.io/2019/04/16/%E4%B8%89%E3%80%81%E6%97%A0%E7%BA%BF%E8%BF%9E%E6%8E%A5%EF%BC%88%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%95%8C%E9%9D%A2%E4%B8%8B%EF%BC%89/"/>
+    <id>https://cjylxj121221.github.io/2019/04/16/三、无线连接（命令行界面下）/</id>
+    <published>2019-04-15T23:37:38.000Z</published>
+    <updated>2019-04-15T23:48:25.506Z</updated>
+    
+    <content type="html"><![CDATA[<p>树莓派方便在带无线网卡，直接连接无线调试起来方便很多<br><a id="more"></a></p><p><strong>一、查看网卡状态是否正常</strong><br>把无线网卡插到树莓派上，输入命令ifconfig -a查看是否有wlan0的信息，如果有说明网卡状态正常，可以跳过第二步，直接配置无线网络。如果查不到wlan0的信息，则需要安装无线网卡的驱动。</p><p><strong>二、查看无线网卡的信息</strong><br>输入命令dmesg | grep usb查看无线网卡的信息，主要是看制造厂家（Manufacturer）。<br>比如，我的网卡信息是<br>usb 1-1.3: Manufacturer: Realtek<br>以Realtek为例，安装无线网卡驱动。<br>如果现在你的树莓派能联网，输入安装命令就可以安装Realtek的驱动了。<br>首先搜索Realtek驱动：<br>apt-cache search realtek<br>看到下面信息：<br>firmware-realtek – Binary firmware for Realtek wired and wireless network adapters<br>安装Realtek驱动：<br>sudo apt-get install firmware-realtek<br>如果你的树莓派现在不能上网，那么你可以去镜像站点中下载相关驱动。<br>我推荐阿里云的镜像站点，速度比较快。<br><a href="http://mirrors.aliyun.com/raspbian/raspbian/pool/non-free/f/firmware-nonfree" target="_blank" rel="noopener">http://mirrors.aliyun.com/raspbian/raspbian/pool/non-free/f/firmware-nonfree</a><br>下载firmware-realtek_0.43_all.deb，用winscp上传到树莓派的/tmp目录中。<br>输入命令安装：<br>sudo dpkg -i /tmp/firmware-realtek_0.43_all.deb</p><p><strong>三、配置无线网络</strong><br>用编辑器nano打开interfaces文件<br>    sudo nano /etc/network/interfaces<br>我的interfaces文件是这样的：<br>    auto lo<br>    iface lo inet loopback<br>    iface eth0 inet dhcp<br>    allow-hotplug wlan0<br>    iface wlan0 inet manual<br>    wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf<br>    iface default inet dhcp<br>我们把无线网卡部分全部用#注释掉，然后添加自己的配置信息<br>最终结果如下：<br>    auto lo<br>   iface lo inet loopback<br>    iface eth0 inet dhcp<br>    auto wlan0</p><pre><code>#allow-hotplug wlan0#iface wlan0 inet manualiface wlan0 inet dhcpwpa-conf /etc/wpa.conf#wpa-roam /etc/wpa_supplicant/wpa_supplicant.confiface default inet dhcp</code></pre><p>使用nano编辑器，ctrl+o保存，ctrl+x退出。<br>用编辑器nano创建 /etc/wpa.conf 文件：<br>    sudo nano /etc/wpa.conf<br>如果你的wifi没有密码<br>    network={<br>    [Tab] ssid=”你的无线网络名称（ssid）”<br>    [Tab] key_mgmt=NONE<br>    }<br>如果你的wifi使用WEP加密<br>    network={<br>    [Tab] ssid=”你的无线网络名称（ssid）”<br>    [Tab] key_mgmt=NONE<br>    [Tab] wep_key0=”你的wifi密码”<br>    }<br>如果你的wifi使用WPA/WPA2加密<br>    network={<br>    [Tab] ssid=”你的无线网络名称（ssid）”<br>    [Tab] key_mgmt=WPA-PSK<br>    [Tab] psk=”你的wifi密码”<br>    }<br>注1：所有符号都是半角符号（英文状态下的符号），“[Tab]”表示按一次Tab键<br>注2：如果你不清楚wifi的加密模式，可以在安卓手机上用root explorer打开 /data/misc/wifi/wpa/wpa_supplicant.conf，查看wifi的信息。<br>比如，我的wpa.conf文件是这样的：<br>    network={<br>    ssid=”1234”<br>    key_mgmt=WPA-PSK<br>    psk=”MTIzNA1234”<br>    }<br>最后输入命令启用无线网卡：<br>    sudo ifup wlan0<br>可以连无线网了。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;树莓派方便在带无线网卡，直接连接无线调试起来方便很多&lt;br&gt;
+    
+    </summary>
+    
+      <category term="技术分享" scheme="https://cjylxj121221.github.io/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/"/>
+    
+    
+      <category term="树莓派玩法" scheme="https://cjylxj121221.github.io/tags/%E6%A0%91%E8%8E%93%E6%B4%BE%E7%8E%A9%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>二、树莓派屏幕休眠</title>
     <link href="https://cjylxj121221.github.io/2019/04/15/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%B1%8F%E5%B9%95%E4%BC%91%E7%9C%A0/"/>
     <id>https://cjylxj121221.github.io/2019/04/15/树莓派屏幕休眠/</id>
     <published>2019-04-15T00:23:35.000Z</published>
-    <updated>2019-04-15T00:41:48.936Z</updated>
+    <updated>2019-04-15T23:37:04.331Z</updated>
     
     <content type="html"><![CDATA[<p>树莓派大部分使用其终端，屏幕用来配置即可，不使用时休眠<br><a id="more"></a><br>一、禁止屏幕在图形界面下休眠<br>在 /etc/profile.d 路径下新建一个文件，如Screen.sh，并将下面两条命令写入该文件，即可以实现永久禁用。<br>1    xsetdpms 0 0 0<br>2    xsets off<br>操作：<br> cd /etc/profile.d<br> sudo nano Screen.sh<br>接着看到</p><p>输入如下内容   Ctrl+X     Y保存即可</p><p>指令    说明<br>xset s off    禁用屏幕保护<br>xset s 3600 3600    设置空闲时间为1小时<br>xset -dpms    关闭 DPMS<br>xset s off -dpms    禁用 DPMS 并阻止屏幕进入空闲<br>xset dpms force off    立即关闭屏幕<br>xset dpms force standby    强制屏幕进入待命状态<br>xset dpms force suspend    强制屏幕进入暂停状态</p><p>二、禁止屏幕在 Console 终端下休眠<br>执行下面的命令就可以解决这个问题。<br>1    setterm -blank 0<br>重启后此命令会失效，所以需要装这个命令加入到启动脚本中，每次开机后自动启动。<br>Raspbian 和 Archlinux 在 /etc/bash.bashrc 文件中加入，CentOS 则是在/etc/bashrc加入:<br>1    setterm -blank 0<br>更多相关设置：<br>1    setterm -blank [0-60|force|poke]<br>2    setterm -powersave [on|vsync|hsync|powerdown|off]<br>3    setterm -powerdown [0-60]<br>以上参数为0时表示禁用。例如下面的指令表示禁止屏幕进入保护和关闭状态<br>1    setterm -blank 0 -powerdown 0</p>]]></content>
     
@@ -39,11 +61,11 @@
   </entry>
   
   <entry>
-    <title>树莓派系统安装</title>
+    <title>一、树莓派系统安装</title>
     <link href="https://cjylxj121221.github.io/2019/04/15/%E6%A0%91%E8%8E%93%E6%B4%BE%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85/"/>
     <id>https://cjylxj121221.github.io/2019/04/15/树莓派系统安装/</id>
     <published>2019-04-15T00:22:15.000Z</published>
-    <updated>2019-04-15T00:41:30.296Z</updated>
+    <updated>2019-04-15T23:37:00.122Z</updated>
     
     <content type="html"><![CDATA[<p>开始安装树莓派系统，常用的为树莓派官方系统，基于Linux，有其他需求的也可以安装Windows lot<br><a id="more"></a></p><ol><li>第一步是到官网 <a href="https://www.raspberrypi.org/downloads/" target="_blank" rel="noopener">https://www.raspberrypi.org/downloads/</a> 下载你需要的树莓派系统，树莓派推荐aspberrypi系统，下载的是一个ISO镜像文件。<ol start="2"><li>使用Win32 Disk Imager把iso镜像写入SD卡，写完了就把内存卡插到树莓派上。</li><li>上电开机启动，第一次启动使用，插上HDMI进入界面，默认账号是pi，密码是raspberry。</li><li>首先进 raspberry configuration开启ssh和vnc服务，开启后系统会提示重启。</li><li>重启一次系统后会有让你修改系统登录默认密码的提示框，打开终端，输入 sudo passwd ,就能按照提示设置密码， 新的密码会输入两遍。</li><li>接下来就是开启root权限，raspberry基于linux，输入sudo passwd –unlock root 就能默认解锁root账户，root账户拥有系统的最高权限，所以很有表要开启，输入sudo -i或者su root就能开启root账户，输入su pi就能回到普通账户。</li><li>进终端安装ssh和vnc服务，sudo apt-get install openssh-server   sudo  apt-get install tightvncserver,之后ifconfig看树莓派ip地址，就能内网通过ssh和vnc访问。</li><li>Windows、macos和linux都可以安装vncviwer（vnc）或者putty（ssh），输入树莓派ip，连接后输入账户和密码就能连接。</li></ol></li></ol>]]></content>
     
@@ -61,11 +83,11 @@
   </entry>
   
   <entry>
-    <title>树莓派配置介绍</title>
+    <title>零、树莓派配置介绍</title>
     <link href="https://cjylxj121221.github.io/2019/04/15/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/"/>
     <id>https://cjylxj121221.github.io/2019/04/15/树莓派常见问题/</id>
     <published>2019-04-15T00:15:02.000Z</published>
-    <updated>2019-04-15T00:26:24.825Z</updated>
+    <updated>2019-04-15T23:36:55.140Z</updated>
     
     <content type="html"><![CDATA[<h2 id="今天开始更新树莓派玩法"><a href="#今天开始更新树莓派玩法" class="headerlink" title="今天开始更新树莓派玩法"></a>今天开始更新树莓派玩法</h2><a id="more"></a><p>The Raspberry Pi 3 is the third-generation Raspberry Pi. It replaced the Raspberry Pi 2 Model B in February 2016.</p><pre><code>• Quad Core 1.2GHz Broadcom BCM2837 64bit CPU• 1GB RAM• BCM43438 wireless LAN and Bluetooth Low Energy (BLE) on board• 40-pin extended GPIO• 4 USB 2 ports• 4 Pole stereo output and composite video port• Full size HDMI• CSI camera port for connecting a Raspberry Pi camera• DSI display port for connecting a Raspberry Pi touchscreen display• Micro SD port for loading your operating system and storing data• Upgraded switched Micro USB power source up to 2.5A</code></pre>]]></content>
     
