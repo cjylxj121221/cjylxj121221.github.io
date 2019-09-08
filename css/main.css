@@ -1945,7 +1945,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff7d2e;
+  background: #f4390d;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3149,9 +3149,8 @@ header.post-header {
   }
 }
 .post {
-  margin: 0px 10px 10px 0px;
-  padding: 10px 10px 5px 30px;
-  -webkit-box-shadow: 0 0 8px rgba(0,0,0,0.3);
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
   -moz-box-shadow: 0 0 8px rgba(0,0,0,0.3);
   background: rgba(255,255,255,0.35) none repeat scroll !important;
 }
