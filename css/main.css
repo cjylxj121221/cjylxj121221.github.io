@@ -1945,7 +1945,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #41e0b6;
+  background: #b34a12;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3266,6 +3266,10 @@ pre {
 .back-to-top.back-to-top-on {
   bottom: unset;
   top: calc(100vh - 900px - 200px);
+}
+.local-search-popup #local-search-result {
+  padding: 25px 40px;
+  height: calc(100% - 95px);
 }
 @-moz-keyframes heartAnimate {
   0%, 100% {
