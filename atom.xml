@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cjylxj121221.github.io/"/>
-  <updated>2019-04-23T02:52:20.000Z</updated>
+  <updated>2019-09-21T08:12:33.898Z</updated>
   <id>https://cjylxj121221.github.io/</id>
   
   <author>
@@ -15,6 +15,78 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>七、输入法安装</title>
+    <link href="https://cjylxj121221.github.io/2019/09/21/%E3%80%81%E8%BE%93%E5%85%A5%E6%B3%95%E5%AE%89%E8%A3%85/"/>
+    <id>https://cjylxj121221.github.io/2019/09/21/、输入法安装/</id>
+    <published>2019-09-21T08:11:54.000Z</published>
+    <updated>2019-09-21T08:12:33.898Z</updated>
+    
+    <content type="html"><![CDATA[<p>装个拼音凑合用着。。<a id="more"></a><br><code>sudo apt-get install fcitx fcitx-googlepinyin fcitx-module-cloudpinyin fcitx-sunpinyin</code></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;装个拼音凑合用着。。&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>六、日期时间修正</title>
+    <link href="https://cjylxj121221.github.io/2019/09/21/%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4%E4%BF%AE%E6%AD%A3/"/>
+    <id>https://cjylxj121221.github.io/2019/09/21/日期时间修正/</id>
+    <published>2019-09-21T08:07:34.000Z</published>
+    <updated>2019-09-21T08:11:32.030Z</updated>
+    
+    <content type="html"><![CDATA[<p>在树莓派上，打date命令可以看到系统的日期时间：(后面的CST表示中国标准时间)<br>树莓派没有电池，断电后无法保存时间。树莓派默认安装了NTP(Network Time Protocol)服务来获取互联网上ntp服务器提供的时间。如果这个时间不准，可以用这个命令校准一下。<a id="more"></a><br><code>sudo ntpd -s -d</code><br>如果还是不准，就用这个命令强制设置<br><code>sudo date  --s=&quot;2014-08-31 14:42:00&quot;</code><br>最后，添加一些国内可用的ntp服务器，如果你的时间正常，可以不做这些设置。<br>打开ntp服务的配置文件<br><code>sudo nano /etc/ntp.conf</code><br>找到这两行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># You do need to talk to an NTP server or two (or three).</span><br><span class="line"># server ntp.your-provider.example</span><br></pre></td></tr></table></figure></p><p>在下面添加以下内容，是一些亲测可用的ntp服务器。第一行最后的perfer表示优先使用此服务器，也就是复旦大学的ntp服务器。添加之后按Ctrl+X保存退出。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">server ntp.fudan.edu.cn iburst perfer  </span><br><span class="line">server time.asia.apple.com iburst  </span><br><span class="line">server asia.pool.ntp.org iburst  </span><br><span class="line">server ntp.nict.jp iburst  </span><br><span class="line">server time.nist.gov iburst</span><br></pre></td></tr></table></figure></p><p>重启ntp服务<br><code>sudo /etc/init.d/ntp restart</code></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在树莓派上，打date命令可以看到系统的日期时间：(后面的CST表示中国标准时间)&lt;br&gt;树莓派没有电池，断电后无法保存时间。树莓派默认安装了NTP(Network Time Protocol)服务来获取互联网上ntp服务器提供的时间。如果这个时间不准，可以用这个命令校准一下。&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>五、显示中文</title>
+    <link href="https://cjylxj121221.github.io/2019/09/21/%E4%BA%94%E3%80%81%E6%98%BE%E7%A4%BA%E4%B8%AD%E6%96%87/"/>
+    <id>https://cjylxj121221.github.io/2019/09/21/五、显示中文/</id>
+    <published>2019-09-21T08:01:00.000Z</published>
+    <updated>2019-09-21T08:03:07.673Z</updated>
+    
+    <content type="html"><![CDATA[<p>救救英语不好的孩子吧。。。<a id="more"></a><br>ssh中输入以下命令：<br><code>sudo apt-get install ttf-wqy-zenhei</code><br>安装过程中如果碰到<code>(Y/n)</code>，都选择<code>y</code><br>中文字库安装完成之后，还需要安装一个中文输入法。输入如下命令<br><code>sudo apt-get install scim-pinyin</code><br>一样的安装过程，安装完毕后输入<br><code>sudo raspi-config</code></p><p>按空格键选中<code>zh_CN.UTF-8</code>,然后回车</p><p>选中文</p><p>看见如下命令重启即可<br>然后选择<code>change_locale</code>，在<code>Default locale for the system environment</code>中选择<code>zh_CN.UTF-8</code>,配置完成之后，输入命令<br><code>sudo reboot</code><br>重启完成好就可以在VNC连接上去后使用中文显示和中文输入法了，切换中文输入法一样也是<code>ctrl+space</code>。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;救救英语不好的孩子吧。。。&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>四、蓝牙连接</title>
+    <link href="https://cjylxj121221.github.io/2019/09/21/%E5%9B%9B%E3%80%81%E8%93%9D%E7%89%99%E8%BF%9E%E6%8E%A5/"/>
+    <id>https://cjylxj121221.github.io/2019/09/21/四、蓝牙连接/</id>
+    <published>2019-09-21T07:55:56.000Z</published>
+    <updated>2019-09-21T08:00:22.055Z</updated>
+    
+    <content type="html"><![CDATA[<p>树莓派偶尔连接一下自己做的蓝牙音箱听听歌，静静心~~<a id="more"></a><br>一、升级安装蓝牙相关软件包<br><code>sudo apt-get update</code><br><code>sudo apt-get upgrade -y</code><br><code>sudo apt-get dist-upgrade -y</code><br><code>sudo apt-get install pi-bluetooth bluez bluez-firmware blueman</code><br>二、最关键一点：添加pi用户到蓝牙组<br><code>sudo usermod -G bluetooth -a pi</code><br>三、重启<br><code>sudo reboot</code></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;树莓派偶尔连接一下自己做的蓝牙音箱听听歌，静静心~~&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>三、无线连接（命令行界面下）</title>
@@ -27,7 +99,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;树莓派方便在带无线网卡，直接连接无线调试起来方便很多&lt;br&gt;
+      &lt;p&gt;树莓派方便在带无线网卡，直接连接无线调试起来方便很多&lt;br&gt;&lt;/p&gt;
     
     </summary>
     
@@ -49,7 +121,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;树莓派大部分使用其终端，屏幕用来配置即可，不使用时休眠&lt;br&gt;
+      &lt;p&gt;树莓派大部分使用其终端，屏幕用来配置即可，不使用时休眠&lt;br&gt;&lt;/p&gt;
     
     </summary>
     
@@ -71,7 +143,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;开始安装树莓派系统，常用的为树莓派官方系统，基于Linux，有其他需求的也可以安装Windows lot&lt;br&gt;
+      &lt;p&gt;开始安装树莓派系统，常用的为树莓派官方系统，基于Linux，有其他需求的也可以安装Windows lot&lt;br&gt;&lt;/p&gt;
     
     </summary>
     
@@ -115,7 +187,7 @@
     
     <summary type="html">
     
-      &lt;h2 id=&quot;牵着小手&quot;&gt;&lt;a href=&quot;#牵着小手&quot; class=&quot;headerlink&quot; title=&quot;牵着小手&quot;&gt;&lt;/a&gt;牵着小手&lt;/h2&gt;&lt;p&gt;鬼屋行程后我们去看了一场电影，看的无名之辈，我们也是生活中的无名之辈，靠着缘分偶然遇到一起，我会珍惜的。
+      &lt;h2 id=&quot;牵着小手&quot;&gt;&lt;a href=&quot;#牵着小手&quot; class=&quot;headerlink&quot; title=&quot;牵着小手&quot;&gt;&lt;/a&gt;牵着小手&lt;/h2&gt;&lt;p&gt;鬼屋行程后我们去看了一场电影，看的无名之辈，我们也是生活中的无名之辈，靠着缘分偶然遇到一起，我会珍惜的。&lt;/p&gt;
     
     </summary>
     
@@ -137,7 +209,7 @@
     
     <summary type="html">
     
-      &lt;h2 id=&quot;我就能见到你了&quot;&gt;&lt;a href=&quot;#我就能见到你了&quot; class=&quot;headerlink&quot; title=&quot;我就能见到你了&quot;&gt;&lt;/a&gt;我就能见到你了&lt;/h2&gt;&lt;p&gt;那天我到达了你的城市，一路上公交车都很顺畅，可能是老天在帮我，帮我早点见到你。
+      &lt;h2 id=&quot;我就能见到你了&quot;&gt;&lt;a href=&quot;#我就能见到你了&quot; class=&quot;headerlink&quot; title=&quot;我就能见到你了&quot;&gt;&lt;/a&gt;我就能见到你了&lt;/h2&gt;&lt;p&gt;那天我到达了你的城市，一路上公交车都很顺畅，可能是老天在帮我，帮我早点见到你。&lt;/p&gt;
     
     </summary>
     
@@ -159,7 +231,7 @@
     
     <summary type="html">
     
-      &lt;h2 id=&quot;我说：在一起在一起&quot;&gt;&lt;a href=&quot;#我说：在一起在一起&quot; class=&quot;headerlink&quot; title=&quot;我说：在一起在一起&quot;&gt;&lt;/a&gt;我说：在一起在一起&lt;/h2&gt;&lt;p&gt;在一起吧！&lt;br&gt;那是我们认识第几天我已经想不起来了，虽然时间不长但是感觉已经互相很熟悉，时间也过的很漫长。
+      &lt;h2 id=&quot;我说：在一起在一起&quot;&gt;&lt;a href=&quot;#我说：在一起在一起&quot; class=&quot;headerlink&quot; title=&quot;我说：在一起在一起&quot;&gt;&lt;/a&gt;我说：在一起在一起&lt;/h2&gt;&lt;p&gt;在一起吧！&lt;br&gt;那是我们认识第几天我已经想不起来了，虽然时间不长但是感觉已经互相很熟悉，时间也过的很漫长。&lt;/p&gt;
     
     </summary>
     
@@ -181,7 +253,7 @@
     
     <summary type="html">
     
-      &lt;h2 id=&quot;这一次我有着前所未有的果断&quot;&gt;&lt;a href=&quot;#这一次我有着前所未有的果断&quot; class=&quot;headerlink&quot; title=&quot;这一次我有着前所未有的果断&quot;&gt;&lt;/a&gt;这一次我有着前所未有的果断&lt;/h2&gt;&lt;p&gt;有时候幸福就是那一瞬间的机会，抓住了为自己的幸福奋斗，说不定是一生的幸福呢&lt;br&gt;
+      &lt;h2 id=&quot;这一次我有着前所未有的果断&quot;&gt;&lt;a href=&quot;#这一次我有着前所未有的果断&quot; class=&quot;headerlink&quot; title=&quot;这一次我有着前所未有的果断&quot;&gt;&lt;/a&gt;这一次我有着前所未有的果断&lt;/h2&gt;&lt;p&gt;有时候幸福就是那一瞬间的机会，抓住了为自己的幸福奋斗，说不定是一生的幸福呢&lt;br&gt;&lt;/p&gt;
     
     </summary>
     
@@ -204,7 +276,7 @@
     <summary type="html">
     
       &lt;h2 id=&quot;10-29是一个奇特的日子&quot;&gt;&lt;a href=&quot;#10-29是一个奇特的日子&quot; class=&quot;headerlink&quot; title=&quot;10.29是一个奇特的日子&quot;&gt;&lt;/a&gt;10.29是一个奇特的日子&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;偶然相识&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;说来像是一次偶然的相遇，偶然认识了你，紧接着一系列的截图，你在里面说……
+&lt;p&gt;说来像是一次偶然的相遇，偶然认识了你，紧接着一系列的截图，你在里面说……&lt;/p&gt;
     
     </summary>
     
@@ -226,7 +298,7 @@
     
     <summary type="html">
     
-      &lt;h2 id=&quot;目的&quot;&gt;&lt;a href=&quot;#目的&quot; class=&quot;headerlink&quot; title=&quot;目的&quot;&gt;&lt;/a&gt;目的&lt;/h2&gt;&lt;p&gt;一直想搭建一个博客，记录我和可爱女朋友的日常。&lt;br&gt;
+      &lt;h2 id=&quot;目的&quot;&gt;&lt;a href=&quot;#目的&quot; class=&quot;headerlink&quot; title=&quot;目的&quot;&gt;&lt;/a&gt;目的&lt;/h2&gt;&lt;p&gt;一直想搭建一个博客，记录我和可爱女朋友的日常。&lt;br&gt;&lt;/p&gt;
     
     </summary>
     
