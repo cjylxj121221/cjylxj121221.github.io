@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[十三、超时闲置断开]]></title>
+    <url>%2F2019%2F09%2F28%2F%E4%B8%89%E3%80%81%E8%B6%85%E6%97%B6%E9%97%B2%E7%BD%AE%E6%96%AD%E5%BC%80%2F</url>
+    <content type="text"><![CDATA[用SSH过程连接电脑时，经常遇到长时间不操作而被服务器踢出的情况，常见的提示如：Write failed: Broken pipe这是因为如果有一段时间在SSH连接上无数据传输，连接就会断开。解决此问题有两种方法。 在客户端设置方法很简单，只需在客户端电脑上编辑（需要root权限）/etc/ssh/ssh_config，并添加如下一行：ServerAliveInterval 60此后该系统里的用户连接SSH时，每60秒会发一个KeepAlive请求，避免被踢。 在服务器端设置如果有相应的权限，也可以在服务器端设置，即编辑/etc/ssh/sshd_config，并添加：ClientAliveInterval 60重启SSH服务器后该项设置会生效。/etc/init.d/sshd restart每一个连接到此服务器上的客户端都会受其影响。]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[十二、VIM编辑器]]></title>
+    <url>%2F2019%2F09%2F28%2F%E3%80%81VIM%E7%BC%96%E8%BE%91%E5%99%A8%2F</url>
+    <content type="text"><![CDATA[vi(vim)是上Linux非常常用的编辑器，很多Linux发行版都默认安装了vi(vim)。vi(vim)命令繁多但是如果使用灵活之后将会大大提高效率。vi是“visual interface”的缩写，vim是vi IMproved(增强版的vi)。在一般的系统管理维护中vi就够用，如果想使用代码加亮的话可以使用vim。下面整理一下vi的使用教程：包含vi的基本介绍、使用模式、文件的打开关闭保存、插入文本或新建行、移动光标、删除、恢复字符或行、搜索等等，算是一篇比较适合新手学习vi的教程。vi有3个模式：插入模式、命令模式、低行模式。123插入模式：在此模式下可以输入字符，按ESC将回到命令模式。 命令模式：可以移动光标、删除字符等。 低行模式：可以保存文件、退出vi、设置vi、查找等功能(低行模式也可以看作是命令模式里的)。 打开文件、保存、关闭文件(vi命令模式下使用) 123456vi filename //打开filename文件:w //保存文件:w vpser.net //保存至vpser.net文件:q //退出编辑器，如果文件已修改请使用下面的命令:q! //退出编辑器，且不保存:wq //退出编辑器，且保存文件 插入文本或行(vi命令模式下使用，执行下面命令后将进入插入模式，按ESC键可退出插入模式) 12345678a //在当前光标位置的右边添加文本i //在当前光标位置的左边添加文本A //在当前行的末尾位置添加文本I //在当前行的开始处添加文本(非空字符的行首)O //在当前行的上面新建一行o //在当前行的下面新建一行R //替换(覆盖)当前光标位置及后面的若干文本J //合并光标所在行及下一行为一行(依然在命令模式) 移动光标(vi命令模式下使用)123使用上下左右方向键命令模式下：h 向左、j 向下 、k 向上、l 向右。空格键 向右、Backspace 向左、Enter 移动到下一行首、- 移动到上一行首。 删除、恢复字符或行(vi命令模式下使用)123456x //删除当前字符nx //删除从光标开始的n个字符dd //删除当前行ndd //向下删除当前行在内的n行u //撤销上一步操作U //撤销对当前行的所有操作 搜索(vi命令模式下使用)1234/vpser //向光标下搜索vpser字符串?vpser //向光标上搜索vpser字符串n //向下搜索前一个搜素动作N //向上搜索前一个搜索动作 跳至指定行(vi命令模式下使用)1234n+ //向下跳n行n- //向上跳n行nG //跳到行号为n的行G //跳至文件的底部 设置行号(vi命令模式下使用)12:set nu //显示行号:set nonu //取消显示行号 复制、粘贴(vi命令模式下使用)12345678yy //将当前行复制到缓存区，也可以用 &quot;ayy 复制，&quot;a 为缓冲区，a也可以替换为a到z的任意字母，可以完成多个复制任务。nyy //将当前行向下n行复制到缓冲区，也可以用 &quot;anyy 复制，&quot;a 为缓冲区，a也可以替换为a到z的任意字母，可以完成多个复制任务。yw //复制从光标开始到词尾的字符。nyw //复制从光标开始的n个单词。y^ //复制从光标到行首的内容。 VPS侦探y$ //复制从光标到行尾的内容。p //粘贴剪切板里的内容在光标后，如果使用了前面的自定义缓冲区，建议使用&quot;ap 进行粘贴。P //粘贴剪切板里的内容在光标前，如果使用了前面的自定义缓冲区，建议使用&quot;aP 进行粘贴。 替换(vi命令模式下使用)1234:s/old/new //用new替换行中首次出现的old:s/old/new/g //用new替换行中所有的old:n,m s/old/new/g //用new替换从n到m行里所有的old:%s/old/new/g //用new替换当前文件里所有的old 编辑其他文件:e otherfilename //编辑文件名为otherfilename的文件。 修改文件格式:set fileformat=unix //将文件修改为unix格式，如win下面的文本文件在linux下会出现^M。 总结：vi(vim)教程虽然有比较多的命令，但是只要勤加练习，相信你会很快的熟练掌握，同时也会给你的工作或学习带来更高的效率。当如果不知道自己处在什么模式时可以按2次Esc键即可回到命令模式，会有最后提醒一点：注意大小写！！！]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[十一、命令行当做Web]]></title>
+    <url>%2F2019%2F09%2F28%2F%E3%80%81%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%BD%93%E5%81%9AWeb%2F</url>
+    <content type="text"><![CDATA[稍微有点鸡肋的功能…就当玩玩好了（桌面下还是火狐好用） w3mw3m是一个基于文本的万维网(World Wide Web, WWW)客户端。它有英文和日文版本的帮助文件并且有一个选项用来切换这两种语言。它只能显示HTML的table和frame。w3m当前版本可以运行在Unix上(Solaris，SunOS，HP-UX，Linux，FreeBSD和EWS4800)。通过下面的命令进行安装：sudo apt-get install w3m使用下面的命令来访问网站，把其中的http://www.google.com换成你想要的地址：w3m http://www.google.com使用CTRL + Z退出w3m。 LynxLynx是一个通用的浏览器。使用下面的命令安装它：sudo apt-get install lynx使用下面的命令来访问网站，把其中的http://www.google.com换成你想要的地址：lynx http://www.google.com使用CTRL + Z退出。 LINKSLinks是一个带有ncurse界面(ncurse是一个虚拟终端中的“类GUI”应用软件工具箱，译注)的文本模式WWW浏览器，支持彩色，正确的table渲染，后台下载，菜单驱动的配置界面和瘦长的字符。支持Frame框架。你可以通过外部的访问器来进行不同文件格式的浏览。支持通过外部客户端使用mailto:和telnet:进行浏览。通过下面的命令来安装它：sudo apt-get install links通过下面的命令来访问网站，把http://www.google.com换成你想要的地址:links http://www.google.com使用CTRL + Z退出。]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[十、LED指示灯状态]]></title>
+    <url>%2F2019%2F09%2F28%2FLED%E6%8C%87%E7%A4%BA%E7%81%AF%E7%8A%B6%E6%80%81%2F</url>
+    <content type="text"><![CDATA[LED亮灯状态 123456LED 颜色 功能 正常状态ACT 绿色 card status 闪烁:SD卡正在活动（类似电脑的硬盘灯）PWR 红色 power 不闪烁:正常FDX 橙 full duplex 亮:全双工/不亮:半双工LNK 橙 link 亮:网络连接成功100 橙 100 Mbps 亮:100 Mbps/不亮:10 Mbps 常见亮灯状态1234567891011ACT PWR FDX LNK 100 状态解读 解读/原因○●○ ●●● ○○○ ○○○ ○○○ 正常 ACT灯:SD卡正在活动○○○ ●●● ○○○ ○○○ ○○○ 不正常 SD卡启动文件损坏或没有SD卡○○○ ○●○ ○○○ ○○○ ○○○ 不正常 电源电压不正常●○● ●●● ○○○ ○○○ ○○○ 不正常 看下文解释○●○ ●●● ●●● ●●● ●●● 正常 全双工/100 Mbps○●○ ●●● ●●● ●●● ○○○ 正常 全双工/10 Mbps○●○ ●●● ○○○ ●●● ●●● 正常 半双工/100 Mbps○●○ ●●● ○○○ ●●● ○○○ 正常 半双工/10 Mbps○●○:闪烁 ●●●:常亮 ○○○:不亮 ●○●:有规律闪烁●○●:ACT灯有规律闪烁的解读 2012年10月以后的固件：123• 3闪烁：start.elf未找到• 4闪烁：start.elf没有启动• 7闪烁：kernel.img未找到 2012年10月以前的旧固件：12345• 3闪烁：loader.bin未找到• 4闪烁：loader.bin没有启动• 5闪烁：start.elf未找到• 6闪烁：start.elf没有推出• 7闪烁：kernel.img未找到]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[九、截屏]]></title>
+    <url>%2F2019%2F09%2F28%2F%E6%88%AA%E5%B1%8F%2F</url>
+    <content type="text"><![CDATA[在树莓派上截屏的方法很简单。首先在终端中用下面的命令安装名叫“scrot”的截屏工具。123456789sudo apt-get install scrot截取全屏幕执行：sudo scrot用鼠标选区屏幕区域截取执行：sudo scrot -s20秒后截取，参数可以自定义：sudo scrot -d20执行下面的指令可以查看更多用法：sudo scrot -h]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[八、安装和卸载]]></title>
+    <url>%2F2019%2F09%2F28%2F%E5%AE%89%E8%A3%85%E5%92%8C%E5%8D%B8%E8%BD%BD%2F</url>
+    <content type="text"><![CDATA[基础命令 12345678910111213141516安装软件 apt-get install softname1 softname2 softname3卸载软件 apt-get remove softname1 softname2 softname3卸载并清除配置 apt-get remove –purge softname1更新软件信息数据库 apt-get update进行系统升级 apt-get upgrade搜索软件包 apt-cache search softname1 softname2 softname3如果使用apt-get遇到速度慢或者源不存在等错误，可能需要更换源安装deb软件包 dpkg -i xxx.deb删除软件包 dpkg -r xxx.deb连同配置文件一起删除 dpkg -r –purge xxx.deb查看软件包信息 dpkg -info xxx.deb查看文件拷贝详情 dpkg -L xxx.deb查看系统中已安装软件包信息 dpkg -l重新配置软件包 dpkg-reconfigure xxx清除所有已删除包的残馀配置文件dpkg -l |grep ^rc|awk &apos;&#123;print $2&#125;&apos; |sudo xargs dpkg -P 如果报如下错误，证明你的系统中没有残留配置文件了，无须担心。dpkg–purge needs at least one package name argumentdpkg安裝的可以用apt卸載，反之亦可。 aptitude 命令aptitude 与 apt-get 一样，是 Debian 及其衍生系统中功能极其强大的包管理工具。与 apt-get 不同的是，aptitude 在处理依赖问题上更佳一些。举例来说，aptitude 在删除一个包时，会同时删除本身所依赖的包。这样，系统中不会残留无用的包，整个系统更为干净。以下是笔者总结的一些常用 aptitude 命令，仅供参考。12345678910aptitude update 更新可用的包列表aptitude upgrade 升级可用的包aptitude dist-upgrade 将系统升级到新的发行版aptitude install pkgname 安装包aptitude remove pkgname 删除包aptitude purge pkgname 删除包及其配置文件aptitude search string 搜索包aptitude show pkgname 显示包的详细信息aptitude clean 删除下载的包文件aptitude autoclean 仅删除过期的包文件 当然，你也可以在文本界面模式中使用 aptitude。 常用apt命令列表123456789101112131415161718apt-cache search # ------(package 搜索包) apt-cache show #------(package 获取包的相关信息，如说明、大小、版本等) sudo apt-get install # ------(package 安装包) sudo apt-get install # -----(package - - reinstall 重新安装包) sudo apt-get -f install # -----(强制安装?#&quot;-f = --fix-missing&quot;当是修复安装吧...) sudo apt-get remove #-----(package 删除包) sudo apt-get remove - - purge # ------(package 删除包，包括删除配置文件等) sudo apt-get autoremove --purge # ----(package 删除包及其依赖的软件包+配置文件等（只对6.10有效，强烈推荐）) sudo apt-get update #------更新源 sudo apt-get upgrade #------更新已安装的包 sudo apt-get dist-upgrade # ---------升级系统 sudo apt-get dselect-upgrade #------使用 dselect 升级 apt-cache depends #-------(package 了解使用依赖) apt-cache rdepends # ------(package 了解某个具体的依赖?#当是查看该包被哪些包依赖吧...) sudo apt-get build-dep # ------(package 安装相关的编译环境) apt-get source #------(package 下载该包的源代码) sudo apt-get clean &amp;&amp; sudo apt-get autoclean # --------清理下载文件的存档 &amp;&amp; 只清理过时的包 sudo apt-get check #-------检查是否有损坏的依赖]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[七、输入法安装]]></title>
     <url>%2F2019%2F09%2F21%2F%E3%80%81%E8%BE%93%E5%85%A5%E6%B3%95%E5%AE%89%E8%A3%85%2F</url>
     <content type="text"><![CDATA[装个拼音凑合用着。。sudo apt-get install fcitx fcitx-googlepinyin fcitx-module-cloudpinyin fcitx-sunpinyin]]></content>
@@ -13,12 +43,12 @@
   <entry>
     <title><![CDATA[五、显示中文]]></title>
     <url>%2F2019%2F09%2F21%2F%E4%BA%94%E3%80%81%E6%98%BE%E7%A4%BA%E4%B8%AD%E6%96%87%2F</url>
-    <content type="text"><![CDATA[救救英语不好的孩子吧。。。ssh中输入以下命令：sudo apt-get install ttf-wqy-zenhei安装过程中如果碰到(Y/n)，都选择y中文字库安装完成之后，还需要安装一个中文输入法。输入如下命令sudo apt-get install scim-pinyin一样的安装过程，安装完毕后输入sudo raspi-config 按空格键选中zh_CN.UTF-8,然后回车 选中文 看见如下命令重启即可然后选择change_locale，在Default locale for the system environment中选择zh_CN.UTF-8,配置完成之后，输入命令sudo reboot重启完成好就可以在VNC连接上去后使用中文显示和中文输入法了，切换中文输入法一样也是ctrl+space。]]></content>
+    <content type="text"><![CDATA[救救英语不好的孩子吧。。。ssh中输入以下命令：sudo apt-get install ttf-wqy-zenhei安装过程中如果碰到(Y/n)，都选择y中文字库安装完成之后，还需要安装一个中文输入法。输入如下命令sudo apt-get install scim-pinyin一样的安装过程，安装完毕后输入sudo raspi-config按空格键选中zh_CN.UTF-8,然后回车选中文看见如下命令重启即可然后选择change_locale，在Default locale for the system environment中选择zh_CN.UTF-8,配置完成之后，输入命令sudo reboot重启完成好就可以在VNC连接上去后使用中文显示和中文输入法了，切换中文输入法一样也是ctrl+space。]]></content>
   </entry>
   <entry>
     <title><![CDATA[四、蓝牙连接]]></title>
     <url>%2F2019%2F09%2F21%2F%E5%9B%9B%E3%80%81%E8%93%9D%E7%89%99%E8%BF%9E%E6%8E%A5%2F</url>
-    <content type="text"><![CDATA[树莓派偶尔连接一下自己做的蓝牙音箱听听歌，静静心~~一、升级安装蓝牙相关软件包sudo apt-get updatesudo apt-get upgrade -ysudo apt-get dist-upgrade -ysudo apt-get install pi-bluetooth bluez bluez-firmware blueman二、最关键一点：添加pi用户到蓝牙组sudo usermod -G bluetooth -a pi三、重启sudo reboot]]></content>
+    <content type="text"><![CDATA[树莓派偶尔连接一下自己做的蓝牙音箱听听歌，静静心~~ 升级安装蓝牙相关软件包 sudo apt-get updatesudo apt-get upgrade -ysudo apt-get dist-upgrade -ysudo apt-get install pi-bluetooth bluez bluez-firmware blueman 添加pi用户到蓝牙组sudo usermod -G bluetooth -a pi 重启 sudo reboot]]></content>
   </entry>
   <entry>
     <title><![CDATA[三、无线连接（命令行界面下）]]></title>
