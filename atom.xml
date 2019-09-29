@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cjylxj121221.github.io/"/>
-  <updated>2019-09-28T14:52:44.868Z</updated>
+  <updated>2019-09-29T05:40:37.618Z</updated>
   <id>https://cjylxj121221.github.io/</id>
   
   <author>
@@ -15,6 +15,244 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>进阶十二、时序关系</title>
+    <link href="https://cjylxj121221.github.io/2019/09/29/%E5%8D%81%E4%BA%8C%E3%80%81%E6%97%B6%E5%BA%8F%E5%85%B3%E7%B3%BB/"/>
+    <id>https://cjylxj121221.github.io/2019/09/29/十二、时序关系/</id>
+    <published>2019-09-29T05:38:07.000Z</published>
+    <updated>2019-09-29T05:40:37.618Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="时序控制很重要"><a href="#时序控制很重要" class="headerlink" title="时序控制很重要"></a>时序控制很重要</h2><a id="more"></a><p>GPU核心, h264, v3d和isp共享一个锁相环, 因此需要相关联的频率. ARM, SDRAM和GPU有各自独有的锁相环, 因此可以设为没有关联的频率.<br>当设了<code>void_pwm_pll=1</code>下列设置就没必要了.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pll_freq = floor(2400 / (2 * core_freq)) * (2 * core_freq)</span><br><span class="line">gpu_freq = pll_freq / [偶数]</span><br></pre></td></tr></table></figure></p><p>有效的gpu_freq会自动四舍五到到最接近的整型偶数, 所以请求core_freq为500, gpu_freq为300,算一下2000/300 = 6.666 =&gt; 6 ,结果就是333.33MHz.</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;时序控制很重要&quot;&gt;&lt;a href=&quot;#时序控制很重要&quot; class=&quot;headerlink&quot; title=&quot;时序控制很重要&quot;&gt;&lt;/a&gt;时序控制很重要&lt;/h2&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>进阶十一、超频选项</title>
+    <link href="https://cjylxj121221.github.io/2019/09/29/%E5%8D%81%E4%B8%80%E3%80%81%E8%B6%85%E9%A2%91%E9%80%89%E9%A1%B9/"/>
+    <id>https://cjylxj121221.github.io/2019/09/29/十一、超频选项/</id>
+    <published>2019-09-29T05:36:50.000Z</published>
+    <updated>2019-09-29T05:39:18.717Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="超频参数说明"><a href="#超频参数说明" class="headerlink" title="超频参数说明"></a>超频参数说明</h2><a id="more"></a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">参数             说明</span><br><span class="line">arm_freq    ARM频率,以MHz为单位. 默认为700</span><br><span class="line">gpu_freq    同时设置core_freq, h264_freq, isp_freq, v3d_freq. 默认为250</span><br><span class="line">core_freq    GPU处理器核心频率,以MHz为单位. 由于GPU要驱动二级缓存, 对ARM性能会造成影响. 默认为 250</span><br><span class="line">h264_freq    视频硬解模块频率,以MHz为单位. 默认为250</span><br><span class="line">isp_freq    图像传感器管道模块频率,以MHz为单位. 默认为250</span><br><span class="line">v3d_freq    3D模块频率,以MHz为单位. 默认为250</span><br><span class="line">avoid_pwm_pll    不要把锁相环用在PWM音频. 这会略微降低模拟音频的效果. 空闲的锁相环允许从剩余GPU独立设置core_freq, 这将会比超频有更多权限. 默认为0</span><br><span class="line">sdram_freq    SDRAM频率,以MHz为单位.默认为400</span><br><span class="line">over_voltage    ARM/GPU核心电压调节. [-16,8]用0.025V步进等同于[0.8V,1.4V]. 默认为0 (1.2V). 只有在指定 force_turbo或current_limit_override时 (会设置保修位), 才允许数值在6以上</span><br><span class="line">over_voltage_sdram    同时设置over_voltage_sdram_c, over_voltage_sdram_i, over_voltage_sdram_p</span><br><span class="line">over_voltage_sdram_c    SDRAM控制器电压调节. [-16,8]用0.025V步进等同于[0.8V,1.4V]. 默认为0 (1.2V)</span><br><span class="line">over_voltage_sdram_i    SDRAM I/O电压调节. [-16,8]用0.025V步进等同于[0.8V,1.4V]. 默认为0 (1.2V)</span><br><span class="line">over_voltage_sdram_p    SDRAM phy电压调节. [-16,8]用0.025V步进等同于[0.8V,1.4V]. 默认为0 (1.2V)</span><br><span class="line">force_turbo    关闭动态CPU频率驱动及下面的最小设置. 开启h264/v3d/isp超频. 默认为0. 会设置保修位.</span><br><span class="line">initial_turbo    在启动时以指定秒数 (上限为60) 或者以CPU频率来开启急速模式. 如果已经超频, 能对SD卡错误问题有改善. 默认为0</span><br><span class="line">arm_freq_min    设置动态时序的最小arm_freq. 默认为700</span><br><span class="line">core_freq_min    设置动态时序的最小core_freq. 默认为250</span><br><span class="line">sdram_freq_min    设置动态时序的最小sdram_freq. 默认为400</span><br><span class="line">over_voltage_min    设置动态时序的最小over_voltage. 默认为0</span><br><span class="line">temp_limit    过热保护. 当芯片达到指定温度就把时序和电源切换会默认值. 把此值设高于默认值将影响保修. 默认为85</span><br><span class="line">current_limit_override    当设为”0x5A000020″时, 禁止SMPS限流保护. 在超频过高无法重启时设置此项会有所帮助. 会设置保修位.</span><br><span class="line">force_turbo模式</span><br><span class="line">force_turbo=0</span><br><span class="line">开启对ARM核心,GPU核心和SDRAM的动态时序及电压. 在忙的时候ARM频率会提高到”arm_freq”并在闲的时候降低到”arm_freq_min”. “core_freq”, “sdram_freq”和”over_voltage”的行为都一样. “over_voltage”最高为6 (1.35V). h264/v3d/isp部分的非默认值将被忽略.</span><br><span class="line">force_turbo=1</span><br><span class="line">关闭动态时序, 因此所有频率和电压会保持高值. h264/v3d/isp GPU部分的超频也会开启, 等同于设置”over_voltage”为8 (1.4V).</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;超频参数说明&quot;&gt;&lt;a href=&quot;#超频参数说明&quot; class=&quot;headerlink&quot; title=&quot;超频参数说明&quot;&gt;&lt;/a&gt;超频参数说明&lt;/h2&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>进阶十、超频</title>
+    <link href="https://cjylxj121221.github.io/2019/09/29/%E5%8D%81%E3%80%81%E8%B6%85%E9%A2%91/"/>
+    <id>https://cjylxj121221.github.io/2019/09/29/十、超频/</id>
+    <published>2019-09-29T05:34:57.000Z</published>
+    <updated>2019-09-29T05:37:18.192Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="作死超频"><a href="#作死超频" class="headerlink" title="作死超频"></a>作死超频</h2><a id="more"></a><p>注意: 设置任何参数来超频树莓派都会在芯片中永久的储存一个保修位, 用于检测你的树莓派是否超频过. 如果设备超频过保修就无效了. 自2012年9月19号,你可以自由超频而不影响保修了.<br>最新的内核有一个默认开启”ondemand”调速器的cpu频率内核驱动. 未开启超频并不会有任何影响. 一旦你开超频, ARM频率将随处理器负载而变化. 只有在调速器需要时才会使用非默认值. 你可以使用*_min配置选项来调整最低值, 或者使用force_turbo=1来禁用动态超频.<br>当芯片温度达到85°C运行时会关闭超频及超压, 直到冷却. 即使在25°C环境温度下使用最高设置, 也不要让温度达到极限.</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;作死超频&quot;&gt;&lt;a href=&quot;#作死超频&quot; class=&quot;headerlink&quot; title=&quot;作死超频&quot;&gt;&lt;/a&gt;作死超频&lt;/h2&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>进阶九、启动</title>
+    <link href="https://cjylxj121221.github.io/2019/09/29/%E4%B9%9D%E3%80%81%E5%90%AF%E5%8A%A8/"/>
+    <id>https://cjylxj121221.github.io/2019/09/29/九、启动/</id>
+    <published>2019-09-29T05:31:59.000Z</published>
+    <updated>2019-09-29T05:35:53.718Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="启动项控制"><a href="#启动项控制" class="headerlink" title="启动项控制"></a>启动项控制</h2><a id="more"></a><p><code>disable_commandline_tags</code> 在启动内核前, 通过改写ATAGS (0x100处的内存)来阻止start.elf<br><code>cmdline (string)</code> 命令行参数. 可用来代替cmdline.txt文件<br><code>kernel (string)</code> 加载指定名称的内核镜像文件启动内核. 默认为”kernel.img”<br><code>kernel_address</code> 加载kernel.img文件地址<br><code>kernel_old (bool)</code> 为1时, 从0x0处加载内核<br><code>ramfsfile (string)</code> 要的加载的ramfs文件<br><code>ramfsaddr</code> 要加载的ramfs文件地址<br><code>initramfs (string address)</code> 要加载的ramfs文件及其地址 (就是把ramfsfile+ramfsaddr合并为一项).<br>注意: 这项使用与其他项不同的语法 – 不要在这用”=”号.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">正确示例:</span><br><span class="line">initramfs initramf.gz 0x00800000</span><br></pre></td></tr></table></figure></p><p><code>device_tree_address</code> 加载device_tree的地址<br><code>init_uart_baud</code> 初始化uart波特率. 默认为115200<br><code>init_uart_clock</code> 初始化uart时序. 默认为3000000 (3Mhz)<br><code>init_emmc_clock</code> 初始化emmc时序. 默认为100000000 (100MHz)<br><code>boot_delay</code> 在加载内核前在start.elf等待指定秒. 总延迟=1000 * boot_delay + boot_delay_ms. 默认为1<br><code>boot_delay_ms</code>在加载内核前在start.elf等待指定毫秒. 默认为0<br><code>avoid_safe_mode</code> 如果设为1, 将不以安全模式启动. 默认为0</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;启动项控制&quot;&gt;&lt;a href=&quot;#启动项控制&quot; class=&quot;headerlink&quot; title=&quot;启动项控制&quot;&gt;&lt;/a&gt;启动项控制&lt;/h2&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>进阶八、许可的解码器</title>
+    <link href="https://cjylxj121221.github.io/2019/09/29/%E5%85%AB%E3%80%81%E8%AE%B8%E5%8F%AF%E7%9A%84%E8%A7%A3%E7%A0%81%E5%99%A8/"/>
+    <id>https://cjylxj121221.github.io/2019/09/29/八、许可的解码器/</id>
+    <published>2019-09-29T05:31:15.000Z</published>
+    <updated>2019-09-29T05:33:30.363Z</updated>
+    
+    <content type="html"><![CDATA[<p>你可以购买绑定树莓派CPU序列号的证书来使用额外的硬件解码器.<a id="more"></a><br>decode_MPG2 可开启MPEG-2硬解的序列号.<br><code>decode_MPG2=0x12345678</code><br>decode_WVC1 可开启VC-1硬解的序列号.<br><code>decode_WVC1=0x12345678</code><br>可在多台树莓派间共享SD卡的序列号. 同时最多8个证书.<br><code>decode_XXXX=0x12345678,0xabcdabcd,0x87654321,...</code></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;你可以购买绑定树莓派CPU序列号的证书来使用额外的硬件解码器.&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>进阶七、显示器有效值</title>
+    <link href="https://cjylxj121221.github.io/2019/09/29/%E9%98%B6%E4%B8%83%E3%80%81%E6%98%BE%E7%A4%BA%E5%99%A8%E6%9C%89%E6%95%88%E5%80%BC/"/>
+    <id>https://cjylxj121221.github.io/2019/09/29/阶七、显示器有效值/</id>
+    <published>2019-09-29T05:30:03.000Z</published>
+    <updated>2019-09-29T05:30:43.708Z</updated>
+    
+    <content type="html"><![CDATA[<p>哪些值对我的显示器有效?<a id="more"></a><br>你的HDMI显示器可能只支持一部分设置. 想要找出支持哪些设置, 可以使用下面的方法.<br>把输出格式设为<code>VGA 60Hz (hdmi_group=1 hdmi_mode=1)</code> 然后启动树莓派<br>输入下列命令可以获取CEA支持模式的列表<br><code>/opt/vc/bin/tvservice -m CEA</code><br>输入下列命令可以获取DMT支持模式的列表<br><code>/opt/vc/bin/tvservice -m DMT</code><br>输入下列命令可以获取当前设置状态<br><code>/opt/vc/bin/tvservice -s</code><br>输入下列命令可以从显示器获取更多详细信息<br><code>/opt/vc/bin/tvservice -d edid.dat /opt/vc/bin/edidparser edid.dat</code><br>使用默认HDMI模式去排除问题时, edid.dat文件同样会提供信息</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;哪些值对我的显示器有效?&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>进阶六、视频输出</title>
+    <link href="https://cjylxj121221.github.io/2019/09/28/%E5%85%AD%E3%80%81%E8%A7%86%E9%A2%91%E8%BE%93%E5%87%BA/"/>
+    <id>https://cjylxj121221.github.io/2019/09/28/六、视频输出/</id>
+    <published>2019-09-28T15:33:42.000Z</published>
+    <updated>2019-09-29T05:29:17.639Z</updated>
+    
+    <content type="html"><![CDATA[<p>视频输出的众多控制值及其规范<a id="more"></a></p><h2 id="视频模式选项"><a href="#视频模式选项" class="headerlink" title="视频模式选项"></a>视频模式选项</h2><p><strong>sdtv_mode</strong>为复合信号输出设置视频制式(默认为0)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sdtv_mode=0    NTSC</span><br><span class="line">sdtv_mode=1    日本版NTSC – 无基座</span><br><span class="line">sdtv_mode=2    PAL</span><br><span class="line">sdtv_mode=3    巴西版PAL – 副载波为525/60而不是625/50</span><br></pre></td></tr></table></figure></p><p><strong>sdtv_aspect</strong>为复合信号输出设置宽高比(默认为1)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sdtv_aspect=1  4:3</span><br><span class="line">sdtv_aspect=2  14:9</span><br><span class="line">sdtv_aspect=3  16:9</span><br></pre></td></tr></table></figure></p><p><strong>sdtv_disable_colourburst</strong>禁止复合信号输出彩色副载波群. 图片会显示为单色, 但是可能会更清晰<br><code>sdtv_disable_colourburst=1  禁止输出彩色副载波群</code><br><strong>hdmi_safe</strong>使用”安全模式”的设置去尝试用HDMI最大兼容性启动. 这和下面的组合是一个意思:<br><code>hdmi_force_hotplug=1, config_hdmi_boost=4, hdmi_group=2, hdmi_mode=4, disable_overscan=0</code> compared to <code>hdmi_safe=1</code><br><strong>hdmi_ignore_edid</strong>如果你的显示器是天朝产的垃圾货, 允许系统忽略EDID显示数据<br><code>hdmi_ignore_edid=0xa5000080</code><br><strong>hdmi_edid_file</strong>当设为1时, 将会从edid.dat文件中读取EDID数据，而不是从显示器.<br><code>hdmi_edid_file=1</code><br><strong>hdmi_force_edid_audio</strong>伪装成支持所有音频格式播放, 即便报告不支持也允许通过DTS/AC3.<br><code>hdmi_force_edid_audio=1</code><br><strong>hdmi_force_edid_3d</strong>伪装成全部CEA模式都支持3D, 即便EDID并不支持.<br><code>hdmi_force_edid_3d=1</code><br><strong>avoid_edid_fuzzy_match</strong>禁止去模糊匹配EDID中描述的模式. 即便遮蔽错误, 也选用匹配分辨率和最接近帧率的标准模式.<br><code>avoid_edid_fuzzy_match=1</code><br><strong>hdmi_ignore_cec_init</strong>不发送初始化激活源消息. 避免在重启时使(启用CEC)TV结束待机并切换频道.<br><code>hdmi_ignore_cec_init=1</code><br><strong>hdmi_ignore_cec</strong>伪装成TV不支持CEC. 将不会支持任何CEC功能.<br><code>hdmi_ignore_cec=1</code><br><strong>hdmi_force_hotplug</strong>伪装成HDMI热插拔信号被检测到, 出现HDMI显示器被接入<br><code>hdmi_force_hotplug=1</code> 即便没有检测到HDMI显示器也要使用HDMI模式<br><strong>hdmi_ignore_hotplug</strong>伪装成HDMI热插拔信号没有被检测到, 出现HDMI显示器未接入<br><code>hdmi_ignore_hotplug=1 即便检测到HDMI显示器也要使用混合模式</code><br><strong>hdmi_pixel_encoding</strong>强制像素编码模式. 默认情况下会使用EDID请求的模式, 所以不需要修改.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">hdmi_pixel_encoding=0 default       (limited for CEA, full for DMT)</span><br><span class="line">hdmi_pixel_encoding=1 RGB limited   (16-235)</span><br><span class="line">hdmi_pixel_encoding=2 RGB full      ( 0-255)</span><br><span class="line">hdmi_pixel_encoding=3 YCbCr limited (16-235)</span><br><span class="line">hdmi_pixel_encoding=4 YCbCr limited ( 0-255)</span><br><span class="line">hdmi_drive 选择HDMI还是DVI模式</span><br><span class="line">hdmi_drive=1 DVI模式 (没声音)</span><br><span class="line">hdmi_drive=2 HDMI模式 (如果支持并已启用将有声音输出)</span><br><span class="line">hdmi_group 设置HDMI类型</span><br><span class="line">不指定组, 或者设为0, 将会使用EDID报告的首选组.</span><br><span class="line">hdmi_group=1   CEA</span><br><span class="line">hdmi_group=2   DMT</span><br><span class="line">hdmi_mode 设置在CEA或DMT格式下的屏幕分辨率</span><br></pre></td></tr></table></figure></p><h2 id="CEA"><a href="#CEA" class="headerlink" title="CEA"></a>CEA</h2><p>当<strong>hdmi_group=1 (CEA)</strong>时,下列值有效<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">hdmi_mode=1    VGA</span><br><span class="line">hdmi_mode=2    480p  60Hz</span><br><span class="line">hdmi_mode=3    480p  60Hz  H</span><br><span class="line">hdmi_mode=4    720p  60Hz</span><br><span class="line">hdmi_mode=5    1080i 60Hz</span><br><span class="line">hdmi_mode=6    480i  60Hz</span><br><span class="line">hdmi_mode=7    480i  60Hz  H</span><br><span class="line">hdmi_mode=8    240p  60Hz</span><br><span class="line">hdmi_mode=9    240p  60Hz  H</span><br><span class="line">hdmi_mode=10   480i  60Hz  4x</span><br><span class="line">hdmi_mode=11   480i  60Hz  4x H</span><br><span class="line">hdmi_mode=12   240p  60Hz  4x</span><br><span class="line">hdmi_mode=13   240p  60Hz  4x H</span><br><span class="line">hdmi_mode=14   480p  60Hz  2x</span><br><span class="line">hdmi_mode=15   480p  60Hz  2x H</span><br><span class="line">hdmi_mode=16   1080p 60Hz</span><br><span class="line">hdmi_mode=17   576p  50Hz</span><br><span class="line">hdmi_mode=18   576p  50Hz  H</span><br><span class="line">hdmi_mode=19   720p  50Hz</span><br><span class="line">hdmi_mode=20   1080i 50Hz</span><br><span class="line">hdmi_mode=21   576i  50Hz</span><br><span class="line">hdmi_mode=22   576i  50Hz  H</span><br><span class="line">hdmi_mode=23   288p  50Hz</span><br><span class="line">hdmi_mode=24   288p  50Hz  H</span><br><span class="line">hdmi_mode=25   576i  50Hz  4x</span><br><span class="line">hdmi_mode=26   576i  50Hz  4x H</span><br><span class="line">hdmi_mode=27   288p  50Hz  4x</span><br><span class="line">hdmi_mode=28   288p  50Hz  4x H</span><br><span class="line">hdmi_mode=29   576p  50Hz  2x</span><br><span class="line">hdmi_mode=30   576p  50Hz  2x H</span><br><span class="line">hdmi_mode=31   1080p 50Hz</span><br><span class="line">hdmi_mode=32   1080p 24Hz</span><br><span class="line">hdmi_mode=33   1080p 25Hz</span><br><span class="line">hdmi_mode=34   1080p 30Hz</span><br><span class="line">hdmi_mode=35   480p  60Hz  4x</span><br><span class="line">hdmi_mode=36   480p  60Hz  4xH</span><br><span class="line">hdmi_mode=37   576p  50Hz  4x</span><br><span class="line">hdmi_mode=38   576p  50Hz  4x H</span><br><span class="line">hdmi_mode=39   1080i 50Hz  reduced blanking</span><br><span class="line">hdmi_mode=40   1080i 100Hz</span><br><span class="line">hdmi_mode=41   720p  100Hz</span><br><span class="line">hdmi_mode=42   576p  100Hz</span><br><span class="line">hdmi_mode=43   576p  100Hz H</span><br><span class="line">hdmi_mode=44   576i  100Hz</span><br><span class="line">hdmi_mode=45   576i  100Hz H</span><br><span class="line">hdmi_mode=46   1080i 120Hz</span><br><span class="line">hdmi_mode=47   720p  120Hz</span><br><span class="line">hdmi_mode=48   480p  120Hz</span><br><span class="line">hdmi_mode=49   480p  120Hz H</span><br><span class="line">hdmi_mode=50   480i  120Hz</span><br><span class="line">hdmi_mode=51   480i  120Hz H</span><br><span class="line">hdmi_mode=52   576p  200Hz</span><br><span class="line">hdmi_mode=53   576p  200Hz H</span><br><span class="line">hdmi_mode=54   576i  200Hz</span><br><span class="line">hdmi_mode=55   576i  200Hz H</span><br><span class="line">hdmi_mode=56   480p  240Hz</span><br><span class="line">hdmi_mode=57   480p  240Hz H</span><br><span class="line">hdmi_mode=58   480i  240Hz</span><br><span class="line">hdmi_mode=59   480i  240Hz H</span><br></pre></td></tr></table></figure></p><p>H表示16:9比例(正常是4:3).<br>2x表示双倍像素(即更高的像素时脉, 每个像素重复两次)<br>4x表示四倍像素(即更高的像素时脉, 每个像素重复四次)</p><h2 id="DMT"><a href="#DMT" class="headerlink" title="DMT"></a>DMT</h2><p>当<strong>hdmi_group=2 (DMT)</strong>时,下列值有效<br><strong>警告: 像素时脉是有限制的, 最高支持的模式是1920x1200 @60Hz with reduced blanking.</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line">hdmi_mode=1    640x350   85Hz</span><br><span class="line">hdmi_mode=2    640x400   85Hz</span><br><span class="line">hdmi_mode=3    720x400   85Hz</span><br><span class="line">hdmi_mode=4    640x480   60Hz</span><br><span class="line">hdmi_mode=5    640x480   72Hz</span><br><span class="line">hdmi_mode=6    640x480   75Hz</span><br><span class="line">hdmi_mode=7    640x480   85Hz</span><br><span class="line">hdmi_mode=8    800x600   56Hz</span><br><span class="line">hdmi_mode=9    800x600   60Hz</span><br><span class="line">hdmi_mode=10   800x600   72Hz</span><br><span class="line">hdmi_mode=11   800x600   75Hz</span><br><span class="line">hdmi_mode=12   800x600   85Hz</span><br><span class="line">hdmi_mode=13   800x600   120Hz</span><br><span class="line">hdmi_mode=14   848x480   60Hz</span><br><span class="line">hdmi_mode=15   1024x768  43Hz  DO NOT USE</span><br><span class="line">hdmi_mode=16   1024x768  60Hz</span><br><span class="line">hdmi_mode=17   1024x768  70Hz</span><br><span class="line">hdmi_mode=18   1024x768  75Hz</span><br><span class="line">hdmi_mode=19   1024x768  85Hz</span><br><span class="line">hdmi_mode=20   1024x768  120Hz</span><br><span class="line">hdmi_mode=21   1152x864  75Hz</span><br><span class="line">hdmi_mode=22   1280x768        reduced blanking</span><br><span class="line">hdmi_mode=23   1280x768  60Hz</span><br><span class="line">hdmi_mode=24   1280x768  75Hz</span><br><span class="line">hdmi_mode=25   1280x768  85Hz</span><br><span class="line">hdmi_mode=26   1280x768  120Hz reduced blanking</span><br><span class="line">hdmi_mode=27   1280x800        reduced blanking</span><br><span class="line">hdmi_mode=28   1280x800  60Hz</span><br><span class="line">hdmi_mode=29   1280x800  75Hz</span><br><span class="line">hdmi_mode=30   1280x800  85Hz</span><br><span class="line">hdmi_mode=31   1280x800  120Hz reduced blanking</span><br><span class="line">hdmi_mode=32   1280x960  60Hz</span><br><span class="line">hdmi_mode=33   1280x960  85Hz</span><br><span class="line">hdmi_mode=34   1280x960  120Hz reduced blanking</span><br><span class="line">hdmi_mode=35   1280x1024 60Hz</span><br><span class="line">hdmi_mode=36   1280x1024 75Hz</span><br><span class="line">hdmi_mode=37   1280x1024 85Hz</span><br><span class="line">hdmi_mode=38   1280x1024 120Hz reduced blanking</span><br><span class="line">hdmi_mode=39   1360x768  60Hz</span><br><span class="line">hdmi_mode=40   1360x768  120Hz reduced blanking</span><br><span class="line">hdmi_mode=41   1400x1050       reduced blanking</span><br><span class="line">hdmi_mode=42   1400x1050 60Hz</span><br><span class="line">hdmi_mode=43   1400x1050 75Hz</span><br><span class="line">hdmi_mode=44   1400x1050 85Hz</span><br><span class="line">hdmi_mode=45   1400x1050 120Hz reduced blanking</span><br><span class="line">hdmi_mode=46   1440x900        reduced blanking</span><br><span class="line">hdmi_mode=47   1440x900  60Hz</span><br><span class="line">hdmi_mode=48   1440x900  75Hz</span><br><span class="line">hdmi_mode=49   1440x900  85Hz</span><br><span class="line">hdmi_mode=50   1440x900  120Hz reduced blanking</span><br><span class="line">hdmi_mode=51   1600x1200 60Hz</span><br><span class="line">hdmi_mode=52   1600x1200 65Hz</span><br><span class="line">hdmi_mode=53   1600x1200 70Hz</span><br><span class="line">hdmi_mode=54   1600x1200 75Hz</span><br><span class="line">hdmi_mode=55   1600x1200 85Hz</span><br><span class="line">hdmi_mode=56   1600x1200 120Hz reduced blanking</span><br><span class="line">hdmi_mode=57   1680x1050       reduced blanking</span><br><span class="line">hdmi_mode=58   1680x1050 60Hz</span><br><span class="line">hdmi_mode=59   1680x1050 75Hz</span><br><span class="line">hdmi_mode=60   1680x1050 85Hz</span><br><span class="line">hdmi_mode=61   1680x1050 120Hz reduced blanking</span><br><span class="line">hdmi_mode=62   1792x1344 60Hz</span><br><span class="line">hdmi_mode=63   1792x1344 75Hz</span><br><span class="line">hdmi_mode=64   1792x1344 120Hz reduced blanking</span><br><span class="line">hdmi_mode=65   1856x1392 60Hz</span><br><span class="line">hdmi_mode=66   1856x1392 75Hz</span><br><span class="line">hdmi_mode=67   1856x1392 120Hz reduced blanking</span><br><span class="line">hdmi_mode=68   1920x1200       reduced blanking</span><br><span class="line">hdmi_mode=69   1920x1200 60Hz</span><br><span class="line">hdmi_mode=70   1920x1200 75Hz</span><br><span class="line">hdmi_mode=71   1920x1200 85Hz</span><br><span class="line">hdmi_mode=72   1920x1200 120Hz reduced blanking</span><br><span class="line">hdmi_mode=73   1920x1440 60Hz</span><br><span class="line">hdmi_mode=74   1920x1440 75Hz</span><br><span class="line">hdmi_mode=75   1920x1440 120Hz reduced blanking</span><br><span class="line">hdmi_mode=76   2560x1600       reduced blanking</span><br><span class="line">hdmi_mode=77   2560x1600 60Hz</span><br><span class="line">hdmi_mode=78   2560x1600 75Hz</span><br><span class="line">hdmi_mode=79   2560x1600 85Hz</span><br><span class="line">hdmi_mode=80   2560x1600 120Hz reduced blanking</span><br><span class="line">hdmi_mode=81   1366x768  60Hz</span><br><span class="line">hdmi_mode=82   1080p     60Hz</span><br><span class="line">hdmi_mode=83   1600x900        reduced blanking</span><br><span class="line">hdmi_mode=84   2048x1152       reduced blanking</span><br><span class="line">hdmi_mode=85   720p      60Hz</span><br><span class="line">hdmi_mode=86   1366x768        reduced blanking</span><br></pre></td></tr></table></figure></p><h2 id="其他参数"><a href="#其他参数" class="headerlink" title="其他参数"></a>其他参数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">overscan_left 左侧跳过像素数</span><br><span class="line">overscan_right 右侧跳过像素数</span><br><span class="line">overscan_top 顶部跳过像素数</span><br><span class="line">overscan_bottom 底部跳过像素数</span><br><span class="line">framebuffer_width 控制台framebuffer宽度, 以像素为单位. 默认是显示器宽度减去超出扫描.</span><br><span class="line">framebuffer_height 控制台framebuffer高度, 以像素为单位. 默认是显示器高度减去超出扫描.</span><br><span class="line">framebuffer_depth 控制台framebuffer深度, 以位为单位. 默认是16位. 8位也是有效的, 但是默认RGB调色板会导致屏幕不可读. 24位效果更好 ,但是2012年6月15号发现有显示混乱问题. 32位没有混乱问题, 但是需要设置framebuffer_ignore_alpha=1, 并在2012年6月15号发现颜色显示错误.</span><br><span class="line">framebuffer_ignore_alpha 设为1将禁用alpha通道. 仅对32位有效.</span><br><span class="line">test_mode 允许在启动时做声音与图像测试.</span><br><span class="line">disable_overscan 设为1将禁用超出扫描.</span><br><span class="line">config_hdmi_boost 设置HDMI接口的信号强度. 默认为0. 如果出现HDMI干扰问题可以试试设为4. 最大为7.</span><br><span class="line">display_rotate 顺时针旋转屏幕显示 (默认为0) 或者翻转显示.</span><br><span class="line">display_rotate=0        正常</span><br><span class="line">display_rotate=1        90度</span><br><span class="line">display_rotate=2        180度</span><br><span class="line">display_rotate=3        270度</span><br><span class="line">display_rotate=0x10000  水平翻转</span><br><span class="line">display_rotate=0x20000  垂直翻转</span><br><span class="line">注意: 旋转90度或者270度额外需要GPU内存, 所以在GPU只分配到16M的时候旋转会无效. 可能的原因:</span><br><span class="line">Crashes my RPI before Linux boots if set to “1” — REW 20120913.</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;视频输出的众多控制值及其规范&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>进阶五、CMA动态内存分配</title>
+    <link href="https://cjylxj121221.github.io/2019/09/28/%E4%BA%94%E3%80%81CMA%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D/"/>
+    <id>https://cjylxj121221.github.io/2019/09/28/五、CMA动态内存分配/</id>
+    <published>2019-09-28T15:32:11.000Z</published>
+    <updated>2019-09-28T15:34:34.313Z</updated>
+    
+    <content type="html"><![CDATA[<p>自2012年11月19号, 固件和内核开始支持CMA, 这意味运行时可以动态管理ARM和GPU之间的内存分配. 这儿有相关config.txt示例.<br><a id="more"></a><br><code>cma_lwm</code> 当GPU可用内存低于cma_lwm所设值, 将会向ARM请求一些内存.<br><code>cma_hwm</code> 当GPU可用内存高于cma_hwm所设值, 将会向ARM释放一些内存.<br>要启用CMA，下面的参数需要添加到<code>cmdline.txt</code>文件里:<br><code>coherent_pool=6M smsc95xx.turbo_mode=N</code></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;自2012年11月19号, 固件和内核开始支持CMA, 这意味运行时可以动态管理ARM和GPU之间的内存分配. 这儿有相关config.txt示例.&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>进阶四、内存</title>
+    <link href="https://cjylxj121221.github.io/2019/09/28/%E5%9B%9B%E3%80%81%E5%86%85%E5%AD%98/"/>
+    <id>https://cjylxj121221.github.io/2019/09/28/四、内存/</id>
+    <published>2019-09-28T15:30:05.000Z</published>
+    <updated>2019-09-28T15:32:42.401Z</updated>
+    
+    <content type="html"><![CDATA[<p>内存控制的某些控制值<a id="more"></a><br><code>disable_l2cache</code> 禁止ARM访问GPU的二级缓存. 相应的需要在内核中关闭二级缓存. 默认为0<br><code>gpu_mem</code> GPU内存以兆为单位. 设置ARM和GPU之间的内存分配. ARM会获得剩余所有内存. 最小设为16. 默认为64<br><code>gpu_mem_256</code> 对于有256MB内存的树莓派的GPU内存设置. 512MB的派请忽略。会覆盖gpu_mem。最大设为192，默认不设置<br><code>gpu_mem_512</code> 对于有512MB内存的树莓派的GPU内存设置. 256MB的派请忽略.  会覆盖gpu_mem. 最大设为448. 默认不设置<br><code>disable_pvt</code> 禁止每500毫秒调整一次RAM的刷新率 (RAM温度测量)。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;内存控制的某些控制值&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>进阶三、文件格式</title>
+    <link href="https://cjylxj121221.github.io/2019/09/28/%E4%B8%89%E3%80%81%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F/"/>
+    <id>https://cjylxj121221.github.io/2019/09/28/三、文件格式/</id>
+    <published>2019-09-28T15:29:19.000Z</published>
+    <updated>2019-09-28T15:31:37.283Z</updated>
+    
+    <content type="html"><![CDATA[<p>当值是整形时格式为”属性=值”. 每行只指定一个参数. 注释使用’#’井号作为一行开头.<a id="more"></a><br>注意: 在新版的树莓派里每行都有#注释, 要想使用该行参数只需移除#.<br>下面是示例文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># Set stdv mode to PAL (as used in Europe) sdtv_mode=2</span><br><span class="line"># Force the monitor to HDMI mode so that sound will be sent over HDMI cable</span><br><span class="line">hdmi_drive=2</span><br><span class="line"># Set monitor mode to DMT</span><br><span class="line">hdmi_group=2</span><br><span class="line"># Set monitor resolution to 1024x768 XGA 60Hz (HDMI_DMT_XGA_60)</span><br><span class="line">hdmi_mode=16</span><br><span class="line"># Make display smaller to stop text spilling off the screen</span><br><span class="line">overscan_left=20</span><br><span class="line">overscan_right=12</span><br><span class="line">overscan_top=10</span><br><span class="line">overscan_bottom=10</span><br></pre></td></tr></table></figure></p><p>这是另一个示例文件, 包含了各种功能的扩展文档.</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;当值是整形时格式为”属性=值”. 每行只指定一个参数. 注释使用’#’井号作为一行开头.&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>进阶二、config.txt</title>
+    <link href="https://cjylxj121221.github.io/2019/09/28/%E4%BA%8C%E3%80%81config-txt/"/>
+    <id>https://cjylxj121221.github.io/2019/09/28/二、config-txt/</id>
+    <published>2019-09-28T15:26:08.000Z</published>
+    <updated>2019-09-28T15:28:25.995Z</updated>
+    
+    <content type="html"><![CDATA[<p>   由于树莓派并没有传统意义上的BIOS, 所以现在各种系统配置参数通常被存在”config.txt”这个文本文件中。<a id="more"></a><br>   树莓派的config.txt文件会在ARM内核初始化之前被GPU读取。这个文件存在引导分区上的.对于Linux, 路径通常是/boot/config.txt, 如果是Windows (或者OS X) 它会被识别为SD卡中可访问部分的一个普通文件。如果想要编辑配置文件, 请查看介绍编辑树莓派配置文件。<br>你可以使用下列命令去获取当前激活的设置:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">- 列出指定的配置参数.</span><br><span class="line">- 例如: vcgencmd get_config arm_freq</span><br><span class="line">vcgencmd get_config </span><br><span class="line">- 列出所有已设置的整形配置参数(非零)</span><br><span class="line">vcgencmd get_config int</span><br><span class="line">- 列出所有已设置的字符型配置参数(非零)</span><br><span class="line">vcgencmd get_config str</span><br></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;   由于树莓派并没有传统意义上的BIOS, 所以现在各种系统配置参数通常被存在”config.txt”这个文本文件中。&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>进阶一、GPIO介绍</title>
+    <link href="https://cjylxj121221.github.io/2019/09/28/%E9%98%B6%E4%B8%80%E3%80%81GPIO%E4%BB%8B%E7%BB%8D/"/>
+    <id>https://cjylxj121221.github.io/2019/09/28/阶一、GPIO介绍/</id>
+    <published>2019-09-28T15:23:22.000Z</published>
+    <updated>2019-09-28T15:25:28.148Z</updated>
+    
+    <content type="html"><![CDATA[<p>   General Purpose Input Output （通用输入/输出）简称为GPIO，或总线扩展器，人们利用工业标准I2C、SMBus或SPI接口简化了I/O口的扩展。当微控制器或芯片组没有足够的I/O端口，或当系统需要采用远端串行通信或控制时，GPIO产品能够提供额外的控制和监视功能。<a id="more"></a><br>   第一次使用GPIO口用的是网上找的方法：写一个C语言文件，运行一下以控制IO口的输出和输入，树莓派的GPIO口一共有40个<br>   在寄存器操作方面完全相同，GPxCON 中每两位控制一根引脚，<br>    00 输入 01 输出<br>    10 特殊功能 11 保留不用<br><img src="/images/进阶1-1.png" alt></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;   General Purpose Input Output （通用输入/输出）简称为GPIO，或总线扩展器，人们利用工业标准I2C、SMBus或SPI接口简化了I/O口的扩展。当微控制器或芯片组没有足够的I/O端口，或当系统需要采用远端串行通信或控制时，GPIO产品能够提供额外的控制和监视功能。&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>树莓派3代进阶玩法</title>
+    <link href="https://cjylxj121221.github.io/2019/09/28/%E6%B4%BE3%E4%BB%A3%E8%BF%9B%E9%98%B6%E7%8E%A9%E6%B3%95/"/>
+    <id>https://cjylxj121221.github.io/2019/09/28/派3代进阶玩法/</id>
+    <published>2019-09-28T15:21:14.000Z</published>
+    <updated>2019-09-28T15:23:34.588Z</updated>
+    
+    <content type="html"><![CDATA[<p>基础玩法讲地差不多了，该开始有些进阶玩法（作死玩法）<br>开更，填坑</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;基础玩法讲地差不多了，该开始有些进阶玩法（作死玩法）&lt;br&gt;开更，填坑&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>十三、超时闲置断开</title>
@@ -139,281 +377,6 @@
     
     </summary>
     
-    
-  </entry>
-  
-  <entry>
-    <title>六、日期时间修正</title>
-    <link href="https://cjylxj121221.github.io/2019/09/21/%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4%E4%BF%AE%E6%AD%A3/"/>
-    <id>https://cjylxj121221.github.io/2019/09/21/日期时间修正/</id>
-    <published>2019-09-21T08:07:34.000Z</published>
-    <updated>2019-09-28T14:21:25.460Z</updated>
-    
-    <content type="html"><![CDATA[<p>在树莓派上，打date命令可以看到系统的日期时间：<br><img src="/images/6-1.png" alt>(后面的CST表示中国标准时间)<br>树莓派没有电池，断电后无法保存时间。树莓派默认安装了NTP(Network Time Protocol)服务来获取互联网上ntp服务器提供的时间。如果这个时间不准，可以用这个命令校准一下。<a id="more"></a><br><code>sudo ntpd -s -d</code><br>如果还是不准，就用这个命令强制设置<br><code>sudo date  --s=&quot;2014-08-31 14:42:00&quot;</code><br>最后，添加一些国内可用的ntp服务器，如果你的时间正常，可以不做这些设置。<br>打开ntp服务的配置文件<br><code>sudo nano /etc/ntp.conf</code><br>找到这两行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># You do need to talk to an NTP server or two (or three).</span><br><span class="line"># server ntp.your-provider.example</span><br></pre></td></tr></table></figure></p><p>在下面添加以下内容，是一些亲测可用的ntp服务器。第一行最后的perfer表示优先使用此服务器，也就是复旦大学的ntp服务器。添加之后按Ctrl+X保存退出。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">server ntp.fudan.edu.cn iburst perfer  </span><br><span class="line">server time.asia.apple.com iburst  </span><br><span class="line">server asia.pool.ntp.org iburst  </span><br><span class="line">server ntp.nict.jp iburst  </span><br><span class="line">server time.nist.gov iburst</span><br></pre></td></tr></table></figure></p><p>重启ntp服务<br><code>sudo /etc/init.d/ntp restart</code></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;在树莓派上，打date命令可以看到系统的日期时间：&lt;br&gt;&lt;img src=&quot;/images/6-1.png&quot; alt&gt;(后面的CST表示中国标准时间)&lt;br&gt;树莓派没有电池，断电后无法保存时间。树莓派默认安装了NTP(Network Time Protocol)服务来获取互联网上ntp服务器提供的时间。如果这个时间不准，可以用这个命令校准一下。&lt;/p&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>五、显示中文</title>
-    <link href="https://cjylxj121221.github.io/2019/09/21/%E4%BA%94%E3%80%81%E6%98%BE%E7%A4%BA%E4%B8%AD%E6%96%87/"/>
-    <id>https://cjylxj121221.github.io/2019/09/21/五、显示中文/</id>
-    <published>2019-09-21T08:01:00.000Z</published>
-    <updated>2019-09-28T14:20:20.852Z</updated>
-    
-    <content type="html"><![CDATA[<p>救救英语不好的孩子吧。。。<a id="more"></a><br>ssh中输入以下命令：<br><code>sudo apt-get install ttf-wqy-zenhei</code><br>安装过程中如果碰到<code>(Y/n)</code>，都选择<code>y</code><br>中文字库安装完成之后，还需要安装一个中文输入法。输入如下命令<br><code>sudo apt-get install scim-pinyin</code><br>一样的安装过程，安装完毕后输入<br><code>sudo raspi-config</code><br><img src="/images/5-1.png" alt><br><img src="/images/5-2.png" alt><br><img src="/images/5-3.png" alt><br>按空格键选中<code>zh_CN.UTF-8</code>,然后回车<br><img src="/images/5-4.png" alt><br>选中文<br><img src="/images/5-5.png" alt><br>看见如下命令重启即可<br>然后选择<code>change_locale</code>，在<code>Default locale for the system environment</code>中选择<code>zh_CN.UTF-8</code>,配置完成之后，输入命令<br><code>sudo reboot</code><br>重启完成好就可以在VNC连接上去后使用中文显示和中文输入法了，切换中文输入法一样也是<code>ctrl+space</code>。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;救救英语不好的孩子吧。。。&lt;/p&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>四、蓝牙连接</title>
-    <link href="https://cjylxj121221.github.io/2019/09/21/%E5%9B%9B%E3%80%81%E8%93%9D%E7%89%99%E8%BF%9E%E6%8E%A5/"/>
-    <id>https://cjylxj121221.github.io/2019/09/21/四、蓝牙连接/</id>
-    <published>2019-09-21T07:55:56.000Z</published>
-    <updated>2019-09-28T14:51:16.752Z</updated>
-    
-    <content type="html"><![CDATA[<p>树莓派偶尔连接一下自己做的蓝牙音箱听听歌，静静心~~<a id="more"></a></p><h2 id="升级安装蓝牙相关软件包"><a href="#升级安装蓝牙相关软件包" class="headerlink" title="升级安装蓝牙相关软件包 "></a>升级安装蓝牙相关软件包 </h2><p><code>sudo apt-get update</code><br><code>sudo apt-get upgrade -y</code><br><code>sudo apt-get dist-upgrade -y</code><br><code>sudo apt-get install pi-bluetooth bluez bluez-firmware blueman</code></p><h2 id="添加pi用户到蓝牙组"><a href="#添加pi用户到蓝牙组" class="headerlink" title="添加pi用户到蓝牙组"></a>添加pi用户到蓝牙组</h2><p><code>sudo usermod -G bluetooth -a pi</code></p><h2 id="重启"><a href="#重启" class="headerlink" title="重启    "></a>重启    </h2><p><code>sudo reboot</code></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;树莓派偶尔连接一下自己做的蓝牙音箱听听歌，静静心~~&lt;/p&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>三、无线连接（命令行界面下）</title>
-    <link href="https://cjylxj121221.github.io/2019/04/16/%E4%B8%89%E3%80%81%E6%97%A0%E7%BA%BF%E8%BF%9E%E6%8E%A5%EF%BC%88%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%95%8C%E9%9D%A2%E4%B8%8B%EF%BC%89/"/>
-    <id>https://cjylxj121221.github.io/2019/04/16/三、无线连接（命令行界面下）/</id>
-    <published>2019-04-15T23:37:38.000Z</published>
-    <updated>2019-04-23T02:52:20.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>树莓派方便在带无线网卡，直接连接无线调试起来方便很多<br><a id="more"></a></p><p><strong>一、查看网卡状态是否正常</strong><br>把无线网卡插到树莓派上，输入命令ifconfig -a查看是否有wlan0的信息，如果有说明网卡状态正常，可以跳过第二步，直接配置无线网络。如果查不到wlan0的信息，则需要安装无线网卡的驱动。</p><p><strong>二、查看无线网卡的信息</strong><br>输入命令dmesg | grep usb查看无线网卡的信息，主要是看制造厂家（Manufacturer）。<br>比如，我的网卡信息是<br>usb 1-1.3: Manufacturer: Realtek<br>以Realtek为例，安装无线网卡驱动。<br>如果现在你的树莓派能联网，输入安装命令就可以安装Realtek的驱动了。<br>首先搜索Realtek驱动：<br>apt-cache search realtek<br>看到下面信息：<br>firmware-realtek – Binary firmware for Realtek wired and wireless network adapters<br>安装Realtek驱动：<br>sudo apt-get install firmware-realtek<br>如果你的树莓派现在不能上网，那么你可以去镜像站点中下载相关驱动。<br>我推荐阿里云的镜像站点，速度比较快。<br><a href="http://mirrors.aliyun.com/raspbian/raspbian/pool/non-free/f/firmware-nonfree" target="_blank" rel="noopener">http://mirrors.aliyun.com/raspbian/raspbian/pool/non-free/f/firmware-nonfree</a><br>下载firmware-realtek_0.43_all.deb，用winscp上传到树莓派的/tmp目录中。<br>输入命令安装：<br>sudo dpkg -i /tmp/firmware-realtek_0.43_all.deb</p><p><strong>三、配置无线网络</strong><br>用编辑器nano打开interfaces文件<br>    sudo nano /etc/network/interfaces<br>我的interfaces文件是这样的：<br>    auto lo<br>    iface lo inet loopback<br>    iface eth0 inet dhcp<br>    allow-hotplug wlan0<br>    iface wlan0 inet manual<br>    wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf<br>    iface default inet dhcp<br>我们把无线网卡部分全部用#注释掉，然后添加自己的配置信息<br>最终结果如下：<br>    auto lo<br>   iface lo inet loopback<br>    iface eth0 inet dhcp<br>    auto wlan0</p><pre><code>#allow-hotplug wlan0#iface wlan0 inet manualiface wlan0 inet dhcpwpa-conf /etc/wpa.conf#wpa-roam /etc/wpa_supplicant/wpa_supplicant.confiface default inet dhcp</code></pre><p>使用nano编辑器，ctrl+o保存，ctrl+x退出。<br>用编辑器nano创建 /etc/wpa.conf 文件：<br>    sudo nano /etc/wpa.conf<br>如果你的wifi没有密码<br>    network={<br>    [Tab] ssid=”你的无线网络名称（ssid）”<br>    [Tab] key_mgmt=NONE<br>    }<br>如果你的wifi使用WEP加密<br>    network={<br>    [Tab] ssid=”你的无线网络名称（ssid）”<br>    [Tab] key_mgmt=NONE<br>    [Tab] wep_key0=”你的wifi密码”<br>    }<br>如果你的wifi使用WPA/WPA2加密<br>    network={<br>    [Tab] ssid=”你的无线网络名称（ssid）”<br>    [Tab] key_mgmt=WPA-PSK<br>    [Tab] psk=”你的wifi密码”<br>    }<br>注1：所有符号都是半角符号（英文状态下的符号），“[Tab]”表示按一次Tab键<br>注2：如果你不清楚wifi的加密模式，可以在安卓手机上用root explorer打开 /data/misc/wifi/wpa/wpa_supplicant.conf，查看wifi的信息。<br>比如，我的wpa.conf文件是这样的：<br>    network={<br>    ssid=”1234”<br>    key_mgmt=WPA-PSK<br>    psk=”MTIzNA1234”<br>    }<br>最后输入命令启用无线网卡：<br>    sudo ifup wlan0<br>可以连无线网了。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;树莓派方便在带无线网卡，直接连接无线调试起来方便很多&lt;br&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="技术分享" scheme="https://cjylxj121221.github.io/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/"/>
-    
-    
-      <category term="树莓派玩法" scheme="https://cjylxj121221.github.io/tags/%E6%A0%91%E8%8E%93%E6%B4%BE%E7%8E%A9%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>二、树莓派屏幕休眠</title>
-    <link href="https://cjylxj121221.github.io/2019/04/15/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%B1%8F%E5%B9%95%E4%BC%91%E7%9C%A0/"/>
-    <id>https://cjylxj121221.github.io/2019/04/15/树莓派屏幕休眠/</id>
-    <published>2019-04-15T00:23:35.000Z</published>
-    <updated>2019-04-23T02:52:20.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>树莓派大部分使用其终端，屏幕用来配置即可，不使用时休眠<br><a id="more"></a><br>一、禁止屏幕在图形界面下休眠<br>在 /etc/profile.d 路径下新建一个文件，如Screen.sh，并将下面两条命令写入该文件，即可以实现永久禁用。<br>1    xsetdpms 0 0 0<br>2    xsets off<br>操作：<br> cd /etc/profile.d<br> sudo nano Screen.sh<br>接着看到</p><p>输入如下内容   Ctrl+X     Y保存即可</p><p>指令    说明<br>xset s off    禁用屏幕保护<br>xset s 3600 3600    设置空闲时间为1小时<br>xset -dpms    关闭 DPMS<br>xset s off -dpms    禁用 DPMS 并阻止屏幕进入空闲<br>xset dpms force off    立即关闭屏幕<br>xset dpms force standby    强制屏幕进入待命状态<br>xset dpms force suspend    强制屏幕进入暂停状态</p><p>二、禁止屏幕在 Console 终端下休眠<br>执行下面的命令就可以解决这个问题。<br>1    setterm -blank 0<br>重启后此命令会失效，所以需要装这个命令加入到启动脚本中，每次开机后自动启动。<br>Raspbian 和 Archlinux 在 /etc/bash.bashrc 文件中加入，CentOS 则是在/etc/bashrc加入:<br>1    setterm -blank 0<br>更多相关设置：<br>1    setterm -blank [0-60|force|poke]<br>2    setterm -powersave [on|vsync|hsync|powerdown|off]<br>3    setterm -powerdown [0-60]<br>以上参数为0时表示禁用。例如下面的指令表示禁止屏幕进入保护和关闭状态<br>1    setterm -blank 0 -powerdown 0</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;树莓派大部分使用其终端，屏幕用来配置即可，不使用时休眠&lt;br&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="技术分享" scheme="https://cjylxj121221.github.io/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/"/>
-    
-    
-      <category term="树莓派玩法" scheme="https://cjylxj121221.github.io/tags/%E6%A0%91%E8%8E%93%E6%B4%BE%E7%8E%A9%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>一、树莓派系统安装</title>
-    <link href="https://cjylxj121221.github.io/2019/04/15/%E6%A0%91%E8%8E%93%E6%B4%BE%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85/"/>
-    <id>https://cjylxj121221.github.io/2019/04/15/树莓派系统安装/</id>
-    <published>2019-04-15T00:22:15.000Z</published>
-    <updated>2019-04-23T02:52:19.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>开始安装树莓派系统，常用的为树莓派官方系统，基于Linux，有其他需求的也可以安装Windows lot<br><a id="more"></a></p><ol><li>第一步是到官网 <a href="https://www.raspberrypi.org/downloads/" target="_blank" rel="noopener">https://www.raspberrypi.org/downloads/</a> 下载你需要的树莓派系统，树莓派推荐aspberrypi系统，下载的是一个ISO镜像文件。<ol start="2"><li>使用Win32 Disk Imager把iso镜像写入SD卡，写完了就把内存卡插到树莓派上。</li><li>上电开机启动，第一次启动使用，插上HDMI进入界面，默认账号是pi，密码是raspberry。</li><li>首先进 raspberry configuration开启ssh和vnc服务，开启后系统会提示重启。</li><li>重启一次系统后会有让你修改系统登录默认密码的提示框，打开终端，输入 sudo passwd ,就能按照提示设置密码， 新的密码会输入两遍。</li><li>接下来就是开启root权限，raspberry基于linux，输入sudo passwd –unlock root 就能默认解锁root账户，root账户拥有系统的最高权限，所以很有表要开启，输入sudo -i或者su root就能开启root账户，输入su pi就能回到普通账户。</li><li>进终端安装ssh和vnc服务，sudo apt-get install openssh-server   sudo  apt-get install tightvncserver,之后ifconfig看树莓派ip地址，就能内网通过ssh和vnc访问。</li><li>Windows、macos和linux都可以安装vncviwer（vnc）或者putty（ssh），输入树莓派ip，连接后输入账户和密码就能连接。</li></ol></li></ol>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;开始安装树莓派系统，常用的为树莓派官方系统，基于Linux，有其他需求的也可以安装Windows lot&lt;br&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="技术分享" scheme="https://cjylxj121221.github.io/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/"/>
-    
-    
-      <category term="树莓派玩法" scheme="https://cjylxj121221.github.io/tags/%E6%A0%91%E8%8E%93%E6%B4%BE%E7%8E%A9%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>零、树莓派配置介绍</title>
-    <link href="https://cjylxj121221.github.io/2019/04/15/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/"/>
-    <id>https://cjylxj121221.github.io/2019/04/15/树莓派常见问题/</id>
-    <published>2019-04-15T00:15:02.000Z</published>
-    <updated>2019-04-23T02:52:20.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="今天开始更新树莓派玩法"><a href="#今天开始更新树莓派玩法" class="headerlink" title="今天开始更新树莓派玩法"></a>今天开始更新树莓派玩法</h2><a id="more"></a><p>The Raspberry Pi 3 is the third-generation Raspberry Pi. It replaced the Raspberry Pi 2 Model B in February 2016.</p><pre><code>• Quad Core 1.2GHz Broadcom BCM2837 64bit CPU• 1GB RAM• BCM43438 wireless LAN and Bluetooth Low Energy (BLE) on board• 40-pin extended GPIO• 4 USB 2 ports• 4 Pole stereo output and composite video port• Full size HDMI• CSI camera port for connecting a Raspberry Pi camera• DSI display port for connecting a Raspberry Pi touchscreen display• Micro SD port for loading your operating system and storing data• Upgraded switched Micro USB power source up to 2.5A</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;今天开始更新树莓派玩法&quot;&gt;&lt;a href=&quot;#今天开始更新树莓派玩法&quot; class=&quot;headerlink&quot; title=&quot;今天开始更新树莓派玩法&quot;&gt;&lt;/a&gt;今天开始更新树莓派玩法&lt;/h2&gt;
-    
-    </summary>
-    
-      <category term="技术分享" scheme="https://cjylxj121221.github.io/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/"/>
-    
-    
-      <category term="树莓派玩法" scheme="https://cjylxj121221.github.io/tags/%E6%A0%91%E8%8E%93%E6%B4%BE%E7%8E%A9%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>可以牵着你的手嘛</title>
-    <link href="https://cjylxj121221.github.io/2019/04/11/%E5%8F%AF%E4%BB%A5%E7%89%B5%E7%9D%80%E4%BD%A0%E7%9A%84%E6%89%8B%E5%98%9B/"/>
-    <id>https://cjylxj121221.github.io/2019/04/11/可以牵着你的手嘛/</id>
-    <published>2019-04-11T03:58:10.000Z</published>
-    <updated>2019-04-23T02:52:20.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="牵着小手"><a href="#牵着小手" class="headerlink" title="牵着小手"></a>牵着小手</h2><p>鬼屋行程后我们去看了一场电影，看的无名之辈，我们也是生活中的无名之辈，靠着缘分偶然遇到一起，我会珍惜的。<a id="more"></a></p><p>看电影中我时不时会看向你，你认真看电影的样子真好看，眼睛里闪动着电影的画面，我坐那突然抓起你的手，十指紧紧扣在一起。<br>晚上我们去了你帮我预订的宾馆，刷卡开门，我看床上有一朵玫瑰花，第一念头是送给你(自己都不敢相信自己会这样做)，可惜啦那是一朵假花，不过没关系，我以后会再送你真的。</p><p>东西都放好了后就该送你回去了，( 你还说不要我送你回去，这怎么可能啊我可不放心，这么好看的女朋友指不定谁就打注意呢 ) 我们等啊等一直没等到公交车，我说滴滴吧，你说再等等，然后我就偷偷滴滴了哈哈哈哈，没想到滴滴司机到了的时候连过两辆公交车。</p><p>送你到了学校我故意放慢脚步，你也好像明白我的意思，和我一起慢慢走，我那时候真挺紧张，和你慢慢走向寝室，快到了的时候我觉得不能再纠结了，于是直男地问， 我能不能牵着你的手</p><p>你轻轻说可以，我拉住了你的手，很柔软但是也很凉。我问，我们以后在一起好吗，你轻轻说，你也会…恩我们都会努力去展现最好的自己。那晚你问我为什么我会选择你，那晚我说，如果不抓住这次机会，我就一定会后悔的。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;牵着小手&quot;&gt;&lt;a href=&quot;#牵着小手&quot; class=&quot;headerlink&quot; title=&quot;牵着小手&quot;&gt;&lt;/a&gt;牵着小手&lt;/h2&gt;&lt;p&gt;鬼屋行程后我们去看了一场电影，看的无名之辈，我们也是生活中的无名之辈，靠着缘分偶然遇到一起，我会珍惜的。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="我和小可爱" scheme="https://cjylxj121221.github.io/categories/%E6%88%91%E5%92%8C%E5%B0%8F%E5%8F%AF%E7%88%B1/"/>
-    
-    
-      <category term="牵手" scheme="https://cjylxj121221.github.io/tags/%E7%89%B5%E6%89%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>我们第一次见面</title>
-    <link href="https://cjylxj121221.github.io/2019/04/10/%E6%88%91%E4%BB%AC%E7%AC%AC%E4%B8%80%E6%AC%A1%E8%A7%81%E9%9D%A2/"/>
-    <id>https://cjylxj121221.github.io/2019/04/10/我们第一次见面/</id>
-    <published>2019-04-10T14:50:59.000Z</published>
-    <updated>2019-04-23T02:52:20.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="我就能见到你了"><a href="#我就能见到你了" class="headerlink" title="我就能见到你了"></a>我就能见到你了</h2><p>那天我到达了你的城市，一路上公交车都很顺畅，可能是老天在帮我，帮我早点见到你。<a id="more"></a></p><p>来见你是我一个重要的决定，也是我很果断的一个决定，我感受到对面屏幕前这个女孩会是我这辈子很重要的一个人，我不能就这样宁丢了。</p><p>到了你的车站，你说要躲着我让我找找，可是我一下车啊，第一眼就看到一个漂亮的小姐姐站在那踱步，我猜那就是你吧，我笑着走了过去，心中忐忑(好可爱的小姐姐)。<br>我们就这样见面了，那一刻心跳很快，像是故人来，可又带着几分陌生人的感觉，毕竟我们这是真正意义上的第一次相见。</p><p>我来不及说出我准备的那些话，只好紧张地和你聊聊天，随便聊一聊日常，现在回想我已经记不起来那天说了什么，只知道当时的我啊，爱上了眼前这个文静的女孩。</p><p>你接着就带我去你的学校转了转，看到理工楼中的各种熟悉的证书，我在想，他们一定也很努力，都是值得学习的前辈，不过我也在偷偷观察那个傻瓜，一路上我们说的话不多，我想改变一下氛围，于是开始聊学习，聊生活。</p><p>后来你带我去你的食堂吃饭(心中：食堂好好啊)，吃饭时我居然忘了喝汤，你后来还告诉我你也没喝，看我没喝以为我不喜欢，宝贝好可爱啊，那天我吃饭速度很快，估计是因为有点点紧张吧。</p><p>下午你带我去了鬼屋，说实话我不怕鬼，可是进去了之后内心还是有点点怕，在那里这是我第一次好好和宝贝直视(我第一眼  好漂亮好可爱的小姐姐啊)，那里面我带着宝贝找线索，和宝贝在一起智商变低，第一关竟然玩了半小时！！！</p><p>你被吓到的时候紧紧抓住我的手，我当时好像握着你的手，可是怕你不接受，毕竟那是我们第一次相见嘛。到了一个停尸间时，只能一个一个人地过，我相信你，决定你把我先推进去看看，但是又担心你一个人在外面害怕，一遍一遍地告诉你我先进去看看然后立刻把你带过来，还好没发生什么意外，这个时候我们之间的距离已经拉近了不少，最后通关时，一个人突然跳出来想吓我们，恩我确实被吓到了，但是第一念头竟然是转过身去保护这个女孩，转过去又不敢紧紧抱住，还是担心你不习惯(现在想想我当时太单纯，太乖了，就应该抱住的)，可是不小心把你踩了一脚，后来发现还挺严重的，当时好心疼啊，可是又做不了什么，想蹲下帮你看看，又怕你不愿意….我真的是个傻子，太老实了哈哈哈哈</p><p>鬼屋行程很愉快啊，唯一不足就是把你踩了一脚。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;我就能见到你了&quot;&gt;&lt;a href=&quot;#我就能见到你了&quot; class=&quot;headerlink&quot; title=&quot;我就能见到你了&quot;&gt;&lt;/a&gt;我就能见到你了&lt;/h2&gt;&lt;p&gt;那天我到达了你的城市，一路上公交车都很顺畅，可能是老天在帮我，帮我早点见到你。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="我和小可爱" scheme="https://cjylxj121221.github.io/categories/%E6%88%91%E5%92%8C%E5%B0%8F%E5%8F%AF%E7%88%B1/"/>
-    
-    
-      <category term="见面" scheme="https://cjylxj121221.github.io/tags/%E8%A7%81%E9%9D%A2/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>我们在一起吧</title>
-    <link href="https://cjylxj121221.github.io/2019/04/10/%E6%88%91%E4%BB%AC%E5%9C%A8%E4%B8%80%E8%B5%B7%E5%90%A7/"/>
-    <id>https://cjylxj121221.github.io/2019/04/10/我们在一起吧/</id>
-    <published>2019-04-10T14:39:02.000Z</published>
-    <updated>2019-04-23T02:52:20.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="我说：在一起在一起"><a href="#我说：在一起在一起" class="headerlink" title="我说：在一起在一起"></a>我说：在一起在一起</h2><p>在一起吧！<br>那是我们认识第几天我已经想不起来了，虽然时间不长但是感觉已经互相很熟悉，时间也过的很漫长。<a id="more"></a></p><p>课堂小插曲</p><p>那天你和我分享你课堂上的一个小故事，你哈哈哈哈地笑着，我也觉得好笑，课堂上起哄在一起在一起，说着说着我突然有种想说这句话的冲动。<br>没错，我说了，这一次我没有任何犹豫。<br>你问：主语是谁？<br>嗯主语就是我们，我没有骗你。<br>你还说怕我后悔，小姐姐怎么对自己没有信心啊！</p><p>仓促表白</p><p>在那一刻，我突然觉得在QQ上向你表白太草率了，有种想当面表白的冲动<br>我说 说不定哪天就去你那玩了，你把地址也告诉了我。<br>后来我们电话聊了一会<br>电话里头 我也紧张。你也特别紧张哈哈哈哈<br>我说 我不帅 也不高<br>你有点害羞，不怎么说话，但是能听出来声音 是个温柔的小姐姐</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;我说：在一起在一起&quot;&gt;&lt;a href=&quot;#我说：在一起在一起&quot; class=&quot;headerlink&quot; title=&quot;我说：在一起在一起&quot;&gt;&lt;/a&gt;我说：在一起在一起&lt;/h2&gt;&lt;p&gt;在一起吧！&lt;br&gt;那是我们认识第几天我已经想不起来了，虽然时间不长但是感觉已经互相很熟悉，时间也过的很漫长。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="我和小可爱" scheme="https://cjylxj121221.github.io/categories/%E6%88%91%E5%92%8C%E5%B0%8F%E5%8F%AF%E7%88%B1/"/>
-    
-    
-      <category term="相爱" scheme="https://cjylxj121221.github.io/tags/%E7%9B%B8%E7%88%B1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>来到你的城市</title>
-    <link href="https://cjylxj121221.github.io/2019/04/10/20181112/"/>
-    <id>https://cjylxj121221.github.io/2019/04/10/20181112/</id>
-    <published>2019-04-10T14:18:47.000Z</published>
-    <updated>2019-09-09T06:06:38.526Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="这一次我有着前所未有的果断"><a href="#这一次我有着前所未有的果断" class="headerlink" title="这一次我有着前所未有的果断"></a>这一次我有着前所未有的果断</h2><p>有时候幸福就是那一瞬间的机会，抓住了为自己的幸福奋斗，说不定是一生的幸福呢<br><a id="more"></a><br>我本来打算上午去你那，玩到晚上高铁回来<br>然后你轻声说:要不你待到第二天吧(心中暗喜)</p><p>我们开始做着准备工作<br>你帮我预定好了酒店，我买好了高铁票</p><p>你说要带我来一次鬼屋行程（此处笑出声）<br>后来发现你其实很害怕<br>你问了我许多饮食习惯，我不喜欢吃的你都知道了<br>我一度提出想和你一起去自习<br>你说你太爱学习了，周围的人都认为你不可能谈恋爱，我就觉得这次他们猜错了</p><p>你还和我讨论很久穿什么哈哈哈哈哈<br>你知道我感冒了后，你说要买个链子牵着保持距离<br>（后来一起玩还真在街上遇到卖同款链子的人了，可惜 我当时买一根就好了）</p><p>我们在QQ上说到时候你可能会沉默，我说我不会的<br>你还问我不喜欢哪种女生，我说浓妆艳抹，事实证明你就是我喜欢的那种女生</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;这一次我有着前所未有的果断&quot;&gt;&lt;a href=&quot;#这一次我有着前所未有的果断&quot; class=&quot;headerlink&quot; title=&quot;这一次我有着前所未有的果断&quot;&gt;&lt;/a&gt;这一次我有着前所未有的果断&lt;/h2&gt;&lt;p&gt;有时候幸福就是那一瞬间的机会，抓住了为自己的幸福奋斗，说不定是一生的幸福呢&lt;br&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="我和小可爱" scheme="https://cjylxj121221.github.io/categories/%E6%88%91%E5%92%8C%E5%B0%8F%E5%8F%AF%E7%88%B1/"/>
-    
-    
-      <category term="偶遇" scheme="https://cjylxj121221.github.io/tags/%E5%81%B6%E9%81%87/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>我很怂的，别怂</title>
-    <link href="https://cjylxj121221.github.io/2019/04/02/%E6%88%91%E5%BE%88%E6%80%82%E7%9A%84%EF%BC%8C%E5%88%AB%E6%80%82/"/>
-    <id>https://cjylxj121221.github.io/2019/04/02/我很怂的，别怂/</id>
-    <published>2019-04-02T13:36:57.000Z</published>
-    <updated>2019-04-23T02:52:20.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="10-29是一个奇特的日子"><a href="#10-29是一个奇特的日子" class="headerlink" title="10.29是一个奇特的日子"></a>10.29是一个奇特的日子</h2><p><strong>偶然相识</strong></p><p>说来像是一次偶然的相遇，偶然认识了你，紧接着一系列的截图，你在里面说……<a id="more"></a></p><p><strong>喜欢你说话的风格</strong></p><p>后来我加上了你的QQ，说来有点让人发笑，第一句话我说的是 我太怂了<br>我确实挺怂的，平时和女孩子交流也不多，贸然加上了你的QQ好友也怕打扰你，找支书要QQ想&gt;了想又撤回了，没想到还是被看到了消息把你的QQ给了我。</p><p><strong>“别怂”</strong></p><p>你回应我说:哈哈哈哈哈，别怂。</p><p>第一感觉你一定是个爱笑的女孩子，爱笑的女孩子都很美</p><p>你告诉我你叫蔡君怡，嗯这个名字真的挺好听的，你还告诉我你学的秃头专业–法学（哈哈哈&gt;），我说我学的电子一样迟早会秃。</p><p><strong>共同记忆</strong></p><p>距离第一次认识你也过去半个月了，我只记得那天我们聊了很久，从初中出发，没意料到我们&gt;曾经是三年隔壁班的校友，回忆了许多初中时的记忆，你也让我回忆起那最自豪的一次颁奖典&gt;礼，你说你还记得我，我有点意外。<br>我们有着许多共同的记忆，聊到了有关韩国的电影《熔炉》，我发现你和我有着相同的电影爱&gt;好。<br>你第一次表扬我说我真会说话。没错，和你聊天我变的会说话起来，不知道是大学三年磨练还&gt;是某种特殊的感觉。<br>聊天很融洽，我感觉每到尴尬时你总会出来救一下场，这或许也是我们能够聊这么久的原因吧。</p><p><strong>插曲</strong></p><p>在加你好友时，我并没有多动心，虽然你是好看的小姐姐，但是大学以来已经习惯了单身，想着聊几句别对不起支书的好意，然后慢慢的我们就会疏远然后就没有然后了。<br>后来这是我们第一次互道晚安，嗯晚安。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;10-29是一个奇特的日子&quot;&gt;&lt;a href=&quot;#10-29是一个奇特的日子&quot; class=&quot;headerlink&quot; title=&quot;10.29是一个奇特的日子&quot;&gt;&lt;/a&gt;10.29是一个奇特的日子&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;偶然相识&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;说来像是一次偶然的相遇，偶然认识了你，紧接着一系列的截图，你在里面说……&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="我和小可爱" scheme="https://cjylxj121221.github.io/categories/%E6%88%91%E5%92%8C%E5%B0%8F%E5%8F%AF%E7%88%B1/"/>
-    
-    
-      <category term="相识" scheme="https://cjylxj121221.github.io/tags/%E7%9B%B8%E8%AF%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo博客搭建流程</title>
-    <link href="https://cjylxj121221.github.io/2019/03/12/20190312/"/>
-    <id>https://cjylxj121221.github.io/2019/03/12/20190312/</id>
-    <published>2019-03-12T13:37:24.000Z</published>
-    <updated>2019-09-08T14:37:05.065Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>一直想搭建一个博客，记录我和可爱女朋友的日常。<br><a id="more"></a><br>上学期事情有点多，本地群晖上Wordpress搭建的网站模板稍微有点丑被我放弃了。考虑到内网穿透后成本和直接购买云服务器成本差不多，阿里云刚好买了一个域名，因此选择了阿里云。</p><h2 id="主机选择"><a href="#主机选择" class="headerlink" title="主机选择"></a>主机选择</h2><p>年前购买了阿里云的主机，一直没来得及搭建，最近开学时间多来完成。</p><p>我购买的为阿里云轻量应用服务器，和ECS云服务器相比价格差不多，但是在部署博客方面简化了操作，系统选择为Centos7.2（稳定性较高）。</p><h2 id="遇坑总结"><a href="#遇坑总结" class="headerlink" title="遇坑总结"></a>遇坑总结</h2><p>刚开始搭建时，和大部分新手的选择一样，百度–怎样搭建hexo博客，映入眼帘的是各式各样的教程文章，随便点开一个便开始操作，操作到一半各种问题出现，比如nodejs版本问题、hexo文件夹混乱等等。</p><p>在经历了一次失败后，我决定从官方文档入手，hexo官方文档写得非常详细，教程中若有不明白之处请移步官方文档，语言尽量选择英文，当然还有中文文档</p><h2 id="hexo搭建流程"><a href="#hexo搭建流程" class="headerlink" title="hexo搭建流程"></a>hexo搭建流程</h2><p><strong>什么是hexo？</strong></p><p>Hexo是一个快速、简洁且高效的博客框架。 Hexo使用Markdown解析文章，在几秒内，即可利用靓丽的主题生成静态网页</p><p><strong>依赖安装</strong></p><p><strong>安装nodejs</strong></p><p>cURL：</p><p>curl -o- <a href="https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh" target="_blank" rel="noopener">https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh</a> | bash</p><p>或Wget：</p><p>wget -qO- <a href="https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh" target="_blank" rel="noopener">https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh</a> | bash</p><p><strong>安装git</strong></p><p>Windows: 下载安装git</p><p>Mac: Install it with Homebrew, MacPorts or installer.</p><p>Linux (Ubuntu, Debian):</p><p>apt-get install git-core</p><p>Linux (Fedora, Red Hat, CentOS):</p><p>sudo yum install git-core</p><p>完成后</p><p>install stable</p><p><strong>安装hexo</strong></p><p>npm install -g hexo-cli</p><p>安装完成结束教程</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;目的&quot;&gt;&lt;a href=&quot;#目的&quot; class=&quot;headerlink&quot; title=&quot;目的&quot;&gt;&lt;/a&gt;目的&lt;/h2&gt;&lt;p&gt;一直想搭建一个博客，记录我和可爱女朋友的日常。&lt;br&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="技术分享" scheme="https://cjylxj121221.github.io/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/"/>
-    
-    
-      <category term="网站搭建" scheme="https://cjylxj121221.github.io/tags/%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/"/>
     
   </entry>
   
