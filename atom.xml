@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cjylxj121221.github.io/"/>
-  <updated>2019-09-29T05:40:37.618Z</updated>
+  <updated>2019-10-10T02:17:25.358Z</updated>
   <id>https://cjylxj121221.github.io/</id>
   
   <author>
@@ -15,6 +15,60 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>进阶十四、超频稳定性测试</title>
+    <link href="https://cjylxj121221.github.io/2019/10/10/%E5%8D%81%E5%9B%9B%E3%80%81%E8%B6%85%E9%A2%91%E7%A8%B3%E5%AE%9A%E6%80%A7%E6%B5%8B%E8%AF%95/"/>
+    <id>https://cjylxj121221.github.io/2019/10/10/十四、超频稳定性测试/</id>
+    <published>2019-10-10T02:14:48.000Z</published>
+    <updated>2019-10-10T02:17:25.358Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="测试超频稳定性"><a href="#测试超频稳定性" class="headerlink" title="测试超频稳定性"></a>测试超频稳定性</h2><a id="more"></a><p>大多数超频问题立马就会出现启动问题, 但还是会随时间而出现文件系统问题. 这是一个对系统,特别是SD卡进行压力测试的脚本. 如果脚本执行完成, dmesg中不提示任何错误, 你做的超频设置可能会比较稳定.<br>如果系统崩溃了, 在重启时按住shift键, 这会临时性关闭所有超频. 同样, 注意SD卡问题通常由<code>core_freq</code>造成,不要在<code>raspi-config</code>预设的高速(950 MHz)和超速(1 GHz)里来个大跳越(从250 MHz飞到500 MHz).<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">#Simple stress test for system. If it survives this, it&apos;s probably stable.</span><br><span class="line">#Free software, GPL2+</span><br><span class="line">echo &quot;Testing overclock stability...&quot;</span><br><span class="line">#Max out the CPU in the background (one core). Heats it up, loads the power-supply.</span><br><span class="line">nice yes &gt;/dev/null &amp;</span><br><span class="line">#Read the entire SD card 10x. Tests RAM and I/O</span><br><span class="line">for i in `seq 1 10`; do echo reading: $i; sudo dd if=/dev/mmcblk0 of=/dev/null bs=4M; done</span><br><span class="line">#Writes 512 MB test file,  10x.</span><br><span class="line">for i in `seq 1 10`; do echo writing: $i; dd if=/dev/zero of=deleteme.dat bs=1M count=512; sync; done</span><br><span class="line">#Clean up</span><br><span class="line">killall yes</span><br><span class="line">rm deleteme.dat</span><br><span class="line">#Print summary. Anything nasty will appear in dmesg.</span><br><span class="line">echo -n &quot;CPU freq: &quot; ; cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq</span><br><span class="line">echo -n &quot;CPU temp: &quot; ; cat /sys/class/thermal/thermal_zone0/temp</span><br><span class="line">dmesg | tail</span><br><span class="line">echo &quot;Not crashed yet, probably stable.&quot;</span><br></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;测试超频稳定性&quot;&gt;&lt;a href=&quot;#测试超频稳定性&quot; class=&quot;headerlink&quot; title=&quot;测试超频稳定性&quot;&gt;&lt;/a&gt;测试超频稳定性&lt;/h2&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>进阶十四、监测温度及电压</title>
+    <link href="https://cjylxj121221.github.io/2019/10/10/%E5%8D%81%E5%9B%9B%E3%80%81%E7%9B%91%E6%B5%8B%E6%B8%A9%E5%BA%A6%E5%8F%8A%E7%94%B5%E5%8E%8B/"/>
+    <id>https://cjylxj121221.github.io/2019/10/10/十四、监测温度及电压/</id>
+    <published>2019-10-10T02:12:30.000Z</published>
+    <updated>2019-10-10T02:15:20.568Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="检测树莓派温度"><a href="#检测树莓派温度" class="headerlink" title="检测树莓派温度"></a>检测树莓派温度</h2><a id="more"></a><p>要检测树莓派的温度, 看: <code>/sys/class/thermal/thermal_zone0/temp</code><br>要检测树莓派当前的频率, 看: <code>/sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq</code><br>要检测树莓派电源装置的电压, 你需要一个万用电表, 接上电源测试点, 或者扩展头.<br>通常来说要保持核心温度低于70度, 电压高于4.8V. (另外请注意, 不要用那种便宜的USB电源, 那基本上是4.2V的, 这是因为那本来就是为充3.7V锂电池设计的, 根本无法为树莓派提供稳定的5V电压). 此外, 用散热片也是个好主意, 尤其是你把树莓派装到了壳子里. 一个合适的散热器是自带不干胶栅格状的 14x14x10 mm 散热片.</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;检测树莓派温度&quot;&gt;&lt;a href=&quot;#检测树莓派温度&quot; class=&quot;headerlink&quot; title=&quot;检测树莓派温度&quot;&gt;&lt;/a&gt;检测树莓派温度&lt;/h2&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>进阶十三、已测试过的超频设置</title>
+    <link href="https://cjylxj121221.github.io/2019/10/01/%E5%8D%81%E4%B8%89%E3%80%81%E5%B7%B2%E6%B5%8B%E8%AF%95%E8%BF%87%E7%9A%84%E8%B6%85%E9%A2%91%E8%AE%BE%E7%BD%AE/"/>
+    <id>https://cjylxj121221.github.io/2019/10/01/十三、已测试过的超频设置/</id>
+    <published>2019-10-01T13:10:32.000Z</published>
+    <updated>2019-10-10T02:12:41.736Z</updated>
+    
+    <content type="html"><![CDATA[<p>下表显示了一些成功的超频尝试, 这些可以指导你进行超频. 这些设置不一定能在每台树莓派上都成功, 并且会缩短高通芯片的寿命.<a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">arm_freq=900</span><br><span class="line">sdram_freq=450</span><br><span class="line">gpu_freq=325</span><br><span class="line">core_freq=325</span><br><span class="line">h264_freq=325</span><br><span class="line">isp_freq=325</span><br><span class="line">v3d_freq=325</span><br></pre></td></tr></table></figure></p><p>gpu_freq means core_freq+h264_freq+isp_freq+v3d_freq. So:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">arm_freq=900</span><br><span class="line">sdram_freq=450</span><br><span class="line">gpu_freq=325</span><br></pre></td></tr></table></figure></p><p>这是一个表明Hynix产的RAM在超频上表现不如三星产的RAM的报告.<br>超频时SD卡使用<br>设置SD卡: <code>http://elinux.org/RPi_Easy_SD_Card_Setup</code><br>超频时使用6速或10速的SD卡(SHDC/SHDX)会导致在一些天后树莓派读取SD卡文件系统不稳定.<br>不管是ext4 , NTFS 或其他格式都一样.<br>不管是哪家SD卡生产商都一样.<br>不管是哪个版本的树莓派都一样.<br>这与SD卡容量无关 – 实际验证出现在16G或更大的SD卡上.<br>! 关键是你何时让树莓派功率不足,也就是低于树莓派的基本设置需求 !<br>popcornmix发表在<code>https://github.com/raspberrypi/linux/issues/280</code><br>“超频会导致SD卡错误.这情况往往是与板子相关(就是说有些树莓派超频后SD卡没事,有些不行).<br>我认为通常都是<code>core_freq</code>导致的SD卡问题(和arm_freq,sdram_freq比)”<br>  在2013年4月写这个提示的时候在树莓派官方论坛上一共有137个有关于SD的问题, 绝大部分与超频有关.<br>如果你使用6速或10速SD卡, 还想要树莓派稳定运行:  不要尝试超频,否则很可能会丢失数据</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;下表显示了一些成功的超频尝试, 这些可以指导你进行超频. 这些设置不一定能在每台树莓派上都成功, 并且会缩短高通芯片的寿命.&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>进阶十二、时序关系</title>
@@ -320,60 +374,6 @@
     <summary type="html">
     
       &lt;h2 id=&quot;LED亮灯状态&quot;&gt;&lt;a href=&quot;#LED亮灯状态&quot; class=&quot;headerlink&quot; title=&quot;LED亮灯状态&quot;&gt;&lt;/a&gt;LED亮灯状态&lt;/h2&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>九、截屏</title>
-    <link href="https://cjylxj121221.github.io/2019/09/28/%E6%88%AA%E5%B1%8F/"/>
-    <id>https://cjylxj121221.github.io/2019/09/28/截屏/</id>
-    <published>2019-09-28T14:31:27.000Z</published>
-    <updated>2019-09-28T14:33:50.730Z</updated>
-    
-    <content type="html"><![CDATA[<p>在树莓派上截屏的方法很简单。首先在终端中用下面的命令安装名叫“scrot”的截屏工具。<a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install scrot</span><br><span class="line">截取全屏幕执行：</span><br><span class="line">sudo scrot</span><br><span class="line">用鼠标选区屏幕区域截取执行：</span><br><span class="line">sudo scrot -s</span><br><span class="line">20秒后截取，参数可以自定义：</span><br><span class="line">sudo scrot -d20</span><br><span class="line">执行下面的指令可以查看更多用法：</span><br><span class="line">sudo scrot -h</span><br></pre></td></tr></table></figure></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;在树莓派上截屏的方法很简单。首先在终端中用下面的命令安装名叫“scrot”的截屏工具。&lt;/p&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>八、安装和卸载</title>
-    <link href="https://cjylxj121221.github.io/2019/09/28/%E5%AE%89%E8%A3%85%E5%92%8C%E5%8D%B8%E8%BD%BD/"/>
-    <id>https://cjylxj121221.github.io/2019/09/28/安装和卸载/</id>
-    <published>2019-09-28T14:22:01.000Z</published>
-    <updated>2019-09-28T14:50:24.532Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="基础命令"><a href="#基础命令" class="headerlink" title="基础命令"></a>基础命令</h2><a id="more"></a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">安装软件 apt-get install softname1 softname2 softname3</span><br><span class="line">卸载软件 apt-get remove softname1 softname2 softname3</span><br><span class="line">卸载并清除配置 apt-get remove –purge softname1</span><br><span class="line">更新软件信息数据库 apt-get update</span><br><span class="line">进行系统升级 apt-get upgrade</span><br><span class="line">搜索软件包 apt-cache search softname1 softname2 softname3</span><br><span class="line">如果使用apt-get遇到速度慢或者源不存在等错误，可能需要更换源</span><br><span class="line">安装deb软件包 dpkg -i xxx.deb</span><br><span class="line">删除软件包 dpkg -r xxx.deb</span><br><span class="line">连同配置文件一起删除 dpkg -r –purge xxx.deb</span><br><span class="line">查看软件包信息 dpkg -info xxx.deb</span><br><span class="line">查看文件拷贝详情 dpkg -L xxx.deb</span><br><span class="line">查看系统中已安装软件包信息 dpkg -l</span><br><span class="line">重新配置软件包 dpkg-reconfigure xxx</span><br><span class="line">清除所有已删除包的残馀配置文件</span><br><span class="line">dpkg -l |grep ^rc|awk &apos;&#123;print $2&#125;&apos; |sudo xargs dpkg -P</span><br></pre></td></tr></table></figure><p>如果报如下错误，证明你的系统中没有残留配置文件了，无须担心。<br><img src="/images/8-1.png" alt><br><code>dpkg–purge needs at least one package name argument</code><br>dpkg安裝的可以用apt卸載，反之亦可。</p><h2 id="aptitude-命令"><a href="#aptitude-命令" class="headerlink" title="aptitude 命令"></a>aptitude 命令</h2><p>aptitude 与 apt-get 一样，是 Debian 及其衍生系统中功能极其强大的包管理工具。与 apt-get 不同的是，aptitude 在处理依赖问题上更佳一些。举例来说，aptitude 在删除一个包时，会同时删除本身所依赖的包。这样，系统中不会残留无用的包，整个系统更为干净。以下是笔者总结的一些常用 aptitude 命令，仅供参考。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">aptitude update 更新可用的包列表</span><br><span class="line">aptitude upgrade 升级可用的包</span><br><span class="line">aptitude dist-upgrade 将系统升级到新的发行版</span><br><span class="line">aptitude install pkgname 安装包</span><br><span class="line">aptitude remove pkgname 删除包</span><br><span class="line">aptitude purge pkgname 删除包及其配置文件</span><br><span class="line">aptitude search string 搜索包</span><br><span class="line">aptitude show pkgname 显示包的详细信息</span><br><span class="line">aptitude clean 删除下载的包文件</span><br><span class="line">aptitude autoclean 仅删除过期的包文件</span><br></pre></td></tr></table></figure></p><p>当然，你也可以在文本界面模式中使用 aptitude。</p><h2 id="常用apt命令列表"><a href="#常用apt命令列表" class="headerlink" title="常用apt命令列表"></a>常用apt命令列表</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">apt-cache search # ------(package 搜索包)  </span><br><span class="line">apt-cache show #------(package 获取包的相关信息，如说明、大小、版本等)  </span><br><span class="line">sudo apt-get install # ------(package 安装包)  </span><br><span class="line">sudo apt-get install # -----(package - - reinstall 重新安装包)  </span><br><span class="line">sudo apt-get -f install # -----(强制安装?#&quot;-f = --fix-missing&quot;当是修复安装吧...)  </span><br><span class="line">sudo apt-get remove #-----(package 删除包)  </span><br><span class="line">sudo apt-get remove - - purge # ------(package 删除包，包括删除配置文件等)  </span><br><span class="line">sudo apt-get autoremove --purge # ----(package 删除包及其依赖的软件包+配置文件等（只对6.10有效，强烈推荐）)  </span><br><span class="line">sudo apt-get update #------更新源  </span><br><span class="line">sudo apt-get upgrade #------更新已安装的包  </span><br><span class="line">sudo apt-get dist-upgrade # ---------升级系统  </span><br><span class="line">sudo apt-get dselect-upgrade #------使用 dselect 升级  </span><br><span class="line">apt-cache depends #-------(package 了解使用依赖)  </span><br><span class="line">apt-cache rdepends # ------(package 了解某个具体的依赖?#当是查看该包被哪些包依赖吧...)  </span><br><span class="line">sudo apt-get build-dep # ------(package 安装相关的编译环境)  </span><br><span class="line">apt-get source #------(package 下载该包的源代码)  </span><br><span class="line">sudo apt-get clean &amp;&amp; sudo apt-get autoclean # --------清理下载文件的存档 &amp;&amp; 只清理过时的包  </span><br><span class="line">sudo apt-get check #-------检查是否有损坏的依赖</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;基础命令&quot;&gt;&lt;a href=&quot;#基础命令&quot; class=&quot;headerlink&quot; title=&quot;基础命令&quot;&gt;&lt;/a&gt;基础命令&lt;/h2&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>七、输入法安装</title>
-    <link href="https://cjylxj121221.github.io/2019/09/21/%E3%80%81%E8%BE%93%E5%85%A5%E6%B3%95%E5%AE%89%E8%A3%85/"/>
-    <id>https://cjylxj121221.github.io/2019/09/21/、输入法安装/</id>
-    <published>2019-09-21T08:11:54.000Z</published>
-    <updated>2019-09-21T08:12:33.898Z</updated>
-    
-    <content type="html"><![CDATA[<p>装个拼音凑合用着。。<a id="more"></a><br><code>sudo apt-get install fcitx fcitx-googlepinyin fcitx-module-cloudpinyin fcitx-sunpinyin</code></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;装个拼音凑合用着。。&lt;/p&gt;
     
     </summary>
     
