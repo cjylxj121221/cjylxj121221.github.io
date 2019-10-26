@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cjylxj121221.github.io/"/>
-  <updated>2019-10-10T02:17:25.358Z</updated>
+  <updated>2019-10-26T05:53:49.070Z</updated>
   <id>https://cjylxj121221.github.io/</id>
   
   <author>
@@ -15,6 +15,24 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Windows软链接</title>
+    <link href="https://cjylxj121221.github.io/2019/10/26/indows%E8%BD%AF%E9%93%BE%E6%8E%A5/"/>
+    <id>https://cjylxj121221.github.io/2019/10/26/indows软链接/</id>
+    <published>2019-10-26T05:35:10.000Z</published>
+    <updated>2019-10-26T05:53:49.070Z</updated>
+    
+    <content type="html"><![CDATA[<p>mklink是windows系统下创建符号链接和硬链接的命令工具，它是一个很好的解决文件系统问题的工具。使用它需要管理员权限<br><a id="more"></a></p><h2 id="1-使用原因"><a href="#1-使用原因" class="headerlink" title="1.使用原因"></a>1.使用原因</h2><p> NAS不在身边，为了远程访问文件选择使用了文件管理工具File browser这个工具也会在下一篇文章中介绍。File browser默认访问目录只有一个，NAS目前一共有；两个机械硬盘和一个iSCSI映射过来的3T盘，File browser只能访问其中一个不想多开后台程序，因此打算将其他两个盘通过软链接的方式映射到同一个盘中。</p><h2 id="2-使用方法"><a href="#2-使用方法" class="headerlink" title="2.使用方法"></a>2.使用方法</h2><p>在windows中启动CMD输入mklink就能看到具体的使用方法:<br><img src="/images/windows软链接1.png" alt><br><strong>例子</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">创建一个软连接  G:\Geth 连接到目录 H:\tools 上去：</span><br><span class="line">mklink  /j  G:\Geth H:\tools</span><br><span class="line"></span><br><span class="line">创建一个软连接 G:\Geth 连接到目录 H:\tools 上去：</span><br><span class="line">mklink  /d  G:\Geth H:\tools</span><br><span class="line"></span><br><span class="line">创建一个硬连接 G:\Geth 连接到目录 H:\tools 上去：</span><br><span class="line">mklink  /h  G:\Geth H:\tools</span><br></pre></td></tr></table></figure></p><h2 id="3-区别"><a href="#3-区别" class="headerlink" title="3.区别"></a>3.区别</h2><p><strong>1、/D(目录符号链接)和/J(目录联接)的区别:</strong></p><p>/J在创建时会自动指向原目录的绝对路径，而/D链接允许相对路径的引用。<br>例如：指向命令 mklink /D dird testdir 和 mklink /J dirj testdir 之后。<br>将链接dird 、dirj 移动到其它目录下，则访问 dird 时会提示“位置不可用”，访问 dirj 时仍然正常指向 testdir ；</p><p><strong>2、硬链接(/h)和符号链接(/D、/J)的区别：</strong></p><p>和符号链接一样，硬链接中所做的任何修改，都会自动应用到目标文件上。但是硬链接具有以下一些不同的地方。<br>硬链接必须引用同一个分区或者卷中的文件（也就是同一个盘中），而符号链接可以指向不同分区或者共享文件夹上的文件或者文件夹。<br>硬链接只能引用文件，而符号链接可以引用文件或者文件夹。<br>Windows会自动维护硬链接，即使把硬链接复制到其他文件夹，硬链接和目标都可以继续访问。<br>删除目标文件，硬链接可以继续保留。只有把目标文件和所有的硬链接都删除，才能把该文件彻底删除。<br>如果win7把软链接的目标文件删除，然后用一个同名文件替换，则符号链接会指向新的目标文件；而把硬链接的目标文件删除’再用同名文件替换，则硬链接还是会继续引用原始文件。<br>对硬链接进行NTFS权限的修改，会同时影响到目标文件(因为两者等价)，而符号链接和目标文件可以设置不同的NTFS权限。<br>也就是说，硬链接和目标文件的地位相等。事实上，原始的目标文件本身也相当于硬链接，新建硬链接，只是相当于增加一个目录路後而已。硬链接看上去和真的文件一模一样(实际上就是真实的文件)，不像符号链接那样有一个快捷方式的小箭头，但是硬链接并不会增加磁盘空间的占用。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;mklink是windows系统下创建符号链接和硬链接的命令工具，它是一个很好的解决文件系统问题的工具。使用它需要管理员权限&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>进阶十四、超频稳定性测试</title>
@@ -356,24 +374,6 @@
     <summary type="html">
     
       &lt;p&gt;稍微有点鸡肋的功能…就当玩玩好了（桌面下还是火狐好用）&lt;/p&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>十、LED指示灯状态</title>
-    <link href="https://cjylxj121221.github.io/2019/09/28/LED%E6%8C%87%E7%A4%BA%E7%81%AF%E7%8A%B6%E6%80%81/"/>
-    <id>https://cjylxj121221.github.io/2019/09/28/LED指示灯状态/</id>
-    <published>2019-09-28T14:32:40.000Z</published>
-    <updated>2019-09-28T14:49:44.581Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="LED亮灯状态"><a href="#LED亮灯状态" class="headerlink" title="LED亮灯状态"></a>LED亮灯状态</h2><a id="more"></a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">LED颜色功能正常状态</span><br><span class="line">ACT绿色card status闪烁:SD卡正在活动（类似电脑的硬盘灯）</span><br><span class="line">PWR红色power不闪烁:正常</span><br><span class="line">FDX橙full duplex亮:全双工/不亮:半双工</span><br><span class="line">LNK橙link亮:网络连接成功</span><br><span class="line">100橙100 Mbps亮:100 Mbps/不亮:10 Mbps</span><br></pre></td></tr></table></figure><h2 id="常见亮灯状态"><a href="#常见亮灯状态" class="headerlink" title="常见亮灯状态"></a>常见亮灯状态</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">ACTPWRFDXLNK100状态解读解读/原因</span><br><span class="line">○●○●●●○○○○○○○○○正常ACT灯:SD卡正在活动</span><br><span class="line">○○○●●●○○○○○○○○○不正常SD卡启动文件损坏或没有SD卡</span><br><span class="line">○○○○●○○○○○○○○○○不正常电源电压不正常</span><br><span class="line">●○●●●●○○○○○○○○○不正常看下文解释</span><br><span class="line">○●○●●●●●●●●●●●●正常全双工/100 Mbps</span><br><span class="line">○●○●●●●●●●●●○○○正常全双工/10 Mbps</span><br><span class="line">○●○●●●○○○●●●●●●正常半双工/100 Mbps</span><br><span class="line">○●○●●●○○○●●●○○○正常半双工/10 Mbps</span><br><span class="line">○●○:闪烁 ●●●:常亮 ○○○:不亮 ●○●:有规律闪烁</span><br><span class="line">●○●:ACT灯有规律闪烁的解读</span><br></pre></td></tr></table></figure><p>2012年10月以后的固件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">• 3闪烁：start.elf未找到</span><br><span class="line">• 4闪烁：start.elf没有启动</span><br><span class="line">• 7闪烁：kernel.img未找到</span><br></pre></td></tr></table></figure></p><p>2012年10月以前的旧固件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">• 3闪烁：loader.bin未找到</span><br><span class="line">• 4闪烁：loader.bin没有启动</span><br><span class="line">• 5闪烁：start.elf未找到</span><br><span class="line">• 6闪烁：start.elf没有推出</span><br><span class="line">• 7闪烁：kernel.img未找到</span><br></pre></td></tr></table></figure></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;LED亮灯状态&quot;&gt;&lt;a href=&quot;#LED亮灯状态&quot; class=&quot;headerlink&quot; title=&quot;LED亮灯状态&quot;&gt;&lt;/a&gt;LED亮灯状态&lt;/h2&gt;
     
     </summary>
     
