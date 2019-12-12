@@ -85,19 +85,19 @@
 
 
 
-<meta name="description" content="mklink是windows系统下创建符号链接和硬链接的命令工具，它是一个很好的解决文件系统问题的工具。使用它需要管理员权限">
+<meta name="description" content="Mklink是windows系统下创建符号链接和硬链接的命令工具，它是一个很好的解决文件系统问题的工具。还在用着四盘位NAS，硬盘实在有限，学生党没这么多闲钱去经常加硬盘空间也是各种东拼西凑">
 <meta name="keywords" content="love">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Windows软链接">
 <meta property="og:url" content="https://cjylxj121221.github.io/2019/10/26/indows软链接/index.html">
 <meta property="og:site_name" content="CJY &amp; LXJ的小窝">
-<meta property="og:description" content="mklink是windows系统下创建符号链接和硬链接的命令工具，它是一个很好的解决文件系统问题的工具。使用它需要管理员权限">
+<meta property="og:description" content="Mklink是windows系统下创建符号链接和硬链接的命令工具，它是一个很好的解决文件系统问题的工具。还在用着四盘位NAS，硬盘实在有限，学生党没这么多闲钱去经常加硬盘空间也是各种东拼西凑">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://cjylxj121221.github.io/images/windows软链接1.png">
-<meta property="og:updated_time" content="2019-10-26T05:53:49.070Z">
+<meta property="og:updated_time" content="2019-12-12T14:38:15.203Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Windows软链接">
-<meta name="twitter:description" content="mklink是windows系统下创建符号链接和硬链接的命令工具，它是一个很好的解决文件系统问题的工具。使用它需要管理员权限">
+<meta name="twitter:description" content="Mklink是windows系统下创建符号链接和硬链接的命令工具，它是一个很好的解决文件系统问题的工具。还在用着四盘位NAS，硬盘实在有限，学生党没这么多闲钱去经常加硬盘空间也是各种东拼西凑">
 <meta name="twitter:image" content="https://cjylxj121221.github.io/images/windows软链接1.png">
 
 
@@ -378,8 +378,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-10-26T13:53:49+08:00">
-                2019-10-26
+              <time title="更新于" itemprop="dateModified" datetime="2019-12-12T22:38:15+08:00">
+                2019-12-12
               </time>
             
           </span>
@@ -427,7 +427,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  834 字
+                  863 字
                 </span>
               
 
@@ -443,7 +443,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2  分钟
+                  3  分钟
                 </span>
               
             </div>
@@ -464,7 +464,7 @@
       
 
       
-        <p>mklink是windows系统下创建符号链接和硬链接的命令工具，它是一个很好的解决文件系统问题的工具。使用它需要管理员权限<br><a id="more"></a></p>
+        <p><strong>Mklink</strong>是windows系统下创建符号链接和硬链接的命令工具，它是一个很好的解决文件系统问题的工具。<br>还在用着四盘位NAS，硬盘实在有限，学生党没这么多闲钱去经常加硬盘<br>空间也是各种东拼西凑<br><a id="more"></a></p>
 <h2 id="1-使用原因"><a href="#1-使用原因" class="headerlink" title="1.使用原因"></a>1.使用原因</h2><p> NAS不在身边，为了远程访问文件选择使用了文件管理工具File browser这个工具也会在下一篇文章中介绍。File browser默认访问目录只有一个，NAS目前一共有；两个机械硬盘和一个iSCSI映射过来的3T盘，File browser只能访问其中一个不想多开后台程序，因此打算将其他两个盘通过软链接的方式映射到同一个盘中。</p>
 <h2 id="2-使用方法"><a href="#2-使用方法" class="headerlink" title="2.使用方法"></a>2.使用方法</h2><p>在windows中启动CMD输入mklink就能看到具体的使用方法:<br><img src="/images/windows软链接1.png" alt><br><strong>例子</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">创建一个软连接  G:\Geth 连接到目录 H:\tools 上去：</span><br><span class="line">mklink  /j  G:\Geth H:\tools</span><br><span class="line"></span><br><span class="line">创建一个软连接 G:\Geth 连接到目录 H:\tools 上去：</span><br><span class="line">mklink  /d  G:\Geth H:\tools</span><br><span class="line"></span><br><span class="line">创建一个硬连接 G:\Geth 连接到目录 H:\tools 上去：</span><br><span class="line">mklink  /h  G:\Geth H:\tools</span><br></pre></td></tr></table></figure></p>
 <h2 id="3-区别"><a href="#3-区别" class="headerlink" title="3.区别"></a>3.区别</h2><p><strong>1、/D(目录符号链接)和/J(目录联接)的区别:</strong></p>
@@ -504,6 +504,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/02/PT的一点体验与心得/" rel="prev" title="关于PT的一点体验与心得">
+                关于PT的一点体验与心得 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -585,7 +589,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -723,7 +727,7 @@
     
       <span class="post-meta-item-text">Blog总字数&#58;</span>
     
-    <span title="Blog总字数">13.6k</span>
+    <span title="Blog总字数">13.8k</span>
   
 
   

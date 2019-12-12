@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cjylxj121221.github.io/"/>
-  <updated>2019-10-26T05:53:49.070Z</updated>
+  <updated>2019-12-02T08:17:39.035Z</updated>
   <id>https://cjylxj121221.github.io/</id>
   
   <author>
@@ -17,17 +17,35 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>关于PT的一点体验与心得</title>
+    <link href="https://cjylxj121221.github.io/2019/12/02/PT%E7%9A%84%E4%B8%80%E7%82%B9%E4%BD%93%E9%AA%8C%E4%B8%8E%E5%BF%83%E5%BE%97/"/>
+    <id>https://cjylxj121221.github.io/2019/12/02/PT的一点体验与心得/</id>
+    <published>2019-12-02T05:58:10.000Z</published>
+    <updated>2019-12-02T08:17:39.035Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一、PT是什么"><a href="#一、PT是什么" class="headerlink" title="一、PT是什么"></a>一、PT是什么</h2><p>根据WiKi的解释PT：（Private Tracker）是一种改良自BitTorrent协议的P2P下载方式，“Private Tracker”指私有种子服务器。与BT最大的不同点分别为可进行私密范围下载，并且记录每一个用户的详细数据。<a id="more"></a><br>   其中提到的BT最典型的例子就是常用的迅雷，<br><img src="/images/PT-1.png" alt></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;一、PT是什么&quot;&gt;&lt;a href=&quot;#一、PT是什么&quot; class=&quot;headerlink&quot; title=&quot;一、PT是什么&quot;&gt;&lt;/a&gt;一、PT是什么&lt;/h2&gt;&lt;p&gt;根据WiKi的解释PT：（Private Tracker）是一种改良自BitTorrent协议的P2P下载方式，“Private Tracker”指私有种子服务器。与BT最大的不同点分别为可进行私密范围下载，并且记录每一个用户的详细数据。&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>Windows软链接</title>
     <link href="https://cjylxj121221.github.io/2019/10/26/indows%E8%BD%AF%E9%93%BE%E6%8E%A5/"/>
     <id>https://cjylxj121221.github.io/2019/10/26/indows软链接/</id>
     <published>2019-10-26T05:35:10.000Z</published>
-    <updated>2019-10-26T05:53:49.070Z</updated>
+    <updated>2019-12-12T14:38:15.203Z</updated>
     
-    <content type="html"><![CDATA[<p>mklink是windows系统下创建符号链接和硬链接的命令工具，它是一个很好的解决文件系统问题的工具。使用它需要管理员权限<br><a id="more"></a></p><h2 id="1-使用原因"><a href="#1-使用原因" class="headerlink" title="1.使用原因"></a>1.使用原因</h2><p> NAS不在身边，为了远程访问文件选择使用了文件管理工具File browser这个工具也会在下一篇文章中介绍。File browser默认访问目录只有一个，NAS目前一共有；两个机械硬盘和一个iSCSI映射过来的3T盘，File browser只能访问其中一个不想多开后台程序，因此打算将其他两个盘通过软链接的方式映射到同一个盘中。</p><h2 id="2-使用方法"><a href="#2-使用方法" class="headerlink" title="2.使用方法"></a>2.使用方法</h2><p>在windows中启动CMD输入mklink就能看到具体的使用方法:<br><img src="/images/windows软链接1.png" alt><br><strong>例子</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">创建一个软连接  G:\Geth 连接到目录 H:\tools 上去：</span><br><span class="line">mklink  /j  G:\Geth H:\tools</span><br><span class="line"></span><br><span class="line">创建一个软连接 G:\Geth 连接到目录 H:\tools 上去：</span><br><span class="line">mklink  /d  G:\Geth H:\tools</span><br><span class="line"></span><br><span class="line">创建一个硬连接 G:\Geth 连接到目录 H:\tools 上去：</span><br><span class="line">mklink  /h  G:\Geth H:\tools</span><br></pre></td></tr></table></figure></p><h2 id="3-区别"><a href="#3-区别" class="headerlink" title="3.区别"></a>3.区别</h2><p><strong>1、/D(目录符号链接)和/J(目录联接)的区别:</strong></p><p>/J在创建时会自动指向原目录的绝对路径，而/D链接允许相对路径的引用。<br>例如：指向命令 mklink /D dird testdir 和 mklink /J dirj testdir 之后。<br>将链接dird 、dirj 移动到其它目录下，则访问 dird 时会提示“位置不可用”，访问 dirj 时仍然正常指向 testdir ；</p><p><strong>2、硬链接(/h)和符号链接(/D、/J)的区别：</strong></p><p>和符号链接一样，硬链接中所做的任何修改，都会自动应用到目标文件上。但是硬链接具有以下一些不同的地方。<br>硬链接必须引用同一个分区或者卷中的文件（也就是同一个盘中），而符号链接可以指向不同分区或者共享文件夹上的文件或者文件夹。<br>硬链接只能引用文件，而符号链接可以引用文件或者文件夹。<br>Windows会自动维护硬链接，即使把硬链接复制到其他文件夹，硬链接和目标都可以继续访问。<br>删除目标文件，硬链接可以继续保留。只有把目标文件和所有的硬链接都删除，才能把该文件彻底删除。<br>如果win7把软链接的目标文件删除，然后用一个同名文件替换，则符号链接会指向新的目标文件；而把硬链接的目标文件删除’再用同名文件替换，则硬链接还是会继续引用原始文件。<br>对硬链接进行NTFS权限的修改，会同时影响到目标文件(因为两者等价)，而符号链接和目标文件可以设置不同的NTFS权限。<br>也就是说，硬链接和目标文件的地位相等。事实上，原始的目标文件本身也相当于硬链接，新建硬链接，只是相当于增加一个目录路後而已。硬链接看上去和真的文件一模一样(实际上就是真实的文件)，不像符号链接那样有一个快捷方式的小箭头，但是硬链接并不会增加磁盘空间的占用。</p>]]></content>
+    <content type="html"><![CDATA[<p><strong>Mklink</strong>是windows系统下创建符号链接和硬链接的命令工具，它是一个很好的解决文件系统问题的工具。<br>还在用着四盘位NAS，硬盘实在有限，学生党没这么多闲钱去经常加硬盘<br>空间也是各种东拼西凑<br><a id="more"></a></p><h2 id="1-使用原因"><a href="#1-使用原因" class="headerlink" title="1.使用原因"></a>1.使用原因</h2><p> NAS不在身边，为了远程访问文件选择使用了文件管理工具File browser这个工具也会在下一篇文章中介绍。File browser默认访问目录只有一个，NAS目前一共有；两个机械硬盘和一个iSCSI映射过来的3T盘，File browser只能访问其中一个不想多开后台程序，因此打算将其他两个盘通过软链接的方式映射到同一个盘中。</p><h2 id="2-使用方法"><a href="#2-使用方法" class="headerlink" title="2.使用方法"></a>2.使用方法</h2><p>在windows中启动CMD输入mklink就能看到具体的使用方法:<br><img src="/images/windows软链接1.png" alt><br><strong>例子</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">创建一个软连接  G:\Geth 连接到目录 H:\tools 上去：</span><br><span class="line">mklink  /j  G:\Geth H:\tools</span><br><span class="line"></span><br><span class="line">创建一个软连接 G:\Geth 连接到目录 H:\tools 上去：</span><br><span class="line">mklink  /d  G:\Geth H:\tools</span><br><span class="line"></span><br><span class="line">创建一个硬连接 G:\Geth 连接到目录 H:\tools 上去：</span><br><span class="line">mklink  /h  G:\Geth H:\tools</span><br></pre></td></tr></table></figure></p><h2 id="3-区别"><a href="#3-区别" class="headerlink" title="3.区别"></a>3.区别</h2><p><strong>1、/D(目录符号链接)和/J(目录联接)的区别:</strong></p><p>/J在创建时会自动指向原目录的绝对路径，而/D链接允许相对路径的引用。<br>例如：指向命令 mklink /D dird testdir 和 mklink /J dirj testdir 之后。<br>将链接dird 、dirj 移动到其它目录下，则访问 dird 时会提示“位置不可用”，访问 dirj 时仍然正常指向 testdir ；</p><p><strong>2、硬链接(/h)和符号链接(/D、/J)的区别：</strong></p><p>和符号链接一样，硬链接中所做的任何修改，都会自动应用到目标文件上。但是硬链接具有以下一些不同的地方。<br>硬链接必须引用同一个分区或者卷中的文件（也就是同一个盘中），而符号链接可以指向不同分区或者共享文件夹上的文件或者文件夹。<br>硬链接只能引用文件，而符号链接可以引用文件或者文件夹。<br>Windows会自动维护硬链接，即使把硬链接复制到其他文件夹，硬链接和目标都可以继续访问。<br>删除目标文件，硬链接可以继续保留。只有把目标文件和所有的硬链接都删除，才能把该文件彻底删除。<br>如果win7把软链接的目标文件删除，然后用一个同名文件替换，则符号链接会指向新的目标文件；而把硬链接的目标文件删除’再用同名文件替换，则硬链接还是会继续引用原始文件。<br>对硬链接进行NTFS权限的修改，会同时影响到目标文件(因为两者等价)，而符号链接和目标文件可以设置不同的NTFS权限。<br>也就是说，硬链接和目标文件的地位相等。事实上，原始的目标文件本身也相当于硬链接，新建硬链接，只是相当于增加一个目录路後而已。硬链接看上去和真的文件一模一样(实际上就是真实的文件)，不像符号链接那样有一个快捷方式的小箭头，但是硬链接并不会增加磁盘空间的占用。</p>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;mklink是windows系统下创建符号链接和硬链接的命令工具，它是一个很好的解决文件系统问题的工具。使用它需要管理员权限&lt;br&gt;&lt;/p&gt;
+      &lt;p&gt;&lt;strong&gt;Mklink&lt;/strong&gt;是windows系统下创建符号链接和硬链接的命令工具，它是一个很好的解决文件系统问题的工具。&lt;br&gt;还在用着四盘位NAS，硬盘实在有限，学生党没这么多闲钱去经常加硬盘&lt;br&gt;空间也是各种东拼西凑&lt;br&gt;&lt;/p&gt;
     
     </summary>
     
@@ -356,24 +374,6 @@
     <summary type="html">
     
       &lt;p&gt;vi(vim)是上Linux非常常用的编辑器，很多Linux发行版都默认安装了vi(vim)。vi(vim)命令繁多但是如果使用灵活之后将会大大提高效率。&lt;/p&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>十一、命令行当做Web</title>
-    <link href="https://cjylxj121221.github.io/2019/09/28/%E3%80%81%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%BD%93%E5%81%9AWeb/"/>
-    <id>https://cjylxj121221.github.io/2019/09/28/、命令行当做Web/</id>
-    <published>2019-09-28T14:34:44.000Z</published>
-    <updated>2019-09-28T14:49:19.990Z</updated>
-    
-    <content type="html"><![CDATA[<p>稍微有点鸡肋的功能…就当玩玩好了（桌面下还是火狐好用）<a id="more"></a></p><h2 id="w3m"><a href="#w3m" class="headerlink" title="w3m"></a>w3m</h2><p>w3m是一个基于文本的万维网(World Wide Web, WWW)客户端。它有英文和日文版本的帮助文件并且有一个选项用来切换这两种语言。它只能显示HTML的table和frame。w3m当前版本可以运行在Unix上(Solaris，SunOS，HP-UX，Linux，FreeBSD和EWS4800)。通过下面的命令进行安装：<br><code>sudo apt-get install w3m</code><br>使用下面的命令来访问网站，把其中的<code>http://www.google.com</code>换成你想要的地址：<br><code>w3m http://www.google.com</code><br><img src="/images/11-1.png" alt><br>使用CTRL + Z退出w3m。</p><h2 id="Lynx"><a href="#Lynx" class="headerlink" title="Lynx"></a>Lynx</h2><p>Lynx是一个通用的浏览器。使用下面的命令安装它：<br><code>sudo apt-get install lynx</code><br>使用下面的命令来访问网站，把其中的<code>http://www.google.com</code>换成你想要的地址：<br><code>lynx http://www.google.com</code><br><img src="/images/11-2.png" alt><br>使用CTRL + Z退出。</p><h2 id="LINKS"><a href="#LINKS" class="headerlink" title="LINKS"></a>LINKS</h2><p>Links是一个带有ncurse界面(ncurse是一个虚拟终端中的“类GUI”应用软件工具箱，译注)的文本模式WWW浏览器，支持彩色，正确的table渲染，后台下载，菜单驱动的配置界面和瘦长的字符。<br>支持Frame框架。你可以通过外部的访问器来进行不同文件格式的浏览。支持通过外部客户端使用mailto:和telnet:进行浏览。通过下面的命令来安装它：<br><code>sudo apt-get install links</code><br>通过下面的命令来访问网站，把<code>http://www.google.com</code>换成你想要的地址:<br><code>links http://www.google.com</code><br><img src="/images/11-3.png" alt><br>使用CTRL + Z退出。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;稍微有点鸡肋的功能…就当玩玩好了（桌面下还是火狐好用）&lt;/p&gt;
     
     </summary>
     
