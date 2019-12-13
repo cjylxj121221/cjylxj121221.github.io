@@ -6,7 +6,7 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -22,6 +22,15 @@
 
 <meta http-equiv="Cache-Control" content="no-transform">
 <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "d6e58653"
+    });
+  daovoice('update');
+  </script>
 
 
 
@@ -127,7 +136,6 @@
 
 
   <link rel="canonical" href="https://cjylxj121221.github.io/2019/09/28/、VIM编辑器/">
-
 
 
 
@@ -462,20 +470,37 @@
       
 
       
-        <p>vi(vim)是上Linux非常常用的编辑器，很多Linux发行版都默认安装了vi(vim)。vi(vim)命令繁多但是如果使用灵活之后将会大大提高效率。<a id="more"></a><br>vi是“visual interface”的缩写，vim是vi IMproved(增强版的vi)。在一般的系统管理维护中vi就够用，如果想使用代码加亮的话可以使用vim。下面整理一下vi的使用教程：包含vi的基本介绍、使用模式、文件的打开关闭保存、插入文本或新建行、移动光标、删除、恢复字符或行、搜索等等，算是一篇比较适合新手学习vi的教程。<br>vi有3个模式：插入模式、命令模式、低行模式。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">插入模式：在此模式下可以输入字符，按ESC将回到命令模式。  </span><br><span class="line">命令模式：可以移动光标、删除字符等。  </span><br><span class="line">低行模式：可以保存文件、退出vi、设置vi、查找等功能(低行模式也可以看作是命令模式里的)。</span><br></pre></td></tr></table></figure></p>
+        <p>vi(vim)是上Linux非常常用的编辑器，很多Linux发行版都默认安装了vi(vim)。vi(vim)命令繁多但是如果使用灵活之后将会大大提高效率。<a id="more"></a><br>vi是“visual interface”的缩写，vim是vi IMproved(增强版的vi)。在一般的系统管理维护中vi就够用，如果想使用代码加亮的话可以使用vim。下面整理一下vi的使用教程：包含vi的基本介绍、使用模式、文件的打开关闭保存、插入文本或新建行、移动光标、删除、恢复字符或行、搜索等等，算是一篇比较适合新手学习vi的教程。<br>vi有3个模式：插入模式、命令模式、低行模式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">插入模式：在此模式下可以输入字符，按ESC将回到命令模式。  </span><br><span class="line">命令模式：可以移动光标、删除字符等。  </span><br><span class="line">低行模式：可以保存文件、退出vi、设置vi、查找等功能(低行模式也可以看作是命令模式里的)。</span><br></pre></td></tr></table></figure>
+
 <h2 id="打开文件、保存、关闭文件"><a href="#打开文件、保存、关闭文件" class="headerlink" title="打开文件、保存、关闭文件"></a>打开文件、保存、关闭文件</h2><p>(vi命令模式下使用)</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vi filename       //打开filename文件</span><br><span class="line">:w       //保存文件</span><br><span class="line">:w vpser.net //保存至vpser.net文件</span><br><span class="line">:q          //退出编辑器，如果文件已修改请使用下面的命令</span><br><span class="line">:q!        //退出编辑器，且不保存</span><br><span class="line">:wq         //退出编辑器，且保存文件</span><br></pre></td></tr></table></figure>
+
 <h2 id="插入文本或行"><a href="#插入文本或行" class="headerlink" title="插入文本或行"></a>插入文本或行</h2><p>(vi命令模式下使用，执行下面命令后将进入插入模式，按ESC键可退出插入模式)</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">a      //在当前光标位置的右边添加文本</span><br><span class="line">i       //在当前光标位置的左边添加文本</span><br><span class="line">A     //在当前行的末尾位置添加文本</span><br><span class="line">I      //在当前行的开始处添加文本(非空字符的行首)</span><br><span class="line">O     //在当前行的上面新建一行</span><br><span class="line">o     //在当前行的下面新建一行</span><br><span class="line">R    //替换(覆盖)当前光标位置及后面的若干文本</span><br><span class="line">J    //合并光标所在行及下一行为一行(依然在命令模式)</span><br></pre></td></tr></table></figure>
-<h2 id="移动光标"><a href="#移动光标" class="headerlink" title="移动光标"></a>移动光标</h2><p>(vi命令模式下使用)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">使用上下左右方向键</span><br><span class="line">命令模式下：h 向左、j 向下 、k 向上、l 向右。</span><br><span class="line">空格键 向右、Backspace 向左、Enter 移动到下一行首、- 移动到上一行首。</span><br></pre></td></tr></table></figure></p>
-<h2 id="删除、恢复字符或行"><a href="#删除、恢复字符或行" class="headerlink" title="删除、恢复字符或行"></a>删除、恢复字符或行</h2><p>(vi命令模式下使用)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x         //删除当前字符</span><br><span class="line">nx         //删除从光标开始的n个字符</span><br><span class="line">dd      //删除当前行</span><br><span class="line">ndd   //向下删除当前行在内的n行</span><br><span class="line">u       //撤销上一步操作</span><br><span class="line">U      //撤销对当前行的所有操作</span><br></pre></td></tr></table></figure></p>
-<h2 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h2><p>(vi命令模式下使用)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/vpser     //向光标下搜索vpser字符串</span><br><span class="line">?vpser     //向光标上搜索vpser字符串</span><br><span class="line">n           //向下搜索前一个搜素动作</span><br><span class="line">N         //向上搜索前一个搜索动作</span><br></pre></td></tr></table></figure></p>
-<h2 id="跳至指定行"><a href="#跳至指定行" class="headerlink" title="跳至指定行"></a>跳至指定行</h2><p>(vi命令模式下使用)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">n+        //向下跳n行</span><br><span class="line">n-         //向上跳n行</span><br><span class="line">nG        //跳到行号为n的行</span><br><span class="line">G           //跳至文件的底部</span><br></pre></td></tr></table></figure></p>
-<h2 id="设置行号"><a href="#设置行号" class="headerlink" title="设置行号"></a>设置行号</h2><p>(vi命令模式下使用)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">:set  nu     //显示行号</span><br><span class="line">:set nonu    //取消显示行号</span><br></pre></td></tr></table></figure></p>
-<h2 id="复制、粘贴"><a href="#复制、粘贴" class="headerlink" title="复制、粘贴"></a>复制、粘贴</h2><p>(vi命令模式下使用)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">yy    //将当前行复制到缓存区，也可以用 &quot;ayy 复制，&quot;a 为缓冲区，a也可以替换为a到z的任意字母，可以完成多个复制任务。</span><br><span class="line">nyy   //将当前行向下n行复制到缓冲区，也可以用 &quot;anyy 复制，&quot;a 为缓冲区，a也可以替换为a到z的任意字母，可以完成多个复制任务。</span><br><span class="line">yw    //复制从光标开始到词尾的字符。</span><br><span class="line">nyw   //复制从光标开始的n个单词。</span><br><span class="line">y^      //复制从光标到行首的内容。  VPS侦探</span><br><span class="line">y$      //复制从光标到行尾的内容。</span><br><span class="line">p        //粘贴剪切板里的内容在光标后，如果使用了前面的自定义缓冲区，建议使用&quot;ap 进行粘贴。</span><br><span class="line">P        //粘贴剪切板里的内容在光标前，如果使用了前面的自定义缓冲区，建议使用&quot;aP 进行粘贴。</span><br></pre></td></tr></table></figure></p>
-<h2 id="替换"><a href="#替换" class="headerlink" title="替换"></a>替换</h2><p>(vi命令模式下使用)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">:s/old/new      //用new替换行中首次出现的old</span><br><span class="line">:s/old/new/g         //用new替换行中所有的old</span><br><span class="line">:n,m s/old/new/g     //用new替换从n到m行里所有的old</span><br><span class="line">:%s/old/new/g      //用new替换当前文件里所有的old</span><br></pre></td></tr></table></figure></p>
-<h2 id="编辑其他文件"><a href="#编辑其他文件" class="headerlink" title="编辑其他文件"></a>编辑其他文件</h2><p><code>:e otherfilename    //编辑文件名为otherfilename的文件。</code></p>
-<h2 id="修改文件格式"><a href="#修改文件格式" class="headerlink" title="修改文件格式"></a>修改文件格式</h2><p><code>:set fileformat=unix   //将文件修改为unix格式，如win下面的文本文件在linux下会出现^M。</code></p>
+
+<h2 id="移动光标"><a href="#移动光标" class="headerlink" title="移动光标"></a>移动光标</h2><p>(vi命令模式下使用)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">使用上下左右方向键</span><br><span class="line">命令模式下：h 向左、j 向下 、k 向上、l 向右。</span><br><span class="line">空格键 向右、Backspace 向左、Enter 移动到下一行首、- 移动到上一行首。</span><br></pre></td></tr></table></figure>
+
+<h2 id="删除、恢复字符或行"><a href="#删除、恢复字符或行" class="headerlink" title="删除、恢复字符或行"></a>删除、恢复字符或行</h2><p>(vi命令模式下使用)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x         //删除当前字符</span><br><span class="line">nx         //删除从光标开始的n个字符</span><br><span class="line">dd      //删除当前行</span><br><span class="line">ndd   //向下删除当前行在内的n行</span><br><span class="line">u       //撤销上一步操作</span><br><span class="line">U      //撤销对当前行的所有操作</span><br></pre></td></tr></table></figure>
+
+<h2 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h2><p>(vi命令模式下使用)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/vpser     //向光标下搜索vpser字符串</span><br><span class="line">?vpser     //向光标上搜索vpser字符串</span><br><span class="line">n           //向下搜索前一个搜素动作</span><br><span class="line">N         //向上搜索前一个搜索动作</span><br></pre></td></tr></table></figure>
+
+<h2 id="跳至指定行"><a href="#跳至指定行" class="headerlink" title="跳至指定行"></a>跳至指定行</h2><p>(vi命令模式下使用)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">n+        //向下跳n行</span><br><span class="line">n-         //向上跳n行</span><br><span class="line">nG        //跳到行号为n的行</span><br><span class="line">G           //跳至文件的底部</span><br></pre></td></tr></table></figure>
+
+<h2 id="设置行号"><a href="#设置行号" class="headerlink" title="设置行号"></a>设置行号</h2><p>(vi命令模式下使用)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">:set  nu     //显示行号</span><br><span class="line">:set nonu    //取消显示行号</span><br></pre></td></tr></table></figure>
+
+<h2 id="复制、粘贴"><a href="#复制、粘贴" class="headerlink" title="复制、粘贴"></a>复制、粘贴</h2><p>(vi命令模式下使用)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">yy    //将当前行复制到缓存区，也可以用 &quot;ayy 复制，&quot;a 为缓冲区，a也可以替换为a到z的任意字母，可以完成多个复制任务。</span><br><span class="line">nyy   //将当前行向下n行复制到缓冲区，也可以用 &quot;anyy 复制，&quot;a 为缓冲区，a也可以替换为a到z的任意字母，可以完成多个复制任务。</span><br><span class="line">yw    //复制从光标开始到词尾的字符。</span><br><span class="line">nyw   //复制从光标开始的n个单词。</span><br><span class="line">y^      //复制从光标到行首的内容。  VPS侦探</span><br><span class="line">y$      //复制从光标到行尾的内容。</span><br><span class="line">p        //粘贴剪切板里的内容在光标后，如果使用了前面的自定义缓冲区，建议使用&quot;ap 进行粘贴。</span><br><span class="line">P        //粘贴剪切板里的内容在光标前，如果使用了前面的自定义缓冲区，建议使用&quot;aP 进行粘贴。</span><br></pre></td></tr></table></figure>
+
+<h2 id="替换"><a href="#替换" class="headerlink" title="替换"></a>替换</h2><p>(vi命令模式下使用)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">:s/old/new      //用new替换行中首次出现的old</span><br><span class="line">:s/old/new/g         //用new替换行中所有的old</span><br><span class="line">:n,m s/old/new/g     //用new替换从n到m行里所有的old</span><br><span class="line">:%s/old/new/g      //用new替换当前文件里所有的old</span><br></pre></td></tr></table></figure>
+
+<h2 id="编辑其他文件"><a href="#编辑其他文件" class="headerlink" title="编辑其他文件"></a>编辑其他文件</h2><p><code>:e otherfilename    //编辑文件名为otherfilename的文件。</code><br>修改文件格式<br>–<br><code>:set fileformat=unix   //将文件修改为unix格式，如win下面的文本文件在linux下会出现^M。</code></p>
 <p><strong>总结：vi(vim)教程虽然有比较多的命令，但是只要勤加练习，相信你会很快的熟练掌握，同时也会给你的工作或学习带来更高的效率。当如果不知道自己处在什么模式时可以按2次Esc键即可回到命令模式，会有最后提醒一点：注意大小写！！！</strong></p>
 
       
@@ -699,7 +724,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#打开文件、保存、关闭文件"><span class="nav-number">1.</span> <span class="nav-text">打开文件、保存、关闭文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插入文本或行"><span class="nav-number">2.</span> <span class="nav-text">插入文本或行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#移动光标"><span class="nav-number">3.</span> <span class="nav-text">移动光标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除、恢复字符或行"><span class="nav-number">4.</span> <span class="nav-text">删除、恢复字符或行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搜索"><span class="nav-number">5.</span> <span class="nav-text">搜索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#跳至指定行"><span class="nav-number">6.</span> <span class="nav-text">跳至指定行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置行号"><span class="nav-number">7.</span> <span class="nav-text">设置行号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复制、粘贴"><span class="nav-number">8.</span> <span class="nav-text">复制、粘贴</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#替换"><span class="nav-number">9.</span> <span class="nav-text">替换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编辑其他文件"><span class="nav-number">10.</span> <span class="nav-text">编辑其他文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改文件格式"><span class="nav-number">11.</span> <span class="nav-text">修改文件格式</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#打开文件、保存、关闭文件"><span class="nav-number">1.</span> <span class="nav-text">打开文件、保存、关闭文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插入文本或行"><span class="nav-number">2.</span> <span class="nav-text">插入文本或行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#移动光标"><span class="nav-number">3.</span> <span class="nav-text">移动光标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除、恢复字符或行"><span class="nav-number">4.</span> <span class="nav-text">删除、恢复字符或行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搜索"><span class="nav-number">5.</span> <span class="nav-text">搜索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#跳至指定行"><span class="nav-number">6.</span> <span class="nav-text">跳至指定行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置行号"><span class="nav-number">7.</span> <span class="nav-text">设置行号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复制、粘贴"><span class="nav-number">8.</span> <span class="nav-text">复制、粘贴</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#替换"><span class="nav-number">9.</span> <span class="nav-text">替换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编辑其他文件"><span class="nav-number">10.</span> <span class="nav-text">编辑其他文件</span></a></li></ol></div>
             
 
           </div>
@@ -1388,22 +1413,9 @@
 
 
 
-  <script async src="//code.tidio.co/vpyzazytrkt4bftxmg2jbv2snw21czzg.js"></script>
 
 
-
-  <script>
-    (function(h,o,t,j,a,r){
-      h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-      h._hjSettings={hjid:1477004,hjsv:6};
-      a=o.getElementsByTagName('head')[0];
-      r=o.createElement('script');r.async=1;
-      r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-      a.appendChild(r);
-    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-  </script>
-
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/hijiki.model.json"},"display":{"position":"left","width":100,"height":250},"mobile":{"show":true},"log":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/hijiki.model.json"},"display":{"position":"left","width":100,"height":250},"mobile":{"show":true},"log":false});</script></body>
 </html>
 
 

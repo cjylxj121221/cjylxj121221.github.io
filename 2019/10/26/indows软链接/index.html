@@ -6,7 +6,7 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -22,6 +22,15 @@
 
 <meta http-equiv="Cache-Control" content="no-transform">
 <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "d6e58653"
+    });
+  daovoice('update');
+  </script>
 
 
 
@@ -93,12 +102,12 @@
 <meta property="og:site_name" content="CJY &amp; LXJ的小窝">
 <meta property="og:description" content="Mklink是windows系统下创建符号链接和硬链接的命令工具，它是一个很好的解决文件系统问题的工具。还在用着四盘位NAS，硬盘实在有限，学生党没这么多闲钱去经常加硬盘空间也是各种东拼西凑">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://cjylxj121221.github.io/images/windows软链接1.png">
+<meta property="og:image" content="https://cjylxj121221.github.io/images/windows%E8%BD%AF%E9%93%BE%E6%8E%A51.png">
 <meta property="og:updated_time" content="2019-12-12T14:38:15.203Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Windows软链接">
 <meta name="twitter:description" content="Mklink是windows系统下创建符号链接和硬链接的命令工具，它是一个很好的解决文件系统问题的工具。还在用着四盘位NAS，硬盘实在有限，学生党没这么多闲钱去经常加硬盘空间也是各种东拼西凑">
-<meta name="twitter:image" content="https://cjylxj121221.github.io/images/windows软链接1.png">
+<meta name="twitter:image" content="https://cjylxj121221.github.io/images/windows%E8%BD%AF%E9%93%BE%E6%8E%A51.png">
 
 
 
@@ -129,7 +138,6 @@
 
 
   <link rel="canonical" href="https://cjylxj121221.github.io/2019/10/26/indows软链接/">
-
 
 
 
@@ -464,9 +472,13 @@
       
 
       
-        <p><strong>Mklink</strong>是windows系统下创建符号链接和硬链接的命令工具，它是一个很好的解决文件系统问题的工具。<br>还在用着四盘位NAS，硬盘实在有限，学生党没这么多闲钱去经常加硬盘<br>空间也是各种东拼西凑<br><a id="more"></a></p>
-<h2 id="1-使用原因"><a href="#1-使用原因" class="headerlink" title="1.使用原因"></a>1.使用原因</h2><p> NAS不在身边，为了远程访问文件选择使用了文件管理工具File browser这个工具也会在下一篇文章中介绍。File browser默认访问目录只有一个，NAS目前一共有；两个机械硬盘和一个iSCSI映射过来的3T盘，File browser只能访问其中一个不想多开后台程序，因此打算将其他两个盘通过软链接的方式映射到同一个盘中。</p>
-<h2 id="2-使用方法"><a href="#2-使用方法" class="headerlink" title="2.使用方法"></a>2.使用方法</h2><p>在windows中启动CMD输入mklink就能看到具体的使用方法:<br><img src="/images/windows软链接1.png" alt><br><strong>例子</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">创建一个软连接  G:\Geth 连接到目录 H:\tools 上去：</span><br><span class="line">mklink  /j  G:\Geth H:\tools</span><br><span class="line"></span><br><span class="line">创建一个软连接 G:\Geth 连接到目录 H:\tools 上去：</span><br><span class="line">mklink  /d  G:\Geth H:\tools</span><br><span class="line"></span><br><span class="line">创建一个硬连接 G:\Geth 连接到目录 H:\tools 上去：</span><br><span class="line">mklink  /h  G:\Geth H:\tools</span><br></pre></td></tr></table></figure></p>
+        <p><strong>Mklink</strong>是windows系统下创建符号链接和硬链接的命令工具，它是一个很好的解决文件系统问题的工具。<br>还在用着四盘位NAS，硬盘实在有限，学生党没这么多闲钱去经常加硬盘<br>空间也是各种东拼西凑</p>
+<a id="more"></a>
+<h2 id="1-使用原因"><a href="#1-使用原因" class="headerlink" title="1.使用原因"></a>1.使用原因</h2><p> NAS不在身边，为了远程访问文件选择使用了文件管理工具File browser这个工具也会在下一篇文章中介绍。File browser默认访问目录只有一个，NAS目前一共有；两个机械硬盘和一个iSCSI映射过来的3T盘，File browser只能访问其中一个不想多开后台程序，因此打算将其他两个盘通过软链接的方式映射到同一个盘中。<br>2.使用方法</p>
+<hr>
+<p>在windows中启动CMD输入mklink就能看到具体的使用方法:<br><img src="/images/windows%E8%BD%AF%E9%93%BE%E6%8E%A51.png" alt><br><strong>例子</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">创建一个软连接  G:\Geth 连接到目录 H:\tools 上去：</span><br><span class="line">mklink  /j  G:\Geth H:\tools</span><br><span class="line"></span><br><span class="line">创建一个软连接 G:\Geth 连接到目录 H:\tools 上去：</span><br><span class="line">mklink  /d  G:\Geth H:\tools</span><br><span class="line"></span><br><span class="line">创建一个硬连接 G:\Geth 连接到目录 H:\tools 上去：</span><br><span class="line">mklink  /h  G:\Geth H:\tools</span><br></pre></td></tr></table></figure>
+
 <h2 id="3-区别"><a href="#3-区别" class="headerlink" title="3.区别"></a>3.区别</h2><p><strong>1、/D(目录符号链接)和/J(目录联接)的区别:</strong></p>
 <p>/J在创建时会自动指向原目录的绝对路径，而/D链接允许相对路径的引用。<br>例如：指向命令 mklink /D dird testdir 和 mklink /J dirj testdir 之后。<br>将链接dird 、dirj 移动到其它目录下，则访问 dird 时会提示“位置不可用”，访问 dirj 时仍然正常指向 testdir ；</p>
 <p><strong>2、硬链接(/h)和符号链接(/D、/J)的区别：</strong></p>
@@ -693,7 +705,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-使用原因"><span class="nav-number">1.</span> <span class="nav-text">1.使用原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-使用方法"><span class="nav-number">2.</span> <span class="nav-text">2.使用方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-区别"><span class="nav-number">3.</span> <span class="nav-text">3.区别</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-使用原因"><span class="nav-number">1.</span> <span class="nav-text">1.使用原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-区别"><span class="nav-number">2.</span> <span class="nav-text">3.区别</span></a></li></ol></div>
             
 
           </div>
@@ -1382,22 +1394,9 @@
 
 
 
-  <script async src="//code.tidio.co/vpyzazytrkt4bftxmg2jbv2snw21czzg.js"></script>
 
 
-
-  <script>
-    (function(h,o,t,j,a,r){
-      h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-      h._hjSettings={hjid:1477004,hjsv:6};
-      a=o.getElementsByTagName('head')[0];
-      r=o.createElement('script');r.async=1;
-      r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-      a.appendChild(r);
-    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-  </script>
-
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/hijiki.model.json"},"display":{"position":"left","width":100,"height":250},"mobile":{"show":true},"log":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/hijiki.model.json"},"display":{"position":"left","width":100,"height":250},"mobile":{"show":true},"log":false});</script></body>
 </html>
 
 

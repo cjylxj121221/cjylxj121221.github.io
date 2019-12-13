@@ -6,7 +6,7 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -22,6 +22,15 @@
 
 <meta http-equiv="Cache-Control" content="no-transform">
 <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "d6e58653"
+    });
+  daovoice('update');
+  </script>
 
 
 
@@ -127,7 +136,6 @@
 
 
   <link rel="canonical" href="https://cjylxj121221.github.io/2019/09/28/三、超时闲置断开/">
-
 
 
 
@@ -462,9 +470,11 @@
       
 
       
-        <p>用SSH过程连接电脑时，经常遇到长时间不操作而被服务器踢出的情况，常见的提示如：<br><code>Write failed: Broken pipe</code><a id="more"></a><br>这是因为如果有一段时间在SSH连接上无数据传输，连接就会断开。解决此问题有两种方法。</p>
-<h2 id="在客户端设置"><a href="#在客户端设置" class="headerlink" title="在客户端设置"></a>在客户端设置</h2><p>方法很简单，只需在客户端电脑上编辑（需要root权限）<code>/etc/ssh/ssh_config</code>，并添加如下一行：<br><code>ServerAliveInterval 60</code><br>此后该系统里的用户连接SSH时，每60秒会发一个KeepAlive请求，避免被踢。</p>
-<h2 id="在服务器端设置"><a href="#在服务器端设置" class="headerlink" title="在服务器端设置"></a>在服务器端设置</h2><p>如果有相应的权限，也可以在服务器端设置，即编辑<code>/etc/ssh/sshd_config</code>，并添加：<br><code>ClientAliveInterval 60</code><br>重启SSH服务器后该项设置会生效。<br><code>/etc/init.d/sshd restart</code><br>每一个连接到此服务器上的客户端都会受其影响。</p>
+        <p>用SSH过程连接电脑时，经常遇到长时间不操作而被服务器踢出的情况，常见的提示如：<br><code>Write failed: Broken pipe</code><a id="more"></a><br>这是因为如果有一段时间在SSH连接上无数据传输，连接就会断开。解决此问题有两种方法。<br>在客户端设置</p>
+<hr>
+<p>方法很简单，只需在客户端电脑上编辑（需要root权限）<code>/etc/ssh/ssh_config</code>，并添加如下一行：<br><code>ServerAliveInterval 60</code><br>此后该系统里的用户连接SSH时，每60秒会发一个KeepAlive请求，避免被踢。<br>在服务器端设置</p>
+<hr>
+<p>如果有相应的权限，也可以在服务器端设置，即编辑<code>/etc/ssh/sshd_config</code>，并添加：<br><code>ClientAliveInterval 60</code><br>重启SSH服务器后该项设置会生效。<br><code>/etc/init.d/sshd restart</code><br>每一个连接到此服务器上的客户端都会受其影响。</p>
 
       
     </div>
@@ -556,17 +566,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -677,22 +678,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#在客户端设置"><span class="nav-number">1.</span> <span class="nav-text">在客户端设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在服务器端设置"><span class="nav-number">2.</span> <span class="nav-text">在服务器端设置</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -1376,22 +1361,9 @@
 
 
 
-  <script async src="//code.tidio.co/vpyzazytrkt4bftxmg2jbv2snw21czzg.js"></script>
 
 
-
-  <script>
-    (function(h,o,t,j,a,r){
-      h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-      h._hjSettings={hjid:1477004,hjsv:6};
-      a=o.getElementsByTagName('head')[0];
-      r=o.createElement('script');r.async=1;
-      r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-      a.appendChild(r);
-    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-  </script>
-
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/hijiki.model.json"},"display":{"position":"left","width":100,"height":250},"mobile":{"show":true},"log":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/hijiki.model.json"},"display":{"position":"left","width":100,"height":250},"mobile":{"show":true},"log":false});</script></body>
 </html>
 
 

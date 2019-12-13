@@ -6,7 +6,7 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -22,6 +22,15 @@
 
 <meta http-equiv="Cache-Control" content="no-transform">
 <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "d6e58653"
+    });
+  daovoice('update');
+  </script>
 
 
 
@@ -127,7 +136,6 @@
 
 
   <link rel="canonical" href="https://cjylxj121221.github.io/2019/09/21/四、蓝牙连接/">
-
 
 
 
@@ -462,10 +470,13 @@
       
 
       
-        <p>树莓派偶尔连接一下自己做的蓝牙音箱听听歌，静静心~~<a id="more"></a></p>
-<h2 id="升级安装蓝牙相关软件包"><a href="#升级安装蓝牙相关软件包" class="headerlink" title="升级安装蓝牙相关软件包 "></a>升级安装蓝牙相关软件包 </h2><p><code>sudo apt-get update</code><br><code>sudo apt-get upgrade -y</code><br><code>sudo apt-get dist-upgrade -y</code><br><code>sudo apt-get install pi-bluetooth bluez bluez-firmware blueman</code></p>
-<h2 id="添加pi用户到蓝牙组"><a href="#添加pi用户到蓝牙组" class="headerlink" title="添加pi用户到蓝牙组"></a>添加pi用户到蓝牙组</h2><p><code>sudo usermod -G bluetooth -a pi</code></p>
-<h2 id="重启"><a href="#重启" class="headerlink" title="重启    "></a>重启    </h2><p><code>sudo reboot</code></p>
+        <p>树莓派偶尔连接一下自己做的蓝牙音箱听听歌，静静心~~<a id="more"></a><br>升级安装蓝牙相关软件包 </p>
+<hr>
+<p><code>sudo apt-get update</code><br><code>sudo apt-get upgrade -y</code><br><code>sudo apt-get dist-upgrade -y</code><br><code>sudo apt-get install pi-bluetooth bluez bluez-firmware blueman</code><br>添加pi用户到蓝牙组</p>
+<hr>
+<p><code>sudo usermod -G bluetooth -a pi</code><br>重启    </p>
+<hr>
+<p><code>sudo reboot</code></p>
 
       
     </div>
@@ -557,17 +568,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -678,22 +680,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#升级安装蓝牙相关软件包"><span class="nav-number">1.</span> <span class="nav-text">升级安装蓝牙相关软件包 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加pi用户到蓝牙组"><span class="nav-number">2.</span> <span class="nav-text">添加pi用户到蓝牙组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重启"><span class="nav-number">3.</span> <span class="nav-text">重启    </span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -1377,22 +1363,9 @@
 
 
 
-  <script async src="//code.tidio.co/vpyzazytrkt4bftxmg2jbv2snw21czzg.js"></script>
 
 
-
-  <script>
-    (function(h,o,t,j,a,r){
-      h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-      h._hjSettings={hjid:1477004,hjsv:6};
-      a=o.getElementsByTagName('head')[0];
-      r=o.createElement('script');r.async=1;
-      r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-      a.appendChild(r);
-    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-  </script>
-
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/hijiki.model.json"},"display":{"position":"left","width":100,"height":250},"mobile":{"show":true},"log":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/hijiki.model.json"},"display":{"position":"left","width":100,"height":250},"mobile":{"show":true},"log":false});</script></body>
 </html>
 
 
