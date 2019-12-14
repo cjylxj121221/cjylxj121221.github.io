@@ -186,7 +186,7 @@ th {
 body {
   position: relative;
   font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 2;
   color: #555;
   background: #f5f7f9;
@@ -203,7 +203,7 @@ body {
 }
 @media (min-width: 1600px) {
   body {
-    font-size: 18px;
+    font-size: 16px;
   }
 }
 h1,
@@ -1248,7 +1248,7 @@ pre .javascript .function {
 .post-body .figure .caption {
   margin: -20px auto 15px;
   text-align: center;
-  font-size: 16px;
+  font-size: 14px;
   color: #999;
   font-weight: bold;
   line-height: 1;
@@ -1945,7 +1945,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #06f1d7;
+  background: #a3018f;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3156,10 +3156,7 @@ header.post-header {
 }
 .main-inner {
   background: #fff;
-  opacity: 0.8;
-}
-.header-inner {
-  background: rgba(255,255,255,0.827);
+  opacity: 1;
 }
 .header-inner {
   padding-top: 20px;
@@ -3199,8 +3196,8 @@ header.post-header {
   background-color: rgba(255,255,255,0);
 }
 ::selection {
-  background-color: #fced6d;
-  color: #222;
+  background-color: #5cacee;
+  color: #fff;
 }
 code {
   color: #ff7600;
