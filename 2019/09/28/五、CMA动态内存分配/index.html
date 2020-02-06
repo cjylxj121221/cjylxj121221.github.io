@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,6 +13,13 @@
 <meta name="theme-color" content="#222">
 
 
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-bounce.min.css?v=1.0.2" rel="stylesheet">
 
 
 
@@ -132,18 +139,18 @@
 
 
 
-<meta name="description" content="自2012年11月19号, 固件和内核开始支持CMA, 这意味运行时可以动态管理ARM和GPU之间的内存分配. 这儿有相关config.txt示例.">
+<meta name="description" content="自2012年11月19号, 固件和内核开始支持CMA, 这意味运行时可以动态管理ARM和GPU之间的内存分配. 这儿有相关config.txt示例.cma_lwm 当GPU可用内存低于cma_lwm所设值, 将会向ARM请求一些内存.cma_hwm 当GPU可用内存高于cma_hwm所设值, 将会向ARM释放一些内存.要启用CMA，下面的参数需要添加到cmdline.txt文件里:coherent">
 <meta name="keywords" content="love">
 <meta property="og:type" content="article">
 <meta property="og:title" content="进阶五、CMA动态内存分配">
 <meta property="og:url" content="https://github.com/lxj1091681536/2019/09/28/五、CMA动态内存分配/index.html">
 <meta property="og:site_name" content="CJY &amp; LXJ的小窝">
-<meta property="og:description" content="自2012年11月19号, 固件和内核开始支持CMA, 这意味运行时可以动态管理ARM和GPU之间的内存分配. 这儿有相关config.txt示例.">
+<meta property="og:description" content="自2012年11月19号, 固件和内核开始支持CMA, 这意味运行时可以动态管理ARM和GPU之间的内存分配. 这儿有相关config.txt示例.cma_lwm 当GPU可用内存低于cma_lwm所设值, 将会向ARM请求一些内存.cma_hwm 当GPU可用内存高于cma_hwm所设值, 将会向ARM释放一些内存.要启用CMA，下面的参数需要添加到cmdline.txt文件里:coherent">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-28T15:34:34.313Z">
+<meta property="og:updated_time" content="2020-02-06T15:20:02.322Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="进阶五、CMA动态内存分配">
-<meta name="twitter:description" content="自2012年11月19号, 固件和内核开始支持CMA, 这意味运行时可以动态管理ARM和GPU之间的内存分配. 这儿有相关config.txt示例.">
+<meta name="twitter:description" content="自2012年11月19号, 固件和内核开始支持CMA, 这意味运行时可以动态管理ARM和GPU之间的内存分配. 这儿有相关config.txt示例.cma_lwm 当GPU可用内存低于cma_lwm所设值, 将会向ARM请求一些内存.cma_hwm 当GPU可用内存高于cma_hwm所设值, 将会向ARM释放一些内存.要启用CMA，下面的参数需要添加到cmdline.txt文件里:coherent">
 
 
 
@@ -151,9 +158,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Mist',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"always","display_updated":true,"offset":0,"b2t":true,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -422,8 +429,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-09-28T23:34:34+08:00">
-                2019-09-28
+              <time title="更新于" itemprop="dateModified" datetime="2020-02-06T23:20:02+08:00">
+                2020-02-06
               </time>
             
           </span>
@@ -508,9 +515,7 @@
       
 
       
-        <p>自2012年11月19号, 固件和内核开始支持CMA, 这意味运行时可以动态管理ARM和GPU之间的内存分配. 这儿有相关config.txt示例.</p>
-<a id="more"></a>
-<p><code>cma_lwm</code> 当GPU可用内存低于cma_lwm所设值, 将会向ARM请求一些内存.<br><code>cma_hwm</code> 当GPU可用内存高于cma_hwm所设值, 将会向ARM释放一些内存.<br>要启用CMA，下面的参数需要添加到<code>cmdline.txt</code>文件里:<br><code>coherent_pool=6M smsc95xx.turbo_mode=N</code></p>
+        <p>自2012年11月19号, 固件和内核开始支持CMA, 这意味运行时可以动态管理ARM和GPU之间的内存分配. 这儿有相关config.txt示例.<br><code>cma_lwm</code> 当GPU可用内存低于cma_lwm所设值, 将会向ARM请求一些内存.<br><code>cma_hwm</code> 当GPU可用内存高于cma_hwm所设值, 将会向ARM释放一些内存.<br>要启用CMA，下面的参数需要添加到<code>cmdline.txt</code>文件里:<br><code>coherent_pool=6M smsc95xx.turbo_mode=N</code></p>
 
       
     </div>
@@ -717,6 +722,13 @@
       
 
       
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
 
     </div>
   </aside>
@@ -761,11 +773,6 @@
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
     
 
     
@@ -1354,6 +1361,9 @@
   
 
   
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
 
   
 

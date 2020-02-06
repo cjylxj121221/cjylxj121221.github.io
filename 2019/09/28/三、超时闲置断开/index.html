@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,6 +13,13 @@
 <meta name="theme-color" content="#222">
 
 
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-bounce.min.css?v=1.0.2" rel="stylesheet">
 
 
 
@@ -132,18 +139,18 @@
 
 
 
-<meta name="description" content="用SSH过程连接电脑时，经常遇到长时间不操作而被服务器踢出的情况，常见的提示如：Write failed: Broken pipe">
+<meta name="description" content="用SSH过程连接电脑时，经常遇到长时间不操作而被服务器踢出的情况，常见的提示如：Write failed: Broken pipe这是因为如果有一段时间在SSH连接上无数据传输，连接就会断开。解决此问题有两种方法。在客户端设置  方法很简单，只需在客户端电脑上编辑（需要root权限）/etc/ssh/ssh_config，并添加如下一行：ServerAliveInterval 60此后该系统里的用">
 <meta name="keywords" content="love">
 <meta property="og:type" content="article">
 <meta property="og:title" content="十三、超时闲置断开">
 <meta property="og:url" content="https://github.com/lxj1091681536/2019/09/28/三、超时闲置断开/index.html">
 <meta property="og:site_name" content="CJY &amp; LXJ的小窝">
-<meta property="og:description" content="用SSH过程连接电脑时，经常遇到长时间不操作而被服务器踢出的情况，常见的提示如：Write failed: Broken pipe">
+<meta property="og:description" content="用SSH过程连接电脑时，经常遇到长时间不操作而被服务器踢出的情况，常见的提示如：Write failed: Broken pipe这是因为如果有一段时间在SSH连接上无数据传输，连接就会断开。解决此问题有两种方法。在客户端设置  方法很简单，只需在客户端电脑上编辑（需要root权限）/etc/ssh/ssh_config，并添加如下一行：ServerAliveInterval 60此后该系统里的用">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-28T14:52:44.868Z">
+<meta property="og:updated_time" content="2020-02-06T15:25:19.838Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="十三、超时闲置断开">
-<meta name="twitter:description" content="用SSH过程连接电脑时，经常遇到长时间不操作而被服务器踢出的情况，常见的提示如：Write failed: Broken pipe">
+<meta name="twitter:description" content="用SSH过程连接电脑时，经常遇到长时间不操作而被服务器踢出的情况，常见的提示如：Write failed: Broken pipe这是因为如果有一段时间在SSH连接上无数据传输，连接就会断开。解决此问题有两种方法。在客户端设置  方法很简单，只需在客户端电脑上编辑（需要root权限）/etc/ssh/ssh_config，并添加如下一行：ServerAliveInterval 60此后该系统里的用">
 
 
 
@@ -151,9 +158,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Mist',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"always","display_updated":true,"offset":0,"b2t":true,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -422,8 +429,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-09-28T22:52:44+08:00">
-                2019-09-28
+              <time title="更新于" itemprop="dateModified" datetime="2020-02-06T23:25:19+08:00">
+                2020-02-06
               </time>
             
           </span>
@@ -508,7 +515,7 @@
       
 
       
-        <p>用SSH过程连接电脑时，经常遇到长时间不操作而被服务器踢出的情况，常见的提示如：<br><code>Write failed: Broken pipe</code><a id="more"></a><br>这是因为如果有一段时间在SSH连接上无数据传输，连接就会断开。解决此问题有两种方法。<br>在客户端设置</p>
+        <p>用SSH过程连接电脑时，经常遇到长时间不操作而被服务器踢出的情况，常见的提示如：<br><code>Write failed: Broken pipe</code><br>这是因为如果有一段时间在SSH连接上无数据传输，连接就会断开。解决此问题有两种方法。<br>在客户端设置</p>
 <hr>
 <p>方法很简单，只需在客户端电脑上编辑（需要root权限）<code>/etc/ssh/ssh_config</code>，并添加如下一行：<br><code>ServerAliveInterval 60</code><br>此后该系统里的用户连接SSH时，每60秒会发一个KeepAlive请求，避免被踢。<br>在服务器端设置</p>
 <hr>
@@ -719,6 +726,13 @@
       
 
       
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
 
     </div>
   </aside>
@@ -763,11 +777,6 @@
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
     
 
     
@@ -1356,6 +1365,9 @@
   
 
   
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
 
   
 

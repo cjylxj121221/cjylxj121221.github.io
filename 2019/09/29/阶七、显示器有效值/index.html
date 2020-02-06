@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,6 +13,13 @@
 <meta name="theme-color" content="#222">
 
 
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-bounce.min.css?v=1.0.2" rel="stylesheet">
 
 
 
@@ -132,18 +139,18 @@
 
 
 
-<meta name="description" content="哪些值对我的显示器有效?">
+<meta name="description" content="哪些值对我的显示器有效?你的HDMI显示器可能只支持一部分设置. 想要找出支持哪些设置, 可以使用下面的方法.把输出格式设为VGA 60Hz (hdmi_group=1 hdmi_mode=1) 然后启动树莓派输入下列命令可以获取CEA支持模式的列表/opt/vc/bin/tvservice -m CEA输入下列命令可以获取DMT支持模式的列表/opt/vc/bin/tvservice -m DM">
 <meta name="keywords" content="love">
 <meta property="og:type" content="article">
 <meta property="og:title" content="进阶七、显示器有效值">
 <meta property="og:url" content="https://github.com/lxj1091681536/2019/09/29/阶七、显示器有效值/index.html">
 <meta property="og:site_name" content="CJY &amp; LXJ的小窝">
-<meta property="og:description" content="哪些值对我的显示器有效?">
+<meta property="og:description" content="哪些值对我的显示器有效?你的HDMI显示器可能只支持一部分设置. 想要找出支持哪些设置, 可以使用下面的方法.把输出格式设为VGA 60Hz (hdmi_group=1 hdmi_mode=1) 然后启动树莓派输入下列命令可以获取CEA支持模式的列表/opt/vc/bin/tvservice -m CEA输入下列命令可以获取DMT支持模式的列表/opt/vc/bin/tvservice -m DM">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-29T05:30:43.708Z">
+<meta property="og:updated_time" content="2020-02-06T15:17:54.648Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="进阶七、显示器有效值">
-<meta name="twitter:description" content="哪些值对我的显示器有效?">
+<meta name="twitter:description" content="哪些值对我的显示器有效?你的HDMI显示器可能只支持一部分设置. 想要找出支持哪些设置, 可以使用下面的方法.把输出格式设为VGA 60Hz (hdmi_group=1 hdmi_mode=1) 然后启动树莓派输入下列命令可以获取CEA支持模式的列表/opt/vc/bin/tvservice -m CEA输入下列命令可以获取DMT支持模式的列表/opt/vc/bin/tvservice -m DM">
 
 
 
@@ -151,9 +158,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Mist',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"always","display_updated":true,"offset":0,"b2t":true,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -422,8 +429,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-09-29T13:30:43+08:00">
-                2019-09-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-02-06T23:17:54+08:00">
+                2020-02-06
               </time>
             
           </span>
@@ -508,7 +515,7 @@
       
 
       
-        <p>哪些值对我的显示器有效?<a id="more"></a><br>你的HDMI显示器可能只支持一部分设置. 想要找出支持哪些设置, 可以使用下面的方法.<br>把输出格式设为<code>VGA 60Hz (hdmi_group=1 hdmi_mode=1)</code> 然后启动树莓派<br>输入下列命令可以获取CEA支持模式的列表<br><code>/opt/vc/bin/tvservice -m CEA</code><br>输入下列命令可以获取DMT支持模式的列表<br><code>/opt/vc/bin/tvservice -m DMT</code><br>输入下列命令可以获取当前设置状态<br><code>/opt/vc/bin/tvservice -s</code><br>输入下列命令可以从显示器获取更多详细信息<br><code>/opt/vc/bin/tvservice -d edid.dat /opt/vc/bin/edidparser edid.dat</code><br>使用默认HDMI模式去排除问题时, edid.dat文件同样会提供信息</p>
+        <p>哪些值对我的显示器有效?<br>你的HDMI显示器可能只支持一部分设置. 想要找出支持哪些设置, 可以使用下面的方法.<br>把输出格式设为<code>VGA 60Hz (hdmi_group=1 hdmi_mode=1)</code> 然后启动树莓派<br>输入下列命令可以获取CEA支持模式的列表<br><code>/opt/vc/bin/tvservice -m CEA</code><br>输入下列命令可以获取DMT支持模式的列表<br><code>/opt/vc/bin/tvservice -m DMT</code><br>输入下列命令可以获取当前设置状态<br><code>/opt/vc/bin/tvservice -s</code><br>输入下列命令可以从显示器获取更多详细信息<br><code>/opt/vc/bin/tvservice -d edid.dat /opt/vc/bin/edidparser edid.dat</code><br>使用默认HDMI模式去排除问题时, edid.dat文件同样会提供信息</p>
 
       
     </div>
@@ -715,6 +722,13 @@
       
 
       
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
 
     </div>
   </aside>
@@ -759,11 +773,6 @@
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
     
 
     
@@ -1352,6 +1361,9 @@
   
 
   
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
 
   
 

@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,6 +13,13 @@
 <meta name="theme-color" content="#222">
 
 
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-bounce.min.css?v=1.0.2" rel="stylesheet">
 
 
 
@@ -132,18 +139,18 @@
 
 
 
-<meta name="description" content="超频参数说明">
+<meta name="description" content="超频参数说明123456789101112131415161718192021222324252627参数             说明arm_freq    ARM频率,以MHz为单位. 默认为700gpu_freq    同时设置core_freq, h264_freq, isp_freq, v3d_freq. 默认为250core_freq    GPU处理器核心频率,以MHz为单位. 由于">
 <meta name="keywords" content="love">
 <meta property="og:type" content="article">
 <meta property="og:title" content="进阶十一、超频选项">
 <meta property="og:url" content="https://github.com/lxj1091681536/2019/09/29/十一、超频选项/index.html">
 <meta property="og:site_name" content="CJY &amp; LXJ的小窝">
-<meta property="og:description" content="超频参数说明">
+<meta property="og:description" content="超频参数说明123456789101112131415161718192021222324252627参数             说明arm_freq    ARM频率,以MHz为单位. 默认为700gpu_freq    同时设置core_freq, h264_freq, isp_freq, v3d_freq. 默认为250core_freq    GPU处理器核心频率,以MHz为单位. 由于">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-29T05:39:18.717Z">
+<meta property="og:updated_time" content="2020-02-06T15:15:31.608Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="进阶十一、超频选项">
-<meta name="twitter:description" content="超频参数说明">
+<meta name="twitter:description" content="超频参数说明123456789101112131415161718192021222324252627参数             说明arm_freq    ARM频率,以MHz为单位. 默认为700gpu_freq    同时设置core_freq, h264_freq, isp_freq, v3d_freq. 默认为250core_freq    GPU处理器核心频率,以MHz为单位. 由于">
 
 
 
@@ -151,9 +158,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Mist',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"always","display_updated":true,"offset":0,"b2t":true,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -422,8 +429,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-09-29T13:39:18+08:00">
-                2019-09-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-02-06T23:15:31+08:00">
+                2020-02-06
               </time>
             
           </span>
@@ -508,8 +515,7 @@
       
 
       
-        <h2 id="超频参数说明"><a href="#超频参数说明" class="headerlink" title="超频参数说明"></a>超频参数说明</h2><a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">参数             说明</span><br><span class="line">arm_freq    ARM频率,以MHz为单位. 默认为700</span><br><span class="line">gpu_freq    同时设置core_freq, h264_freq, isp_freq, v3d_freq. 默认为250</span><br><span class="line">core_freq    GPU处理器核心频率,以MHz为单位. 由于GPU要驱动二级缓存, 对ARM性能会造成影响. 默认为 250</span><br><span class="line">h264_freq    视频硬解模块频率,以MHz为单位. 默认为250</span><br><span class="line">isp_freq    图像传感器管道模块频率,以MHz为单位. 默认为250</span><br><span class="line">v3d_freq    3D模块频率,以MHz为单位. 默认为250</span><br><span class="line">avoid_pwm_pll    不要把锁相环用在PWM音频. 这会略微降低模拟音频的效果. 空闲的锁相环允许从剩余GPU独立设置core_freq, 这将会比超频有更多权限. 默认为0</span><br><span class="line">sdram_freq    SDRAM频率,以MHz为单位.默认为400</span><br><span class="line">over_voltage    ARM/GPU核心电压调节. [-16,8]用0.025V步进等同于[0.8V,1.4V]. 默认为0 (1.2V). 只有在指定 force_turbo或current_limit_override时 (会设置保修位), 才允许数值在6以上</span><br><span class="line">over_voltage_sdram    同时设置over_voltage_sdram_c, over_voltage_sdram_i, over_voltage_sdram_p</span><br><span class="line">over_voltage_sdram_c    SDRAM控制器电压调节. [-16,8]用0.025V步进等同于[0.8V,1.4V]. 默认为0 (1.2V)</span><br><span class="line">over_voltage_sdram_i    SDRAM I/O电压调节. [-16,8]用0.025V步进等同于[0.8V,1.4V]. 默认为0 (1.2V)</span><br><span class="line">over_voltage_sdram_p    SDRAM phy电压调节. [-16,8]用0.025V步进等同于[0.8V,1.4V]. 默认为0 (1.2V)</span><br><span class="line">force_turbo    关闭动态CPU频率驱动及下面的最小设置. 开启h264/v3d/isp超频. 默认为0. 会设置保修位.</span><br><span class="line">initial_turbo    在启动时以指定秒数 (上限为60) 或者以CPU频率来开启急速模式. 如果已经超频, 能对SD卡错误问题有改善. 默认为0</span><br><span class="line">arm_freq_min    设置动态时序的最小arm_freq. 默认为700</span><br><span class="line">core_freq_min    设置动态时序的最小core_freq. 默认为250</span><br><span class="line">sdram_freq_min    设置动态时序的最小sdram_freq. 默认为400</span><br><span class="line">over_voltage_min    设置动态时序的最小over_voltage. 默认为0</span><br><span class="line">temp_limit    过热保护. 当芯片达到指定温度就把时序和电源切换会默认值. 把此值设高于默认值将影响保修. 默认为85</span><br><span class="line">current_limit_override    当设为”0x5A000020″时, 禁止SMPS限流保护. 在超频过高无法重启时设置此项会有所帮助. 会设置保修位.</span><br><span class="line">force_turbo模式</span><br><span class="line">force_turbo=0</span><br><span class="line">开启对ARM核心,GPU核心和SDRAM的动态时序及电压. 在忙的时候ARM频率会提高到”arm_freq”并在闲的时候降低到”arm_freq_min”. “core_freq”, “sdram_freq”和”over_voltage”的行为都一样. “over_voltage”最高为6 (1.35V). h264/v3d/isp部分的非默认值将被忽略.</span><br><span class="line">force_turbo=1</span><br><span class="line">关闭动态时序, 因此所有频率和电压会保持高值. h264/v3d/isp GPU部分的超频也会开启, 等同于设置”over_voltage”为8 (1.4V).</span><br></pre></td></tr></table></figure>
+        <h2 id="超频参数说明"><a href="#超频参数说明" class="headerlink" title="超频参数说明"></a>超频参数说明</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">参数             说明</span><br><span class="line">arm_freq    ARM频率,以MHz为单位. 默认为<span class="number">700</span></span><br><span class="line">gpu_freq    同时设置core_freq, h264_freq, isp_freq, v3d_freq. 默认为<span class="number">250</span></span><br><span class="line">core_freq    GPU处理器核心频率,以MHz为单位. 由于GPU要驱动二级缓存, 对ARM性能会造成影响. 默认为 <span class="number">250</span></span><br><span class="line">h264_freq    视频硬解模块频率,以MHz为单位. 默认为<span class="number">250</span></span><br><span class="line">isp_freq    图像传感器管道模块频率,以MHz为单位. 默认为<span class="number">250</span></span><br><span class="line">v3d_freq    <span class="number">3</span>D模块频率,以MHz为单位. 默认为<span class="number">250</span></span><br><span class="line">avoid_pwm_pll    不要把锁相环用在PWM音频. 这会略微降低模拟音频的效果. 空闲的锁相环允许从剩余GPU独立设置core_freq, 这将会比超频有更多权限. 默认为<span class="number">0</span></span><br><span class="line">sdram_freq    SDRAM频率,以MHz为单位.默认为<span class="number">400</span></span><br><span class="line">over_voltage    ARM/GPU核心电压调节. [<span class="number">-16</span>,<span class="number">8</span>]用<span class="number">0.025</span>V步进等同于[<span class="number">0.8</span>V,<span class="number">1.4</span>V]. 默认为<span class="number">0</span> (<span class="number">1.2</span>V). 只有在指定 force_turbo或current_limit_override时 (会设置保修位), 才允许数值在<span class="number">6</span>以上</span><br><span class="line">over_voltage_sdram    同时设置over_voltage_sdram_c, over_voltage_sdram_i, over_voltage_sdram_p</span><br><span class="line">over_voltage_sdram_c    SDRAM控制器电压调节. [<span class="number">-16</span>,<span class="number">8</span>]用<span class="number">0.025</span>V步进等同于[<span class="number">0.8</span>V,<span class="number">1.4</span>V]. 默认为<span class="number">0</span> (<span class="number">1.2</span>V)</span><br><span class="line">over_voltage_sdram_i    SDRAM I/O电压调节. [<span class="number">-16</span>,<span class="number">8</span>]用<span class="number">0.025</span>V步进等同于[<span class="number">0.8</span>V,<span class="number">1.4</span>V]. 默认为<span class="number">0</span> (<span class="number">1.2</span>V)</span><br><span class="line">over_voltage_sdram_p    SDRAM phy电压调节. [<span class="number">-16</span>,<span class="number">8</span>]用<span class="number">0.025</span>V步进等同于[<span class="number">0.8</span>V,<span class="number">1.4</span>V]. 默认为<span class="number">0</span> (<span class="number">1.2</span>V)</span><br><span class="line">force_turbo    关闭动态CPU频率驱动及下面的最小设置. 开启h264/v3d/isp超频. 默认为<span class="number">0.</span> 会设置保修位.</span><br><span class="line">initial_turbo    在启动时以指定秒数 (上限为<span class="number">60</span>) 或者以CPU频率来开启急速模式. 如果已经超频, 能对<span class="built_in">SD</span>卡错误问题有改善. 默认为<span class="number">0</span></span><br><span class="line">arm_freq_min    设置动态时序的最小arm_freq. 默认为<span class="number">700</span></span><br><span class="line">core_freq_min    设置动态时序的最小core_freq. 默认为<span class="number">250</span></span><br><span class="line">sdram_freq_min    设置动态时序的最小sdram_freq. 默认为<span class="number">400</span></span><br><span class="line">over_voltage_min    设置动态时序的最小over_voltage. 默认为<span class="number">0</span></span><br><span class="line">temp_limit    过热保护. 当芯片达到指定温度就把时序和电源切换会默认值. 把此值设高于默认值将影响保修. 默认为<span class="number">85</span></span><br><span class="line">current_limit_override    当设为”<span class="number">0x5A000020</span>″时, 禁止SMPS限流保护. 在超频过高无法重启时设置此项会有所帮助. 会设置保修位.</span><br><span class="line">force_turbo模式</span><br><span class="line">force_turbo=<span class="number">0</span></span><br><span class="line">开启对ARM核心,GPU核心和SDRAM的动态时序及电压. 在忙的时候ARM频率会提高到”arm_freq”并在闲的时候降低到”arm_freq_min”. “core_freq”, “sdram_freq”和”over_voltage”的行为都一样. “over_voltage”最高为<span class="number">6</span> (<span class="number">1.35</span>V). h264/v3d/isp部分的非默认值将被忽略.</span><br><span class="line">force_turbo=<span class="number">1</span></span><br><span class="line">关闭动态时序, 因此所有频率和电压会保持高值. h264/v3d/isp GPU部分的超频也会开启, 等同于设置”over_voltage”为<span class="number">8</span> (<span class="number">1.4</span>V).</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -740,6 +746,13 @@
       
 
       
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
 
     </div>
   </aside>
@@ -784,11 +797,6 @@
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
     
 
     
@@ -1377,6 +1385,9 @@
   
 
   
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
 
   
 

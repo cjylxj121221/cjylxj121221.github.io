@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,6 +13,13 @@
 <meta name="theme-color" content="#222">
 
 
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-bounce.min.css?v=1.0.2" rel="stylesheet">
 
 
 
@@ -150,9 +157,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Mist',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"always","display_updated":true,"offset":0,"b2t":true,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -424,8 +431,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-09-29T13:30:43+08:00">
-                2019-09-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-02-06T23:17:54+08:00">
+                2020-02-06
               </time>
             
           </span>
@@ -511,14 +518,10 @@
 
       
         
-          <p>哪些值对我的显示器有效?</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/09/29/阶七、显示器有效值/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <p>哪些值对我的显示器有效?<br>你的HDMI显示器可能只支持一部分设置. 想要找出支持哪些设置, 可以使用下面的方法.<br>把输出格式设为<code>VGA 60Hz (hdmi_group=1 hdmi_mode=1)</code> 然后启动树莓派<br>输入下列命令可以获取CEA支持模式的列表<br><code>/opt/vc/bin/tvservice -m CEA</code><br>输入下列命令可以获取DMT支持模式的列表<br><code>/opt/vc/bin/tvservice -m DMT</code><br>输入下列命令可以获取当前设置状态<br><code>/opt/vc/bin/tvservice -s</code><br>输入下列命令可以从显示器获取更多详细信息<br><code>/opt/vc/bin/tvservice -d edid.dat /opt/vc/bin/edidparser edid.dat</code><br>使用默认HDMI模式去排除问题时, edid.dat文件同样会提供信息</p>
+
+          
         
       
     </div>
@@ -613,8 +616,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-09-29T13:29:17+08:00">
-                2019-09-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-02-06T23:24:10+08:00">
+                2020-02-06
               </time>
             
           </span>
@@ -700,7 +703,15 @@
 
       
         
-          <p>视频输出的众多控制值及其规范</p>
+          <p>视频输出的众多控制值及其规范<br>视频模式选项</p>
+<hr>
+<p><strong>sdtv_mode</strong>为复合信号输出设置视频制式(默认为0)</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sdtv_mode=<span class="number">0</span>    NTSC</span><br><span class="line">sdtv_mode=<span class="number">1</span>    日本版NTSC – 无基座</span><br><span class="line">sdtv_mode=<span class="number">2</span>    PAL</span><br><span class="line">sdtv_mode=<span class="number">3</span>    巴西版PAL – 副载波为<span class="number">525</span>/<span class="number">60</span>而不是<span class="number">625</span>/<span class="number">50</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>sdtv_aspect</strong>为复合信号输出设置宽高比(默认为1)</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sdtv_aspect=<span class="number">1</span>  <span class="number">4</span>:<span class="number">3</span></span><br><span class="line">sdtv_aspect=<span class="number">2</span>  <span class="number">14</span>:<span class="number">9</span></span><br><span class="line">sdtv_aspect=<span class="number">3</span>  <span class="number">16</span>:<span class="number">9</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>sdtv_disable_colourburst</strong>禁止复合信号输出彩色副载波群. 图片会显示为单色, 但是可能会更清晰<br><code>sdtv_disable_colourburst=1  禁止输出彩色副载波群</code><br><strong>hdmi_safe</strong>使用”安全模式”的设置去尝试用HDMI最大兼容性启动. 这和下面的组合是一个意思:<br><code>hdmi_force_hotplug=1, config_hdmi_boost=4, hdmi_group=2, hdmi_mode=4, disable_overscan=0</code> compared to <code>hdmi_safe=1</code><br><strong>hdmi_ignore_edid</strong>如果你的显示器是天朝产的垃圾货, 允许系统忽略EDID显示数据<br><code>hdmi_ignore_edid=0xa5000080</code><br><strong>hdmi_edid_file</strong>当设为1时, 将会从edid.dat文件中读取EDID数据，而不是从显示器.<br><code>hdmi_edid_file=1</code><br><strong>hdmi_force_edid_audio</strong>伪装成支持所有音频格式播放, 即便报告不支持也允许通过DTS/AC3.<br><code>hdmi_force_edid_audio=1</code><br><strong>hdmi_force_edid_3d</strong>伪装成全部CEA模式都支持3D, 即便EDID并不支持.<br><code>hdmi_force_edid_3d=1</code><br><strong>avoid_edid_fuzzy_match</strong>禁止去模糊匹配EDID中描述的模式. 即便遮蔽错误, 也选用匹配分辨率和最接近帧率的标准模式.<br><code>avoid_edid_fuzzy_match=1</code><br><strong>hdmi_ignore_cec_init</strong>不发送初始化激活源消息. 避免在重启时使(启用CEC)TV结束待机并切换频道.<br><code>hdmi_ignore_cec_init=1</code><br><strong>hdmi_ignore_cec</strong>伪装成TV不支持CEC. 将不会支持任何CEC功能.<br><code>hdmi_ignore_cec=1</code><br><strong>hdmi_force_hotplug</strong>伪装成HDMI热插拔信号被检测到, 出现HDMI显示器被接入<br><code>hdmi_force_hotplug=1</code> 即便没有检测到HDMI显示器也要使用HDMI模式<br><strong>hdmi_ignore_hotplug</strong>伪装成HDMI热插拔信号没有被检测到, 出现HDMI显示器未接入<br><code>hdmi_ignore_hotplug=1 即便检测到HDMI显示器也要使用混合模式</code><br><strong>hdmi_pixel_encoding</strong>强制像素编码模式. 默认情况下会使用EDID请求的模式, 所以不需要修改.</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/09/28/六、视频输出/#more" rel="contents">
@@ -802,8 +813,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-09-28T23:34:34+08:00">
-                2019-09-28
+              <time title="更新于" itemprop="dateModified" datetime="2020-02-06T23:20:02+08:00">
+                2020-02-06
               </time>
             
           </span>
@@ -889,14 +900,10 @@
 
       
         
-          <p>自2012年11月19号, 固件和内核开始支持CMA, 这意味运行时可以动态管理ARM和GPU之间的内存分配. 这儿有相关config.txt示例.</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/09/28/五、CMA动态内存分配/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <p>自2012年11月19号, 固件和内核开始支持CMA, 这意味运行时可以动态管理ARM和GPU之间的内存分配. 这儿有相关config.txt示例.<br><code>cma_lwm</code> 当GPU可用内存低于cma_lwm所设值, 将会向ARM请求一些内存.<br><code>cma_hwm</code> 当GPU可用内存高于cma_hwm所设值, 将会向ARM释放一些内存.<br>要启用CMA，下面的参数需要添加到<code>cmdline.txt</code>文件里:<br><code>coherent_pool=6M smsc95xx.turbo_mode=N</code></p>
+
+          
         
       
     </div>
@@ -991,8 +998,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-09-28T23:32:42+08:00">
-                2019-09-28
+              <time title="更新于" itemprop="dateModified" datetime="2020-02-06T23:20:07+08:00">
+                2020-02-06
               </time>
             
           </span>
@@ -1078,14 +1085,10 @@
 
       
         
-          <p>内存控制的某些控制值</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/09/28/四、内存/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <p>内存控制的某些控制值<br><code>disable_l2cache</code> 禁止ARM访问GPU的二级缓存. 相应的需要在内核中关闭二级缓存. 默认为0<br><code>gpu_mem</code> GPU内存以兆为单位. 设置ARM和GPU之间的内存分配. ARM会获得剩余所有内存. 最小设为16. 默认为64<br><code>gpu_mem_256</code> 对于有256MB内存的树莓派的GPU内存设置. 512MB的派请忽略。会覆盖gpu_mem。最大设为192，默认不设置<br><code>gpu_mem_512</code> 对于有512MB内存的树莓派的GPU内存设置. 256MB的派请忽略.  会覆盖gpu_mem. 最大设为448. 默认不设置<br><code>disable_pvt</code> 禁止每500毫秒调整一次RAM的刷新率 (RAM温度测量)。</p>
+
+          
         
       
     </div>
@@ -1180,8 +1183,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-09-28T23:31:37+08:00">
-                2019-09-28
+              <time title="更新于" itemprop="dateModified" datetime="2020-02-06T23:20:13+08:00">
+                2020-02-06
               </time>
             
           </span>
@@ -1267,14 +1270,13 @@
 
       
         
-          <p>当值是整形时格式为”属性=值”. 每行只指定一个参数. 注释使用’#’井号作为一行开头.</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/09/28/三、文件格式/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <p>当值是整形时格式为”属性=值”. 每行只指定一个参数. 注释使用’#’井号作为一行开头.<br>注意: 在新版的树莓派里每行都有#注释, 要想使用该行参数只需移除#.<br>下面是示例文件</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># <span class="function">Set stdv mode to <span class="title">PAL</span> <span class="params">(as used in Europe)</span> sdtv_mode</span>=<span class="number">2</span></span><br><span class="line"># Force the monitor to HDMI mode so that sound will be sent over HDMI cable</span><br><span class="line">hdmi_drive=<span class="number">2</span></span><br><span class="line"># Set monitor mode to DMT</span><br><span class="line">hdmi_group=<span class="number">2</span></span><br><span class="line"># Set monitor resolution to <span class="number">1024</span>x768 XGA <span class="number">60</span>Hz (HDMI_DMT_XGA_60)</span><br><span class="line">hdmi_mode=<span class="number">16</span></span><br><span class="line"># Make <span class="built_in">display</span> smaller to <span class="built_in">stop</span> <span class="built_in">text</span> spilling off the screen</span><br><span class="line">overscan_left=<span class="number">20</span></span><br><span class="line">overscan_right=<span class="number">12</span></span><br><span class="line">overscan_top=<span class="number">10</span></span><br><span class="line">overscan_bottom=<span class="number">10</span></span><br></pre></td></tr></table></figure>
+
+<p>这是另一个示例文件, 包含了各种功能的扩展文档.</p>
+
+          
         
       
     </div>
@@ -1369,8 +1371,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-09-28T23:28:25+08:00">
-                2019-09-28
+              <time title="更新于" itemprop="dateModified" datetime="2020-02-06T23:20:19+08:00">
+                2020-02-06
               </time>
             
           </span>
@@ -1456,14 +1458,10 @@
 
       
         
-          <p>   由于树莓派并没有传统意义上的BIOS, 所以现在各种系统配置参数通常被存在”config.txt”这个文本文件中。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/09/28/二、config-txt/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <p>由于树莓派并没有传统意义上的BIOS, 所以现在各种系统配置参数通常被存在”config.txt”这个文本文件中。<br>   树莓派的config.txt文件会在ARM内核初始化之前被GPU读取。这个文件存在引导分区上的.对于Linux, 路径通常是/boot/config.txt, 如果是Windows (或者OS X) 它会被识别为SD卡中可访问部分的一个普通文件。如果想要编辑配置文件, 请查看介绍编辑树莓派配置文件。<br>你可以使用下列命令去获取当前激活的设置:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">- 列出指定的配置参数.</span><br><span class="line">- 例如: vcgencmd get_config arm_freq</span><br><span class="line">vcgencmd get_config </span><br><span class="line">- 列出所有已设置的整形配置参数(非零)</span><br><span class="line">vcgencmd get_config <span class="keyword">int</span></span><br><span class="line">- 列出所有已设置的字符型配置参数(非零)</span><br><span class="line">vcgencmd get_config str</span><br></pre></td></tr></table></figure>
+          
         
       
     </div>
@@ -1558,8 +1556,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-09-28T23:25:28+08:00">
-                2019-09-28
+              <time title="更新于" itemprop="dateModified" datetime="2020-02-06T23:20:25+08:00">
+                2020-02-06
               </time>
             
           </span>
@@ -1645,14 +1643,10 @@
 
       
         
-          <p>   General Purpose Input Output （通用输入/输出）简称为GPIO，或总线扩展器，人们利用工业标准I2C、SMBus或SPI接口简化了I/O口的扩展。当微控制器或芯片组没有足够的I/O端口，或当系统需要采用远端串行通信或控制时，GPIO产品能够提供额外的控制和监视功能。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/09/28/阶一、GPIO介绍/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <p>General Purpose Input Output （通用输入/输出）简称为GPIO，或总线扩展器，人们利用工业标准I2C、SMBus或SPI接口简化了I/O口的扩展。当微控制器或芯片组没有足够的I/O端口，或当系统需要采用远端串行通信或控制时，GPIO产品能够提供额外的控制和监视功能。<br>   第一次使用GPIO口用的是网上找的方法：写一个C语言文件，运行一下以控制IO口的输出和输入，树莓派的GPIO口一共有40个<br>   在寄存器操作方面完全相同，GPxCON 中每两位控制一根引脚，<br>    00 输入 01 输出<br>    10 特殊功能 11 保留不用<br><img src="/images/%E8%BF%9B%E9%98%B61-1.png" alt></p>
+
+          
         
       
     </div>
@@ -1932,8 +1926,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-09-28T22:52:44+08:00">
-                2019-09-28
+              <time title="更新于" itemprop="dateModified" datetime="2020-02-06T23:25:19+08:00">
+                2020-02-06
               </time>
             
           </span>
@@ -2019,14 +2013,14 @@
 
       
         
-          <p>用SSH过程连接电脑时，经常遇到长时间不操作而被服务器踢出的情况，常见的提示如：<br><code>Write failed: Broken pipe</code></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/09/28/三、超时闲置断开/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <p>用SSH过程连接电脑时，经常遇到长时间不操作而被服务器踢出的情况，常见的提示如：<br><code>Write failed: Broken pipe</code><br>这是因为如果有一段时间在SSH连接上无数据传输，连接就会断开。解决此问题有两种方法。<br>在客户端设置</p>
+<hr>
+<p>方法很简单，只需在客户端电脑上编辑（需要root权限）<code>/etc/ssh/ssh_config</code>，并添加如下一行：<br><code>ServerAliveInterval 60</code><br>此后该系统里的用户连接SSH时，每60秒会发一个KeepAlive请求，避免被踢。<br>在服务器端设置</p>
+<hr>
+<p>如果有相应的权限，也可以在服务器端设置，即编辑<code>/etc/ssh/sshd_config</code>，并添加：<br><code>ClientAliveInterval 60</code><br>重启SSH服务器后该项设置会生效。<br><code>/etc/init.d/sshd restart</code><br>每一个连接到此服务器上的客户端都会受其影响。</p>
+
+          
         
       
     </div>
@@ -2121,8 +2115,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-09-28T22:48:37+08:00">
-                2019-09-28
+              <time title="更新于" itemprop="dateModified" datetime="2020-02-06T23:26:14+08:00">
+                2020-02-06
               </time>
             
           </span>
@@ -2208,7 +2202,7 @@
 
       
         
-          <p>vi(vim)是上Linux非常常用的编辑器，很多Linux发行版都默认安装了vi(vim)。vi(vim)命令繁多但是如果使用灵活之后将会大大提高效率。</p>
+          <p>vi(vim)是上Linux非常常用的编辑器，很多Linux发行版都默认安装了vi(vim)。vi(vim)命令繁多但是如果使用灵活之后将会大大提高效率。<br>vi是“visual interface”的缩写，vim是vi IMproved(增强版的vi)。在一般的系统管理维护中vi就够用，如果想使用代码加亮的话可以使用vim。下面整理一下vi的使用教程：包含vi的基本介绍、使用模式、文件的打开关闭保存、插入文本或新建行、移动光标、删除、恢复字符或行、搜索等等，算是一篇比较适合新手学习vi的教程。<br>vi有3个模式：插入模式、命令模式、低行模式。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/09/28/、VIM编辑器/#more" rel="contents">
@@ -2398,6 +2392,13 @@
       
 
       
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
 
     </div>
   </aside>
@@ -2442,11 +2443,6 @@
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
     
 
     
@@ -3031,6 +3027,9 @@
   
 
   
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
 
   
 

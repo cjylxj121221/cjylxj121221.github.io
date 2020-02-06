@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,6 +13,13 @@
 <meta name="theme-color" content="#222">
 
 
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-bounce.min.css?v=1.0.2" rel="stylesheet">
 
 
 
@@ -132,18 +139,18 @@
 
 
 
-<meta name="description" content="启动项控制">
+<meta name="description" content="启动项控制123456789disable_commandline_tags 在启动内核前, 通过改写ATAGS (0x100处的内存)来阻止start.elfcmdline (string) 命令行参数. 可用来代替cmdline.txt文件kernel (string) 加载指定名称的内核镜像文件启动内核. 默认为”kernel.img”kernel_address 加载kernel.img文">
 <meta name="keywords" content="love">
 <meta property="og:type" content="article">
 <meta property="og:title" content="进阶九、启动">
 <meta property="og:url" content="https://github.com/lxj1091681536/2019/09/29/九、启动/index.html">
 <meta property="og:site_name" content="CJY &amp; LXJ的小窝">
-<meta property="og:description" content="启动项控制">
+<meta property="og:description" content="启动项控制123456789disable_commandline_tags 在启动内核前, 通过改写ATAGS (0x100处的内存)来阻止start.elfcmdline (string) 命令行参数. 可用来代替cmdline.txt文件kernel (string) 加载指定名称的内核镜像文件启动内核. 默认为”kernel.img”kernel_address 加载kernel.img文">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-29T05:35:53.718Z">
+<meta property="og:updated_time" content="2020-02-06T15:17:28.262Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="进阶九、启动">
-<meta name="twitter:description" content="启动项控制">
+<meta name="twitter:description" content="启动项控制123456789disable_commandline_tags 在启动内核前, 通过改写ATAGS (0x100处的内存)来阻止start.elfcmdline (string) 命令行参数. 可用来代替cmdline.txt文件kernel (string) 加载指定名称的内核镜像文件启动内核. 默认为”kernel.img”kernel_address 加载kernel.img文">
 
 
 
@@ -151,9 +158,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Mist',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"always","display_updated":true,"offset":0,"b2t":true,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -422,8 +429,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-09-29T13:35:53+08:00">
-                2019-09-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-02-06T23:17:28+08:00">
+                2020-02-06
               </time>
             
           </span>
@@ -508,12 +515,10 @@
       
 
       
-        <h2 id="启动项控制"><a href="#启动项控制" class="headerlink" title="启动项控制"></a>启动项控制</h2><a id="more"></a>
-<p><code>disable_commandline_tags</code> 在启动内核前, 通过改写ATAGS (0x100处的内存)来阻止start.elf<br><code>cmdline (string)</code> 命令行参数. 可用来代替cmdline.txt文件<br><code>kernel (string)</code> 加载指定名称的内核镜像文件启动内核. 默认为”kernel.img”<br><code>kernel_address</code> 加载kernel.img文件地址<br><code>kernel_old (bool)</code> 为1时, 从0x0处加载内核<br><code>ramfsfile (string)</code> 要的加载的ramfs文件<br><code>ramfsaddr</code> 要加载的ramfs文件地址<br><code>initramfs (string address)</code> 要加载的ramfs文件及其地址 (就是把ramfsfile+ramfsaddr合并为一项).<br>注意: 这项使用与其他项不同的语法 – 不要在这用”=”号.   </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">正确示例:</span><br><span class="line">initramfs initramf.gz 0x00800000</span><br></pre></td></tr></table></figure>
+        <h2 id="启动项控制"><a href="#启动项控制" class="headerlink" title="启动项控制"></a>启动项控制</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">disable_commandline_tags 在启动内核前, 通过改写ATAGS (<span class="number">0x100</span>处的内存)来阻止start.elf</span><br><span class="line">cmdline (<span class="built_in">string</span>) 命令行参数. 可用来代替cmdline.txt文件</span><br><span class="line">kernel (<span class="built_in">string</span>) 加载指定名称的内核镜像文件启动内核. 默认为”kernel.img”</span><br><span class="line">kernel_address 加载kernel.img文件地址</span><br><span class="line">kernel_old (<span class="keyword">bool</span>) 为<span class="number">1</span>时, 从<span class="number">0x0</span>处加载内核</span><br><span class="line">ramfsfile (<span class="built_in">string</span>) 要的加载的ramfs文件</span><br><span class="line">ramfsaddr 要加载的ramfs文件地址</span><br><span class="line">initramfs (<span class="built_in">string</span> address) 要加载的ramfs文件及其地址 (就是把ramfsfile+ramfsaddr合并为一项).</span><br><span class="line">注意: 这项使用与其他项不同的语法 – 不要在这用”=”号.</span><br></pre></td></tr></table></figure>
 
-<p><code>device_tree_address</code> 加载device_tree的地址<br><code>init_uart_baud</code> 初始化uart波特率. 默认为115200<br><code>init_uart_clock</code> 初始化uart时序. 默认为3000000 (3Mhz)<br><code>init_emmc_clock</code> 初始化emmc时序. 默认为100000000 (100MHz)<br><code>boot_delay</code> 在加载内核前在start.elf等待指定秒. 总延迟=1000 * boot_delay + boot_delay_ms. 默认为1<br><code>boot_delay_ms</code>在加载内核前在start.elf等待指定毫秒. 默认为0<br><code>avoid_safe_mode</code> 如果设为1, 将不以安全模式启动. 默认为0</p>
-
+<p>正确示例:<br>initramfs initramf.gz 0x00800000</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">device_tree_address 加载device_tree的地址</span><br><span class="line">init_uart_baud 初始化uart波特率. 默认为<span class="number">115200</span></span><br><span class="line">init_uart_clock 初始化uart时序. 默认为<span class="number">3000000</span> (<span class="number">3</span>Mhz)</span><br><span class="line">init_emmc_clock 初始化emmc时序. 默认为<span class="number">100000000</span> (<span class="number">100</span>MHz)</span><br><span class="line">boot_delay 在加载内核前在start.elf等待指定秒. 总延迟=<span class="number">1000</span> * boot_delay + boot_delay_ms. 默认为<span class="number">1</span></span><br><span class="line">boot_delay_ms 在加载内核前在start.elf等待指定毫秒. 默认为<span class="number">0</span></span><br><span class="line">avoid_safe_mode 如果设为<span class="number">1</span>, 将不以安全模式启动. 默认为<span class="number">0</span></span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -744,6 +749,13 @@
       
 
       
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
 
     </div>
   </aside>
@@ -788,11 +800,6 @@
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
     
 
     
@@ -1381,6 +1388,9 @@
   
 
   
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
 
   
 

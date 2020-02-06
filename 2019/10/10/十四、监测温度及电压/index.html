@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,6 +13,13 @@
 <meta name="theme-color" content="#222">
 
 
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-bounce.min.css?v=1.0.2" rel="stylesheet">
 
 
 
@@ -132,18 +139,18 @@
 
 
 
-<meta name="description" content="检测树莓派温度">
+<meta name="description" content="检测树莓派温度要检测树莓派的温度, 看: /sys/class/thermal/thermal_zone0/temp要检测树莓派当前的频率, 看: /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq要检测树莓派电源装置的电压, 你需要一个万用电表, 接上电源测试点, 或者扩展头.通常来说要保持核心温度低于70度, 电压高于4.8V. (另外请">
 <meta name="keywords" content="love">
 <meta property="og:type" content="article">
 <meta property="og:title" content="进阶十四、监测温度及电压">
 <meta property="og:url" content="https://github.com/lxj1091681536/2019/10/10/十四、监测温度及电压/index.html">
 <meta property="og:site_name" content="CJY &amp; LXJ的小窝">
-<meta property="og:description" content="检测树莓派温度">
+<meta property="og:description" content="检测树莓派温度要检测树莓派的温度, 看: /sys/class/thermal/thermal_zone0/temp要检测树莓派当前的频率, 看: /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq要检测树莓派电源装置的电压, 你需要一个万用电表, 接上电源测试点, 或者扩展头.通常来说要保持核心温度低于70度, 电压高于4.8V. (另外请">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-10T02:15:20.568Z">
+<meta property="og:updated_time" content="2020-02-06T15:13:10.702Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="进阶十四、监测温度及电压">
-<meta name="twitter:description" content="检测树莓派温度">
+<meta name="twitter:description" content="检测树莓派温度要检测树莓派的温度, 看: /sys/class/thermal/thermal_zone0/temp要检测树莓派当前的频率, 看: /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq要检测树莓派电源装置的电压, 你需要一个万用电表, 接上电源测试点, 或者扩展头.通常来说要保持核心温度低于70度, 电压高于4.8V. (另外请">
 
 
 
@@ -151,9 +158,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Mist',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"always","display_updated":true,"offset":0,"b2t":true,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -422,8 +429,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-10-10T10:15:20+08:00">
-                2019-10-10
+              <time title="更新于" itemprop="dateModified" datetime="2020-02-06T23:13:10+08:00">
+                2020-02-06
               </time>
             
           </span>
@@ -508,8 +515,7 @@
       
 
       
-        <h2 id="检测树莓派温度"><a href="#检测树莓派温度" class="headerlink" title="检测树莓派温度"></a>检测树莓派温度</h2><a id="more"></a>
-<p>要检测树莓派的温度, 看: <code>/sys/class/thermal/thermal_zone0/temp</code><br>要检测树莓派当前的频率, 看: <code>/sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq</code><br>要检测树莓派电源装置的电压, 你需要一个万用电表, 接上电源测试点, 或者扩展头.<br>通常来说要保持核心温度低于70度, 电压高于4.8V. (另外请注意, 不要用那种便宜的USB电源, 那基本上是4.2V的, 这是因为那本来就是为充3.7V锂电池设计的, 根本无法为树莓派提供稳定的5V电压). 此外, 用散热片也是个好主意, 尤其是你把树莓派装到了壳子里. 一个合适的散热器是自带不干胶栅格状的 14x14x10 mm 散热片.</p>
+        <h2 id="检测树莓派温度"><a href="#检测树莓派温度" class="headerlink" title="检测树莓派温度"></a>检测树莓派温度</h2><p>要检测树莓派的温度, 看: <code>/sys/class/thermal/thermal_zone0/temp</code><br>要检测树莓派当前的频率, 看: <code>/sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq</code><br>要检测树莓派电源装置的电压, 你需要一个万用电表, 接上电源测试点, 或者扩展头.<br>通常来说要保持核心温度低于70度, 电压高于4.8V. (另外请注意, 不要用那种便宜的USB电源, 那基本上是4.2V的, 这是因为那本来就是为充3.7V锂电池设计的, 根本无法为树莓派提供稳定的5V电压). 此外, 用散热片也是个好主意, 尤其是你把树莓派装到了壳子里. 一个合适的散热器是自带不干胶栅格状的 14x14x10 mm 散热片.</p>
 
       
     </div>
@@ -544,8 +550,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/10/10/十四、超频稳定性测试/" rel="prev" title="进阶十四、超频稳定性测试">
-                进阶十四、超频稳定性测试 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/10/10/十四、超频稳定性测试/" rel="prev" title="进阶十五、超频稳定性测试">
+                进阶十五、超频稳定性测试 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -741,6 +747,13 @@
       
 
       
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
 
     </div>
   </aside>
@@ -785,11 +798,6 @@
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
     
 
     
@@ -1378,6 +1386,9 @@
   
 
   
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
 
   
 
