@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://github.com/lxj1091681536/"/>
-  <updated>2019-12-02T08:17:39.000Z</updated>
+  <updated>2020-02-08T03:16:03.282Z</updated>
   <id>https://github.com/lxj1091681536/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://github.com/lxj1091681536/2019/12/02/PT%E7%9A%84%E4%B8%80%E7%82%B9%E4%BD%93%E9%AA%8C%E4%B8%8E%E5%BF%83%E5%BE%97/"/>
     <id>https://github.com/lxj1091681536/2019/12/02/PT%E7%9A%84%E4%B8%80%E7%82%B9%E4%BD%93%E9%AA%8C%E4%B8%8E%E5%BF%83%E5%BE%97/</id>
     <published>2019-12-02T05:58:10.000Z</published>
-    <updated>2019-12-02T08:17:39.000Z</updated>
+    <updated>2020-02-08T03:16:03.282Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="一、PT是什么"><a href="#一、PT是什么" class="headerlink" title="一、PT是什么"></a>一、PT是什么</h2><p>根据WiKi的解释PT：（Private Tracker）是一种改良自BitTorrent协议的P2P下载方式，“Private Tracker”指私有种子服务器。与BT最大的不同点分别为可进行私密范围下载，并且记录每一个用户的详细数据。<a id="more"></a><br>   其中提到的BT最典型的例子就是常用的迅雷，<br><img src="/images/PT-1.png" alt></p>]]></content>
+    <content type="html"><![CDATA[<h2 id="一、PT是什么"><a href="#一、PT是什么" class="headerlink" title="一、PT是什么"></a>一、PT是什么</h2><p>根据WiKi的解释PT：（Private Tracker）是一种改良自BitTorrent协议的P2P下载方式，“Private Tracker”指私有种子服务器。与BT最大的不同点分别为可进行私密范围下载，并且记录每一个用户的详细数据。<a id="more"></a><br>   其中提到的BT最典型的例子就是常用的迅雷，</p>]]></content>
     
     <summary type="html">
     
@@ -40,13 +40,18 @@
     <link href="https://github.com/lxj1091681536/2019/10/26/indows%E8%BD%AF%E9%93%BE%E6%8E%A5/"/>
     <id>https://github.com/lxj1091681536/2019/10/26/indows%E8%BD%AF%E9%93%BE%E6%8E%A5/</id>
     <published>2019-10-26T05:35:10.000Z</published>
-    <updated>2019-12-15T15:02:27.000Z</updated>
+    <updated>2020-02-08T03:15:44.255Z</updated>
     
-    <content type="html"><![CDATA[<p><strong>Mklink</strong>是windows系统下创建符号链接和硬链接的命令工具，它是一个很好的解决文件系统问题的工具。<br>还在用着四盘位NAS，硬盘实在有限，学生党没这么多闲钱去经常加硬盘<br>空间也是各种东拼西凑</p><a id="more"></a><h2 id="1-使用原因"><a href="#1-使用原因" class="headerlink" title="1.使用原因"></a>1.使用原因</h2><p> NAS不在身边，为了远程访问文件选择使用了文件管理工具File browser这个工具也会在下一篇文章中介绍。File browser默认访问目录只有一个，NAS目前一共有；两个机械硬盘和一个iSCSI映射过来的3T盘，File browser只能访问其中一个不想多开后台程序，因此打算将其他两个盘通过软链接的方式映射到同一个盘中。<br>2.使用方法</p><hr><p>在windows中启动CMD输入mklink就能看到具体的使用方法:<br><img src="/images/windows%E8%BD%AF%E9%93%BE%E6%8E%A51.png" alt><br><strong>例子</strong></p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">创建一个软连接 G:\Geth 连接到目录 H:\tools 上去：</span><br><span class="line">mklink  /j  G:\Geth H:\tools</span><br><span class="line"></span><br><span class="line">创建一个软连接 G:\Geth 连接到目录 H:\tools 上去：</span><br><span class="line">mklink  /d  G:\Geth H:\tools</span><br><span class="line"></span><br><span class="line">创建一个硬连接 G:\Geth 连接到目录 H:\tools 上去：</span><br><span class="line">mklink  /h  G:\Geth H:\tools</span><br></pre></td></tr></table></figure><h2 id="3-区别"><a href="#3-区别" class="headerlink" title="3.区别"></a>3.区别</h2><p><strong>1、/D(目录符号链接)和/J(目录联接)的区别:</strong></p><p>/J在创建时会自动指向原目录的绝对路径，而/D链接允许相对路径的引用。<br>例如：指向命令 mklink /D dird testdir 和 mklink /J dirj testdir 之后。<br>将链接dird 、dirj 移动到其它目录下，则访问 dird 时会提示“位置不可用”，访问 dirj 时仍然正常指向 testdir ；</p><p><strong>2、硬链接(/h)和符号链接(/D、/J)的区别：</strong></p><p>和符号链接一样，硬链接中所做的任何修改，都会自动应用到目标文件上。但是硬链接具有以下一些不同的地方。<br>硬链接必须引用同一个分区或者卷中的文件（也就是同一个盘中），而符号链接可以指向不同分区或者共享文件夹上的文件或者文件夹。<br>硬链接只能引用文件，而符号链接可以引用文件或者文件夹。<br>Windows会自动维护硬链接，即使把硬链接复制到其他文件夹，硬链接和目标都可以继续访问。<br>删除目标文件，硬链接可以继续保留。只有把目标文件和所有的硬链接都删除，才能把该文件彻底删除。<br>如果win7把软链接的目标文件删除，然后用一个同名文件替换，则符号链接会指向新的目标文件；而把硬链接的目标文件删除’再用同名文件替换，则硬链接还是会继续引用原始文件。<br>对硬链接进行NTFS权限的修改，会同时影响到目标文件(因为两者等价)，而符号链接和目标文件可以设置不同的NTFS权限。<br>也就是说，硬链接和目标文件的地位相等。事实上，原始的目标文件本身也相当于硬链接，新建硬链接，只是相当于增加一个目录路後而已。硬链接看上去和真的文件一模一样(实际上就是真实的文件)，不像符号链接那样有一个快捷方式的小箭头，但是硬链接并不会增加磁盘空间的占用。</p>]]></content>
+    <content type="html"><![CDATA[<p><strong>Mklink</strong>是windows系统下创建符号链接和硬链接的命令工具，它是一个很好的解决文件系统问题的工具。<br>还在用着四盘位NAS，硬盘实在有限，学生党没这么多闲钱去经常加硬盘<br>空间也是各种东拼西凑<br>1.使用原因</p><hr><p> NAS不在身边，为了远程访问文件选择使用了文件管理工具File browser这个工具也会在下一篇文章中介绍。File browser默认访问目录只有一个，NAS目前一共有；两个机械硬盘和一个iSCSI映射过来的3T盘，File browser只能访问其中一个不想多开后台程序，因此打算将其他两个盘通过软链接的方式映射到同一个盘中。<br>2.使用方法</p><hr><p>在windows中启动CMD输入mklink就能看到具体的使用方法:<br><img src="/images/windows%E8%BD%AF%E9%93%BE%E6%8E%A51.png" alt><br><strong>例子</strong></p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">创建一个软连接 G:\Geth 连接到目录 H:\tools 上去：</span><br><span class="line">mklink  /j  G:\Geth H:\tools</span><br><span class="line"></span><br><span class="line">创建一个软连接 G:\Geth 连接到目录 H:\tools 上去：</span><br><span class="line">mklink  /d  G:\Geth H:\tools</span><br><span class="line"></span><br><span class="line">创建一个硬连接 G:\Geth 连接到目录 H:\tools 上去：</span><br><span class="line">mklink  /h  G:\Geth H:\tools</span><br></pre></td></tr></table></figure><a id="more"></a><h2 id="3-区别"><a href="#3-区别" class="headerlink" title="3.区别"></a>3.区别</h2><p><strong>1、/D(目录符号链接)和/J(目录联接)的区别:</strong></p><p>/J在创建时会自动指向原目录的绝对路径，而/D链接允许相对路径的引用。<br>例如：指向命令 mklink /D dird testdir 和 mklink /J dirj testdir 之后。<br>将链接dird 、dirj 移动到其它目录下，则访问 dird 时会提示“位置不可用”，访问 dirj 时仍然正常指向 testdir ；</p><p><strong>2、硬链接(/h)和符号链接(/D、/J)的区别：</strong></p><p>和符号链接一样，硬链接中所做的任何修改，都会自动应用到目标文件上。但是硬链接具有以下一些不同的地方。<br>硬链接必须引用同一个分区或者卷中的文件（也就是同一个盘中），而符号链接可以指向不同分区或者共享文件夹上的文件或者文件夹。<br>硬链接只能引用文件，而符号链接可以引用文件或者文件夹。<br>Windows会自动维护硬链接，即使把硬链接复制到其他文件夹，硬链接和目标都可以继续访问。<br>删除目标文件，硬链接可以继续保留。只有把目标文件和所有的硬链接都删除，才能把该文件彻底删除。<br>如果win7把软链接的目标文件删除，然后用一个同名文件替换，则符号链接会指向新的目标文件；而把硬链接的目标文件删除’再用同名文件替换，则硬链接还是会继续引用原始文件。<br>对硬链接进行NTFS权限的修改，会同时影响到目标文件(因为两者等价)，而符号链接和目标文件可以设置不同的NTFS权限。<br>也就是说，硬链接和目标文件的地位相等。事实上，原始的目标文件本身也相当于硬链接，新建硬链接，只是相当于增加一个目录路後而已。硬链接看上去和真的文件一模一样(实际上就是真实的文件)，不像符号链接那样有一个快捷方式的小箭头，但是硬链接并不会增加磁盘空间的占用。</p>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;&lt;strong&gt;Mklink&lt;/strong&gt;是windows系统下创建符号链接和硬链接的命令工具，它是一个很好的解决文件系统问题的工具。&lt;br&gt;还在用着四盘位NAS，硬盘实在有限，学生党没这么多闲钱去经常加硬盘&lt;br&gt;空间也是各种东拼西凑&lt;/p&gt;
+      &lt;p&gt;&lt;strong&gt;Mklink&lt;/strong&gt;是windows系统下创建符号链接和硬链接的命令工具，它是一个很好的解决文件系统问题的工具。&lt;br&gt;还在用着四盘位NAS，硬盘实在有限，学生党没这么多闲钱去经常加硬盘&lt;br&gt;空间也是各种东拼西凑&lt;br&gt;1.使用原因&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt; NAS不在身边，为了远程访问文件选择使用了文件管理工具File browser这个工具也会在下一篇文章中介绍。File browser默认访问目录只有一个，NAS目前一共有；两个机械硬盘和一个iSCSI映射过来的3T盘，File browser只能访问其中一个不想多开后台程序，因此打算将其他两个盘通过软链接的方式映射到同一个盘中。&lt;br&gt;2.使用方法&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;在windows中启动CMD输入mklink就能看到具体的使用方法:&lt;br&gt;&lt;img src=&quot;/images/windows%E8%BD%AF%E9%93%BE%E6%8E%A51.png&quot; alt&gt;&lt;br&gt;&lt;strong&gt;例子&lt;/strong&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight c&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;创建一个软连接 G:\Geth 连接到目录 H:\tools 上去：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;mklink  /j  G:\Geth H:\tools&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;创建一个软连接 G:\Geth 连接到目录 H:\tools 上去：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;mklink  /d  G:\Geth H:\tools&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;创建一个硬连接 G:\Geth 连接到目录 H:\tools 上去：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;mklink  /h  G:\Geth H:\tools&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     

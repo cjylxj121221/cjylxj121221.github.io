@@ -431,8 +431,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-12-02T16:17:39+08:00">
-                2019-12-02
+              <time title="更新于" itemprop="dateModified" datetime="2020-02-08T11:16:03+08:00">
+                2020-02-08
               </time>
             
           </span>
@@ -620,8 +620,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-12-15T23:02:27+08:00">
-                2019-12-15
+              <time title="更新于" itemprop="dateModified" datetime="2020-02-08T11:15:44+08:00">
+                2020-02-08
               </time>
             
           </span>
@@ -707,7 +707,12 @@
 
       
         
-          <p><strong>Mklink</strong>是windows系统下创建符号链接和硬链接的命令工具，它是一个很好的解决文件系统问题的工具。<br>还在用着四盘位NAS，硬盘实在有限，学生党没这么多闲钱去经常加硬盘<br>空间也是各种东拼西凑</p>
+          <p><strong>Mklink</strong>是windows系统下创建符号链接和硬链接的命令工具，它是一个很好的解决文件系统问题的工具。<br>还在用着四盘位NAS，硬盘实在有限，学生党没这么多闲钱去经常加硬盘<br>空间也是各种东拼西凑<br>1.使用原因</p>
+<hr>
+<p> NAS不在身边，为了远程访问文件选择使用了文件管理工具File browser这个工具也会在下一篇文章中介绍。File browser默认访问目录只有一个，NAS目前一共有；两个机械硬盘和一个iSCSI映射过来的3T盘，File browser只能访问其中一个不想多开后台程序，因此打算将其他两个盘通过软链接的方式映射到同一个盘中。<br>2.使用方法</p>
+<hr>
+<p>在windows中启动CMD输入mklink就能看到具体的使用方法:<br><img src="/images/windows%E8%BD%AF%E9%93%BE%E6%8E%A51.png" alt><br><strong>例子</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">创建一个软连接 G:\Geth 连接到目录 H:\tools 上去：</span><br><span class="line">mklink  /j  G:\Geth H:\tools</span><br><span class="line"></span><br><span class="line">创建一个软连接 G:\Geth 连接到目录 H:\tools 上去：</span><br><span class="line">mklink  /d  G:\Geth H:\tools</span><br><span class="line"></span><br><span class="line">创建一个硬连接 G:\Geth 连接到目录 H:\tools 上去：</span><br><span class="line">mklink  /h  G:\Geth H:\tools</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/10/26/indows软链接/#more" rel="contents">
