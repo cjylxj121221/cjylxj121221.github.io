@@ -139,19 +139,19 @@
 
 
 
-<meta name="description" content="Mklink是windows系统下创建符号链接和硬链接的命令工具，它是一个很好的解决文件系统问题的工具。还在用着四盘位NAS，硬盘实在有限，学生党没这么多闲钱去经常加硬盘空间也是各种东拼西凑1.使用原因   NAS不在身边，为了远程访问文件选择使用了文件管理工具File browser这个工具也会在下一篇文章中介绍。File browser默认访问目录只有一个，NAS目前一共有；两个机械硬盘和一个">
+<meta name="description" content="Mklink是windows系统下创建符号链接和硬链接的命令工具，它是一个很好的解决文件系统问题的工具。还在用着四盘位NAS，硬盘实在有限，学生党没这么多闲钱去经常加硬盘空间也是各种东拼西凑 使用原因 NAS不在身边，为了远程访问文件选择使用了文件管理工具File browser这个工具也会在下一篇文章中介绍。File browser默认访问目录只有一个，NAS目前一共有；两个机械硬盘和一个iSC">
 <meta name="keywords" content="love">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Windows软链接">
 <meta property="og:url" content="https://github.com/lxj1091681536/2019/10/26/indows软链接/index.html">
 <meta property="og:site_name" content="CJY &amp; LXJ的小窝">
-<meta property="og:description" content="Mklink是windows系统下创建符号链接和硬链接的命令工具，它是一个很好的解决文件系统问题的工具。还在用着四盘位NAS，硬盘实在有限，学生党没这么多闲钱去经常加硬盘空间也是各种东拼西凑1.使用原因   NAS不在身边，为了远程访问文件选择使用了文件管理工具File browser这个工具也会在下一篇文章中介绍。File browser默认访问目录只有一个，NAS目前一共有；两个机械硬盘和一个">
+<meta property="og:description" content="Mklink是windows系统下创建符号链接和硬链接的命令工具，它是一个很好的解决文件系统问题的工具。还在用着四盘位NAS，硬盘实在有限，学生党没这么多闲钱去经常加硬盘空间也是各种东拼西凑 使用原因 NAS不在身边，为了远程访问文件选择使用了文件管理工具File browser这个工具也会在下一篇文章中介绍。File browser默认访问目录只有一个，NAS目前一共有；两个机械硬盘和一个iSC">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://github.com/images/windows%E8%BD%AF%E9%93%BE%E6%8E%A51.png">
-<meta property="og:updated_time" content="2020-02-08T03:15:44.255Z">
+<meta property="og:updated_time" content="2020-03-06T13:58:22.552Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Windows软链接">
-<meta name="twitter:description" content="Mklink是windows系统下创建符号链接和硬链接的命令工具，它是一个很好的解决文件系统问题的工具。还在用着四盘位NAS，硬盘实在有限，学生党没这么多闲钱去经常加硬盘空间也是各种东拼西凑1.使用原因   NAS不在身边，为了远程访问文件选择使用了文件管理工具File browser这个工具也会在下一篇文章中介绍。File browser默认访问目录只有一个，NAS目前一共有；两个机械硬盘和一个">
+<meta name="twitter:description" content="Mklink是windows系统下创建符号链接和硬链接的命令工具，它是一个很好的解决文件系统问题的工具。还在用着四盘位NAS，硬盘实在有限，学生党没这么多闲钱去经常加硬盘空间也是各种东拼西凑 使用原因 NAS不在身边，为了远程访问文件选择使用了文件管理工具File browser这个工具也会在下一篇文章中介绍。File browser默认访问目录只有一个，NAS目前一共有；两个机械硬盘和一个iSC">
 <meta name="twitter:image" content="https://github.com/images/windows%E8%BD%AF%E9%93%BE%E6%8E%A51.png">
 
 
@@ -431,8 +431,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-02-08T11:15:44+08:00">
-                2020-02-08
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-06T21:58:22+08:00">
+                2020-03-06
               </time>
             
           </span>
@@ -480,7 +480,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  863 字
+                  858 字
                 </span>
               
 
@@ -517,18 +517,13 @@
       
 
       
-        <p><strong>Mklink</strong>是windows系统下创建符号链接和硬链接的命令工具，它是一个很好的解决文件系统问题的工具。<br>还在用着四盘位NAS，硬盘实在有限，学生党没这么多闲钱去经常加硬盘<br>空间也是各种东拼西凑<br>1.使用原因</p>
-<hr>
-<p> NAS不在身边，为了远程访问文件选择使用了文件管理工具File browser这个工具也会在下一篇文章中介绍。File browser默认访问目录只有一个，NAS目前一共有；两个机械硬盘和一个iSCSI映射过来的3T盘，File browser只能访问其中一个不想多开后台程序，因此打算将其他两个盘通过软链接的方式映射到同一个盘中。<br>2.使用方法</p>
-<hr>
-<p>在windows中启动CMD输入mklink就能看到具体的使用方法:<br><img src="/images/windows%E8%BD%AF%E9%93%BE%E6%8E%A51.png" alt><br><strong>例子</strong></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">创建一个软连接 G:\Geth 连接到目录 H:\tools 上去：</span><br><span class="line">mklink  /j  G:\Geth H:\tools</span><br><span class="line"></span><br><span class="line">创建一个软连接 G:\Geth 连接到目录 H:\tools 上去：</span><br><span class="line">mklink  /d  G:\Geth H:\tools</span><br><span class="line"></span><br><span class="line">创建一个硬连接 G:\Geth 连接到目录 H:\tools 上去：</span><br><span class="line">mklink  /h  G:\Geth H:\tools</span><br></pre></td></tr></table></figure>
+        <h1 id="Mklink"><a href="#Mklink" class="headerlink" title="Mklink"></a>Mklink</h1><p>是windows系统下创建符号链接和硬链接的命令工具，它是一个很好的解决文件系统问题的工具。<br>还在用着四盘位NAS，硬盘实在有限，学生党没这么多闲钱去经常加硬盘<br>空间也是各种东拼西凑</p>
+<h2 id="使用原因"><a href="#使用原因" class="headerlink" title="使用原因"></a>使用原因</h2><p> NAS不在身边，为了远程访问文件选择使用了文件管理工具File browser这个工具也会在下一篇文章中介绍。File browser默认访问目录只有一个，NAS目前一共有；两个机械硬盘和一个iSCSI映射过来的3T盘，File browser只能访问其中一个不想多开后台程序，因此打算将其他两个盘通过软链接的方式映射到同一个盘中。</p>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><p>在windows中启动CMD输入mklink就能看到具体的使用方法:<br><img src="/images/windows%E8%BD%AF%E9%93%BE%E6%8E%A51.png" alt></p>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">创建一个软连接 G:\Geth 连接到目录 H:\tools 上去：</span><br><span class="line">mklink  /j  G:\Geth H:\tools</span><br><span class="line"></span><br><span class="line">创建一个软连接 G:\Geth 连接到目录 H:\tools 上去：</span><br><span class="line">mklink  /d  G:\Geth H:\tools</span><br><span class="line"></span><br><span class="line">创建一个硬连接 G:\Geth 连接到目录 H:\tools 上去：</span><br><span class="line">mklink  /h  G:\Geth H:\tools</span><br></pre></td></tr></table></figure>
 
-<a id="more"></a>
-<h2 id="3-区别"><a href="#3-区别" class="headerlink" title="3.区别"></a>3.区别</h2><p><strong>1、/D(目录符号链接)和/J(目录联接)的区别:</strong></p>
-<p>/J在创建时会自动指向原目录的绝对路径，而/D链接允许相对路径的引用。<br>例如：指向命令 mklink /D dird testdir 和 mklink /J dirj testdir 之后。<br>将链接dird 、dirj 移动到其它目录下，则访问 dird 时会提示“位置不可用”，访问 dirj 时仍然正常指向 testdir ；</p>
-<p><strong>2、硬链接(/h)和符号链接(/D、/J)的区别：</strong></p>
-<p>和符号链接一样，硬链接中所做的任何修改，都会自动应用到目标文件上。但是硬链接具有以下一些不同的地方。<br>硬链接必须引用同一个分区或者卷中的文件（也就是同一个盘中），而符号链接可以指向不同分区或者共享文件夹上的文件或者文件夹。<br>硬链接只能引用文件，而符号链接可以引用文件或者文件夹。<br>Windows会自动维护硬链接，即使把硬链接复制到其他文件夹，硬链接和目标都可以继续访问。<br>删除目标文件，硬链接可以继续保留。只有把目标文件和所有的硬链接都删除，才能把该文件彻底删除。<br>如果win7把软链接的目标文件删除，然后用一个同名文件替换，则符号链接会指向新的目标文件；而把硬链接的目标文件删除’再用同名文件替换，则硬链接还是会继续引用原始文件。<br>对硬链接进行NTFS权限的修改，会同时影响到目标文件(因为两者等价)，而符号链接和目标文件可以设置不同的NTFS权限。<br>也就是说，硬链接和目标文件的地位相等。事实上，原始的目标文件本身也相当于硬链接，新建硬链接，只是相当于增加一个目录路後而已。硬链接看上去和真的文件一模一样(实际上就是真实的文件)，不像符号链接那样有一个快捷方式的小箭头，但是硬链接并不会增加磁盘空间的占用。</p>
+<h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><h3 id="D-目录符号链接-和-J-目录联接-的区别"><a href="#D-目录符号链接-和-J-目录联接-的区别" class="headerlink" title="/D(目录符号链接)和/J(目录联接)的区别"></a>/D(目录符号链接)和/J(目录联接)的区别</h3><p>/J在创建时会自动指向原目录的绝对路径，而/D链接允许相对路径的引用。<br>例如：指向命令 mklink /D dird testdir 和 mklink /J dirj testdir 之后。<br>将链接dird 、dirj 移动到其它目录下，则访问 dird 时会提示“位置不可用”，访问 dirj 时仍然正常指向 testdir;</p>
+<h3 id="硬链接-h-和符号链接-D、-J-的区别"><a href="#硬链接-h-和符号链接-D、-J-的区别" class="headerlink" title="硬链接(/h)和符号链接(/D、/J)的区别"></a>硬链接(/h)和符号链接(/D、/J)的区别</h3><p>和符号链接一样，硬链接中所做的任何修改，都会自动应用到目标文件上。但是硬链接具有以下一些不同的地方。<br>硬链接必须引用同一个分区或者卷中的文件（也就是同一个盘中），而符号链接可以指向不同分区或者共享文件夹上的文件或者文件夹。<br>硬链接只能引用文件，而符号链接可以引用文件或者文件夹。<br>Windows会自动维护硬链接，即使把硬链接复制到其他文件夹，硬链接和目标都可以继续访问。<br>删除目标文件，硬链接可以继续保留。只有把目标文件和所有的硬链接都删除，才能把该文件彻底删除。<br>如果win7把软链接的目标文件删除，然后用一个同名文件替换，则符号链接会指向新的目标文件；而把硬链接的目标文件删除’再用同名文件替换，则硬链接还是会继续引用原始文件。<br>对硬链接进行NTFS权限的修改，会同时影响到目标文件(因为两者等价)，而符号链接和目标文件可以设置不同的NTFS权限。<br>也就是说，硬链接和目标文件的地位相等。事实上，原始的目标文件本身也相当于硬链接，新建硬链接，只是相当于增加一个目录路後而已。硬链接看上去和真的文件一模一样(实际上就是真实的文件)，不像符号链接那样有一个快捷方式的小箭头，但是硬链接并不会增加磁盘空间的占用。    </p>
 
       
     </div>
@@ -647,7 +642,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-count">39</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -751,7 +746,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-区别"><span class="nav-number">1.</span> <span class="nav-text">3.区别</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Mklink"><span class="nav-number">1.</span> <span class="nav-text">Mklink</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用原因"><span class="nav-number">1.1.</span> <span class="nav-text">使用原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用方法"><span class="nav-number">1.2.</span> <span class="nav-text">使用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#例子"><span class="nav-number">1.2.1.</span> <span class="nav-text">例子</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#区别"><span class="nav-number">1.3.</span> <span class="nav-text">区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#D-目录符号链接-和-J-目录联接-的区别"><span class="nav-number">1.3.1.</span> <span class="nav-text">/D(目录符号链接)和/J(目录联接)的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#硬链接-h-和符号链接-D、-J-的区别"><span class="nav-number">1.3.2.</span> <span class="nav-text">硬链接(/h)和符号链接(/D、/J)的区别</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -792,7 +787,7 @@
     
       <span class="post-meta-item-text">Blog总字数&#58;</span>
     
-    <span title="Blog总字数">14k</span>
+    <span title="Blog总字数">14.1k</span>
   
 
   

@@ -139,18 +139,18 @@
 
 
 
-<meta name="description" content="用SSH过程连接电脑时，经常遇到长时间不操作而被服务器踢出的情况，常见的提示如：Write failed: Broken pipe这是因为如果有一段时间在SSH连接上无数据传输，连接就会断开。解决此问题有两种方法。在客户端设置  方法很简单，只需在客户端电脑上编辑（需要root权限）/etc/ssh/ssh_config，并添加如下一行：ServerAliveInterval 60此后该系统里的用">
+<meta name="description" content="用SSH过程连接电脑时，经常遇到长时间不操作而被服务器踢出的情况，常见的提示如：Write failed: Broken pipe这是因为如果有一段时间在SSH连接上无数据传输，连接就会断开。解决此问题有两种方法。 在客户端设置方法很简单，只需在客户端电脑上编辑（需要root权限）/etc/ssh/ssh_config，并添加如下一行：ServerAliveInterval 60此后该系统里的用户">
 <meta name="keywords" content="love">
 <meta property="og:type" content="article">
 <meta property="og:title" content="十三、超时闲置断开">
 <meta property="og:url" content="https://github.com/lxj1091681536/2019/09/28/三、超时闲置断开/index.html">
 <meta property="og:site_name" content="CJY &amp; LXJ的小窝">
-<meta property="og:description" content="用SSH过程连接电脑时，经常遇到长时间不操作而被服务器踢出的情况，常见的提示如：Write failed: Broken pipe这是因为如果有一段时间在SSH连接上无数据传输，连接就会断开。解决此问题有两种方法。在客户端设置  方法很简单，只需在客户端电脑上编辑（需要root权限）/etc/ssh/ssh_config，并添加如下一行：ServerAliveInterval 60此后该系统里的用">
+<meta property="og:description" content="用SSH过程连接电脑时，经常遇到长时间不操作而被服务器踢出的情况，常见的提示如：Write failed: Broken pipe这是因为如果有一段时间在SSH连接上无数据传输，连接就会断开。解决此问题有两种方法。 在客户端设置方法很简单，只需在客户端电脑上编辑（需要root权限）/etc/ssh/ssh_config，并添加如下一行：ServerAliveInterval 60此后该系统里的用户">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-02-06T15:25:19.838Z">
+<meta property="og:updated_time" content="2020-03-06T13:48:16.782Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="十三、超时闲置断开">
-<meta name="twitter:description" content="用SSH过程连接电脑时，经常遇到长时间不操作而被服务器踢出的情况，常见的提示如：Write failed: Broken pipe这是因为如果有一段时间在SSH连接上无数据传输，连接就会断开。解决此问题有两种方法。在客户端设置  方法很简单，只需在客户端电脑上编辑（需要root权限）/etc/ssh/ssh_config，并添加如下一行：ServerAliveInterval 60此后该系统里的用">
+<meta name="twitter:description" content="用SSH过程连接电脑时，经常遇到长时间不操作而被服务器踢出的情况，常见的提示如：Write failed: Broken pipe这是因为如果有一段时间在SSH连接上无数据传输，连接就会断开。解决此问题有两种方法。 在客户端设置方法很简单，只需在客户端电脑上编辑（需要root权限）/etc/ssh/ssh_config，并添加如下一行：ServerAliveInterval 60此后该系统里的用户">
 
 
 
@@ -429,8 +429,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-02-06T23:25:19+08:00">
-                2020-02-06
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-06T21:48:16+08:00">
+                2020-03-06
               </time>
             
           </span>
@@ -515,11 +515,9 @@
       
 
       
-        <p>用SSH过程连接电脑时，经常遇到长时间不操作而被服务器踢出的情况，常见的提示如：<br><code>Write failed: Broken pipe</code><br>这是因为如果有一段时间在SSH连接上无数据传输，连接就会断开。解决此问题有两种方法。<br>在客户端设置</p>
-<hr>
-<p>方法很简单，只需在客户端电脑上编辑（需要root权限）<code>/etc/ssh/ssh_config</code>，并添加如下一行：<br><code>ServerAliveInterval 60</code><br>此后该系统里的用户连接SSH时，每60秒会发一个KeepAlive请求，避免被踢。<br>在服务器端设置</p>
-<hr>
-<p>如果有相应的权限，也可以在服务器端设置，即编辑<code>/etc/ssh/sshd_config</code>，并添加：<br><code>ClientAliveInterval 60</code><br>重启SSH服务器后该项设置会生效。<br><code>/etc/init.d/sshd restart</code><br>每一个连接到此服务器上的客户端都会受其影响。</p>
+        <p>用SSH过程连接电脑时，经常遇到长时间不操作而被服务器踢出的情况，常见的提示如：<br><code>Write failed: Broken pipe</code><br>这是因为如果有一段时间在SSH连接上无数据传输，连接就会断开。解决此问题有两种方法。</p>
+<h1 id="在客户端设置"><a href="#在客户端设置" class="headerlink" title="在客户端设置"></a>在客户端设置</h1><p>方法很简单，只需在客户端电脑上编辑（需要root权限）<code>/etc/ssh/ssh_config</code>，并添加如下一行：<br><code>ServerAliveInterval 60</code><br>此后该系统里的用户连接SSH时，每60秒会发一个KeepAlive请求，避免被踢。</p>
+<h1 id="在服务器端设置"><a href="#在服务器端设置" class="headerlink" title="在服务器端设置"></a>在服务器端设置</h1><p>如果有相应的权限，也可以在服务器端设置，即编辑<code>/etc/ssh/sshd_config</code>，并添加：<br><code>ClientAliveInterval 60</code><br>重启SSH服务器后该项设置会生效。<br><code>/etc/init.d/sshd restart</code><br>每一个连接到此服务器上的客户端都会受其影响。</p>
 
       
     </div>
@@ -611,8 +609,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -629,7 +636,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-count">39</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -724,6 +731,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#在客户端设置"><span class="nav-number">1.</span> <span class="nav-text">在客户端设置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在服务器端设置"><span class="nav-number">2.</span> <span class="nav-text">在服务器端设置</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
         <div class="back-to-top">
@@ -758,7 +781,7 @@
     
       <span class="post-meta-item-text">Blog总字数&#58;</span>
     
-    <span title="Blog总字数">14k</span>
+    <span title="Blog总字数">14.1k</span>
   
 
   

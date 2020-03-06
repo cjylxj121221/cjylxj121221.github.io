@@ -139,18 +139,18 @@
 
 
 
-<meta name="description" content="树莓派方便在带无线网卡，直接连接无线调试起来方便很多">
+<meta name="description" content="树莓派方便在带无线网卡，直接连接无线调试起来方便很多 查看网卡状态是否正常把无线网卡插到树莓派上，输入命令ifconfig -a查看是否有wlan0的信息，如果有说明网卡状态正常，可以跳过第二步，直接配置无线网络。如果查不到wlan0的信息，则需要安装无线网卡的驱动。">
 <meta name="keywords" content="树莓派玩法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="三、无线连接（命令行界面下）">
 <meta property="og:url" content="https://github.com/lxj1091681536/2019/04/16/三、无线连接（命令行界面下）/index.html">
 <meta property="og:site_name" content="CJY &amp; LXJ的小窝">
-<meta property="og:description" content="树莓派方便在带无线网卡，直接连接无线调试起来方便很多">
+<meta property="og:description" content="树莓派方便在带无线网卡，直接连接无线调试起来方便很多 查看网卡状态是否正常把无线网卡插到树莓派上，输入命令ifconfig -a查看是否有wlan0的信息，如果有说明网卡状态正常，可以跳过第二步，直接配置无线网络。如果查不到wlan0的信息，则需要安装无线网卡的驱动。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-23T02:52:20.000Z">
+<meta property="og:updated_time" content="2020-03-06T05:31:00.254Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="三、无线连接（命令行界面下）">
-<meta name="twitter:description" content="树莓派方便在带无线网卡，直接连接无线调试起来方便很多">
+<meta name="twitter:description" content="树莓派方便在带无线网卡，直接连接无线调试起来方便很多 查看网卡状态是否正常把无线网卡插到树莓派上，输入命令ifconfig -a查看是否有wlan0的信息，如果有说明网卡状态正常，可以跳过第二步，直接配置无线网络。如果查不到wlan0的信息，则需要安装无线网卡的驱动。">
 
 
 
@@ -429,8 +429,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-04-23T10:52:20+08:00">
-                2019-04-23
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-06T13:31:00+08:00">
+                2020-03-06
               </time>
             
           </span>
@@ -500,7 +500,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  676 字
+                  683 字
                 </span>
               
 
@@ -538,11 +538,29 @@
 
       
         <p>树莓派方便在带无线网卡，直接连接无线调试起来方便很多</p>
+<h1 id="查看网卡状态是否正常"><a href="#查看网卡状态是否正常" class="headerlink" title="查看网卡状态是否正常"></a>查看网卡状态是否正常</h1><p>把无线网卡插到树莓派上，输入命令ifconfig -a查看是否有wlan0的信息，如果有说明网卡状态正常，可以跳过第二步，直接配置无线网络。如果查不到wlan0的信息，则需要安装无线网卡的驱动。</p>
 <a id="more"></a>
 
-<p><strong>一、查看网卡状态是否正常</strong><br>把无线网卡插到树莓派上，输入命令ifconfig -a查看是否有wlan0的信息，如果有说明网卡状态正常，可以跳过第二步，直接配置无线网络。如果查不到wlan0的信息，则需要安装无线网卡的驱动。</p>
-<p><strong>二、查看无线网卡的信息</strong><br>输入命令dmesg | grep usb查看无线网卡的信息，主要是看制造厂家（Manufacturer）。<br>比如，我的网卡信息是<br>usb 1-1.3: Manufacturer: Realtek<br>以Realtek为例，安装无线网卡驱动。<br>如果现在你的树莓派能联网，输入安装命令就可以安装Realtek的驱动了。<br>首先搜索Realtek驱动：<br>apt-cache search realtek<br>看到下面信息：<br>firmware-realtek – Binary firmware for Realtek wired and wireless network adapters<br>安装Realtek驱动：<br>sudo apt-get install firmware-realtek<br>如果你的树莓派现在不能上网，那么你可以去镜像站点中下载相关驱动。<br>我推荐阿里云的镜像站点，速度比较快。<br><a href="http://mirrors.aliyun.com/raspbian/raspbian/pool/non-free/f/firmware-nonfree" target="_blank" rel="noopener">http://mirrors.aliyun.com/raspbian/raspbian/pool/non-free/f/firmware-nonfree</a><br>下载firmware-realtek_0.43_all.deb，用winscp上传到树莓派的/tmp目录中。<br>输入命令安装：<br>sudo dpkg -i /tmp/firmware-realtek_0.43_all.deb</p>
-<p><strong>三、配置无线网络</strong><br>用编辑器nano打开interfaces文件<br>    sudo nano /etc/network/interfaces<br>我的interfaces文件是这样的：<br>    auto lo<br>    iface lo inet loopback<br>    iface eth0 inet dhcp<br>    allow-hotplug wlan0<br>    iface wlan0 inet manual<br>    wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf<br>    iface default inet dhcp<br>我们把无线网卡部分全部用#注释掉，然后添加自己的配置信息<br>最终结果如下：<br>    auto lo<br>   iface lo inet loopback<br>    iface eth0 inet dhcp<br>    auto wlan0<br>    #allow-hotplug wlan0<br>    #iface wlan0 inet manual<br>    iface wlan0 inet dhcp<br>    wpa-conf /etc/wpa.conf<br>    #wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf<br>    iface default inet dhcp<br>使用nano编辑器，ctrl+o保存，ctrl+x退出。<br>用编辑器nano创建 /etc/wpa.conf 文件：<br>    sudo nano /etc/wpa.conf<br>如果你的wifi没有密码<br>    network={<br>    [Tab] ssid=”你的无线网络名称（ssid）”<br>    [Tab] key_mgmt=NONE<br>    }<br>如果你的wifi使用WEP加密<br>    network={<br>    [Tab] ssid=”你的无线网络名称（ssid）”<br>    [Tab] key_mgmt=NONE<br>    [Tab] wep_key0=”你的wifi密码”<br>    }<br>如果你的wifi使用WPA/WPA2加密<br>    network={<br>    [Tab] ssid=”你的无线网络名称（ssid）”<br>    [Tab] key_mgmt=WPA-PSK<br>    [Tab] psk=”你的wifi密码”<br>    }<br>注1：所有符号都是半角符号（英文状态下的符号），“[Tab]”表示按一次Tab键<br>注2：如果你不清楚wifi的加密模式，可以在安卓手机上用root explorer打开 /data/misc/wifi/wpa/wpa_supplicant.conf，查看wifi的信息。<br>比如，我的wpa.conf文件是这样的：<br>    network={<br>    ssid=”1234”<br>    key_mgmt=WPA-PSK<br>    psk=”MTIzNA1234”<br>    }<br>最后输入命令启用无线网卡：<br>    sudo ifup wlan0<br>可以连无线网了。</p>
+<h1 id="查看无线网卡的信息"><a href="#查看无线网卡的信息" class="headerlink" title="查看无线网卡的信息"></a>查看无线网卡的信息</h1><p>输入命令dmesg | grep usb查看无线网卡的信息，主要是看制造厂家（Manufacturer）。<br>比如，我的网卡信息是<br>usb 1-1.3: Manufacturer: Realtek<br>以Realtek为例，安装无线网卡驱动。<br>如果现在你的树莓派能联网，输入安装命令就可以安装Realtek的驱动了。<br>首先搜索Realtek驱动：<br>apt-cache search realtek<br>看到下面信息：<br>firmware-realtek – Binary firmware for Realtek wired and wireless network adapters<br>安装Realtek驱动：<br>sudo apt-get install firmware-realtek<br>如果你的树莓派现在不能上网，那么你可以去镜像站点中下载相关驱动。<br>我推荐阿里云的镜像站点，速度比较快。<br><a href="http://mirrors.aliyun.com/raspbian/raspbian/pool/non-free/f/firmware-nonfree" target="_blank" rel="noopener">http://mirrors.aliyun.com/raspbian/raspbian/pool/non-free/f/firmware-nonfree</a><br>下载firmware-realtek_0.43_all.deb，用winscp上传到树莓派的/tmp目录中。<br>输入命令安装：<br>sudo dpkg -i /tmp/firmware-realtek_0.43_all.deb</p>
+<h1 id="配置无线网络"><a href="#配置无线网络" class="headerlink" title="配置无线网络"></a>配置无线网络</h1><p>用编辑器nano打开interfaces文件<br>    sudo nano /etc/network/interfaces<br>我的interfaces文件是这样的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">auto lo</span><br><span class="line">iface lo inet loopback</span><br><span class="line">iface eth0 inet dhcp</span><br><span class="line">allow-hotplug wlan0</span><br><span class="line">iface wlan0 inet manual</span><br><span class="line">wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf</span><br><span class="line">iface default inet dhcp</span><br></pre></td></tr></table></figure>
+
+<p>我们把无线网卡部分全部用#注释掉，然后添加自己的配置信息<br>最终结果如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">auto lo</span><br><span class="line">iface lo inet loopback</span><br><span class="line">iface eth0 inet dhcp</span><br><span class="line">auto wlan0</span><br><span class="line">#allow-hotplug wlan0</span><br><span class="line">#iface wlan0 inet manual</span><br><span class="line">iface wlan0 inet dhcp</span><br><span class="line">wpa-conf /etc/wpa.conf</span><br><span class="line">#wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf</span><br><span class="line">iface default inet dhcp</span><br></pre></td></tr></table></figure>
+
+<p>使用nano编辑器，ctrl+o保存，ctrl+x退出。<br>用编辑器nano创建 /etc/wpa.conf 文件：<br>    sudo nano /etc/wpa.conf<br>如果你的wifi没有密码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">network=&#123;</span><br><span class="line">[Tab] ssid=&quot;你的无线网络名称（ssid）&quot;</span><br><span class="line">[Tab] key_mgmt=NONE</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果你的wifi使用WEP加密</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">network=&#123;</span><br><span class="line">[Tab] ssid=&quot;你的无线网络名称（ssid）&quot;</span><br><span class="line">[Tab] key_mgmt=NONE</span><br><span class="line">[Tab] wep_key0=&quot;你的wifi密码&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果你的wifi使用WPA/WPA2加密</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">network=&#123;</span><br><span class="line">[Tab] ssid=&quot;你的无线网络名称（ssid）&quot;</span><br><span class="line">[Tab] key_mgmt=WPA-PSK</span><br><span class="line">[Tab] psk=&quot;你的wifi密码&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注1：所有符号都是半角符号（英文状态下的符号），“[Tab]”表示按一次Tab键<br>注2：如果你不清楚wifi的加密模式，可以在安卓手机上用root explorer打开 /data/misc/wifi/wpa/wpa_supplicant.conf，查看wifi的信息。<br>比如，我的wpa.conf文件是这样的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">network=&#123;</span><br><span class="line">ssid=&quot;1234&quot;</span><br><span class="line">key_mgmt=WPA-PSK</span><br><span class="line">psk=&quot;MTIzNA1234&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最后输入命令启用无线网卡：<br>    sudo ifup wlan0<br>可以连无线网了。</p>
 
       
     </div>
@@ -640,8 +658,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -658,7 +685,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-count">39</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -753,6 +780,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#查看网卡状态是否正常"><span class="nav-number">1.</span> <span class="nav-text">查看网卡状态是否正常</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查看无线网卡的信息"><span class="nav-number">2.</span> <span class="nav-text">查看无线网卡的信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置无线网络"><span class="nav-number">3.</span> <span class="nav-text">配置无线网络</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
         <div class="back-to-top">
@@ -787,7 +830,7 @@
     
       <span class="post-meta-item-text">Blog总字数&#58;</span>
     
-    <span title="Blog总字数">14k</span>
+    <span title="Blog总字数">14.1k</span>
   
 
   

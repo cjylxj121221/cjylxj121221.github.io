@@ -147,7 +147,7 @@
 <meta property="og:site_name" content="CJY &amp; LXJ的小窝">
 <meta property="og:description" content="时序控制很重要GPU核心, h264, v3d和isp共享一个锁相环, 因此需要相关联的频率. ARM, SDRAM和GPU有各自独有的锁相环, 因此可以设为没有关联的频率.当设了void_pwm_pll=1下列设置就没必要了. 12pll_freq = floor(2400 / (2 * core_freq)) * (2 * core_freq)gpu_freq = pll_freq / [偶数">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-02-06T15:15:25.512Z">
+<meta property="og:updated_time" content="2020-03-06T13:55:11.122Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="进阶十二、时序关系">
 <meta name="twitter:description" content="时序控制很重要GPU核心, h264, v3d和isp共享一个锁相环, 因此需要相关联的频率. ARM, SDRAM和GPU有各自独有的锁相环, 因此可以设为没有关联的频率.当设了void_pwm_pll=1下列设置就没必要了. 12pll_freq = floor(2400 / (2 * core_freq)) * (2 * core_freq)gpu_freq = pll_freq / [偶数">
@@ -429,8 +429,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-02-06T23:15:25+08:00">
-                2020-02-06
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-06T21:55:11+08:00">
+                2020-03-06
               </time>
             
           </span>
@@ -515,7 +515,7 @@
       
 
       
-        <h2 id="时序控制很重要"><a href="#时序控制很重要" class="headerlink" title="时序控制很重要"></a>时序控制很重要</h2><p>GPU核心, h264, v3d和isp共享一个锁相环, 因此需要相关联的频率. ARM, SDRAM和GPU有各自独有的锁相环, 因此可以设为没有关联的频率.<br>当设了<code>void_pwm_pll=1</code>下列设置就没必要了.</p>
+        <h1 id="时序控制很重要"><a href="#时序控制很重要" class="headerlink" title="时序控制很重要"></a>时序控制很重要</h1><p>GPU核心, h264, v3d和isp共享一个锁相环, 因此需要相关联的频率. ARM, SDRAM和GPU有各自独有的锁相环, 因此可以设为没有关联的频率.<br>当设了<code>void_pwm_pll=1</code>下列设置就没必要了.</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pll_freq = <span class="built_in">floor</span>(<span class="number">2400</span> / (<span class="number">2</span> * core_freq)) * (<span class="number">2</span> * core_freq)</span><br><span class="line">gpu_freq = pll_freq / [偶数]</span><br></pre></td></tr></table></figure>
 
 <p>有效的gpu_freq会自动四舍五到到最接近的整型偶数, 所以请求core_freq为500, gpu_freq为300,算一下2000/300 = 6.666 =&gt; 6 ,结果就是333.33MHz.</p>
@@ -637,7 +637,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-count">39</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -741,7 +741,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#时序控制很重要"><span class="nav-number">1.</span> <span class="nav-text">时序控制很重要</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#时序控制很重要"><span class="nav-number">1.</span> <span class="nav-text">时序控制很重要</span></a></li></ol></div>
             
 
           </div>
@@ -782,7 +782,7 @@
     
       <span class="post-meta-item-text">Blog总字数&#58;</span>
     
-    <span title="Blog总字数">14k</span>
+    <span title="Blog总字数">14.1k</span>
   
 
   

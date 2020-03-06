@@ -147,7 +147,7 @@
 <meta property="og:site_name" content="CJY &amp; LXJ的小窝">
 <meta property="og:description" content="下表显示了一些成功的超频尝试, 这些可以指导你进行超频. 这些设置不一定能在每台树莓派上都成功, 并且会缩短高通芯片的寿命. 1234567arm_freq=900sdram_freq=450gpu_freq=325core_freq=325h264_freq=325isp_freq=325v3d_freq=325  gpu_freq means core_freq+h264_freq+isp_f">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-02-06T15:15:01.802Z">
+<meta property="og:updated_time" content="2020-03-06T13:56:16.945Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="进阶十三、已测试过的超频设置">
 <meta name="twitter:description" content="下表显示了一些成功的超频尝试, 这些可以指导你进行超频. 这些设置不一定能在每台树莓派上都成功, 并且会缩短高通芯片的寿命. 1234567arm_freq=900sdram_freq=450gpu_freq=325core_freq=325h264_freq=325isp_freq=325v3d_freq=325  gpu_freq means core_freq+h264_freq+isp_f">
@@ -429,8 +429,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-02-06T23:15:01+08:00">
-                2020-02-06
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-06T21:56:16+08:00">
+                2020-03-06
               </time>
             
           </span>
@@ -518,10 +518,10 @@
         <p>下表显示了一些成功的超频尝试, 这些可以指导你进行超频. 这些设置不一定能在每台树莓派上都成功, 并且会缩短高通芯片的寿命.</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">arm_freq=<span class="number">900</span></span><br><span class="line">sdram_freq=<span class="number">450</span></span><br><span class="line">gpu_freq=<span class="number">325</span></span><br><span class="line">core_freq=<span class="number">325</span></span><br><span class="line">h264_freq=<span class="number">325</span></span><br><span class="line">isp_freq=<span class="number">325</span></span><br><span class="line">v3d_freq=<span class="number">325</span></span><br></pre></td></tr></table></figure>
 
-<p>gpu_freq means core_freq+h264_freq+isp_freq+v3d_freq. So:</p>
+<p>gpu_freq means core_freq+h264_freq+isp_freq+v3d_freq.<br>So:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">arm_freq=900</span><br><span class="line">sdram_freq=450</span><br><span class="line">gpu_freq=325</span><br></pre></td></tr></table></figure>
 
-<p>这是一个表明Hynix产的RAM在超频上表现不如三星产的RAM的报告.<br>超频时SD卡使用,设置SD卡: <code>http://elinux.org/RPi_Easy_SD_Card_Setup</code><br>超频时使用6速或10速的SD卡(SHDC/SHDX)会导致在一些天后树莓派读取SD卡文件系统不稳定.不管是ext4 , NTFS 或其他格式都一样.不管是哪家SD卡生产商都一样.不管是哪个版本的树莓派都一样.这与SD卡容量无关 – 实际验证出现在16G或更大的SD卡上! 关键是你何时让树莓派功率不足,也就是低于树莓派的基本设置需求 !<br>popcornmix发表在<code>https://github.com/raspberrypi/linux/issues/280</code><br>“超频会导致SD卡错误.这情况往往是与板子相关(就是说有些树莓派超频后SD卡没事,有些不行).我认为通常都是<code>core_freq</code>导致的SD卡问题(和arm_freq,sdram_freq比)”  在2013年4月写这个提示的时候在树莓派官方论坛上一共有137个有关于SD的问题, 绝大部分与超频有关.如果你使用6速或10速SD卡, 还想要树莓派稳定运行:  不要尝试超频,否则很可能会丢失数据</p>
+<p>这是一个表明Hynix产的RAM在超频上表现不如三星产的RAM的报告.<br>超频时SD卡使用,设置SD卡: <code>http://elinux.org/RPi_Easy_SD_Card_Setup</code><br>超频时使用6速或10速的SD卡(SHDC/SHDX)会导致在一些天后树莓派读取SD卡文件系统不稳定.不管是ext4 , NTFS 或其他格式都一样.不管是哪家SD卡生产商都一样.不管是哪个版本的树莓派都一样.这与SD卡容量无关 – 实际验证出现在16G或更大的SD卡上! 关键是你何时让树莓派功率不足,也就是低于树莓派的基本设置需求 !<br>popcornmix发表在<code>https://github.com/raspberrypi/linux/issues/280</code><br>“超频会导致SD卡错误.这情况往往是与板子相关(就是说有些树莓派超频后SD卡没事,有些不行).我认为通常都是<code>core_freq</code>导致的SD卡问题(和arm_freq,sdram_freq比)”  在2013年4月写这个提示的时候在树莓派官方论坛上一共有137个有关于SD的问题, 绝大部分与超频有关.如果你使用6速或10速SD卡, 还想要树莓派稳定运行，不要尝试超频,否则很可能会丢失数据    </p>
 
       
     </div>
@@ -631,7 +631,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-count">39</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -760,7 +760,7 @@
     
       <span class="post-meta-item-text">Blog总字数&#58;</span>
     
-    <span title="Blog总字数">14k</span>
+    <span title="Blog总字数">14.1k</span>
   
 
   

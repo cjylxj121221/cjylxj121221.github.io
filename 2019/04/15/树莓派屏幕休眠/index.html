@@ -147,7 +147,7 @@
 <meta property="og:site_name" content="CJY &amp; LXJ的小窝">
 <meta property="og:description" content="树莓派大部分使用其终端，屏幕用来配置即可，不使用时休眠">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-23T02:52:20.000Z">
+<meta property="og:updated_time" content="2020-03-06T05:27:02.514Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="二、树莓派屏幕休眠">
 <meta name="twitter:description" content="树莓派大部分使用其终端，屏幕用来配置即可，不使用时休眠">
@@ -429,8 +429,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-04-23T10:52:20+08:00">
-                2019-04-23
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-06T13:27:02+08:00">
+                2020-03-06
               </time>
             
           </span>
@@ -500,7 +500,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  350 字
+                  340 字
                 </span>
               
 
@@ -539,10 +539,10 @@
       
         <p>树莓派大部分使用其终端，屏幕用来配置即可，不使用时休眠</p>
 <a id="more"></a>
-<p>一、禁止屏幕在图形界面下休眠<br>在 /etc/profile.d 路径下新建一个文件，如Screen.sh，并将下面两条命令写入该文件，即可以实现永久禁用。<br>1    xsetdpms 0 0 0<br>2    xsets off<br>操作：<br> cd /etc/profile.d<br> sudo nano Screen.sh<br>接着看到</p>
+<h1 id="禁止屏幕在图形界面下休眠"><a href="#禁止屏幕在图形界面下休眠" class="headerlink" title="禁止屏幕在图形界面下休眠"></a>禁止屏幕在图形界面下休眠</h1><p>在 /etc/profile.d 路径下新建一个文件，如Screen.sh，并将下面两条命令写入该文件，即可以实现永久禁用。<br>xsetdpms 0 0 0<br>xsets off<br>操作：<br> cd /etc/profile.d<br> sudo nano Screen.sh<br>接着看到</p>
 <p>输入如下内容   Ctrl+X     Y保存即可</p>
 <p>指令    说明<br>xset s off    禁用屏幕保护<br>xset s 3600 3600    设置空闲时间为1小时<br>xset -dpms    关闭 DPMS<br>xset s off -dpms    禁用 DPMS 并阻止屏幕进入空闲<br>xset dpms force off    立即关闭屏幕<br>xset dpms force standby    强制屏幕进入待命状态<br>xset dpms force suspend    强制屏幕进入暂停状态</p>
-<p>二、禁止屏幕在 Console 终端下休眠<br>执行下面的命令就可以解决这个问题。<br>1    setterm -blank 0<br>重启后此命令会失效，所以需要装这个命令加入到启动脚本中，每次开机后自动启动。<br>Raspbian 和 Archlinux 在 /etc/bash.bashrc 文件中加入，CentOS 则是在/etc/bashrc加入:<br>1    setterm -blank 0<br>更多相关设置：<br>1    setterm -blank [0-60|force|poke]<br>2    setterm -powersave [on|vsync|hsync|powerdown|off]<br>3    setterm -powerdown [0-60]<br>以上参数为0时表示禁用。例如下面的指令表示禁止屏幕进入保护和关闭状态<br>1    setterm -blank 0 -powerdown 0</p>
+<h1 id="禁止屏幕在-Console-终端下休眠"><a href="#禁止屏幕在-Console-终端下休眠" class="headerlink" title="禁止屏幕在 Console 终端下休眠"></a>禁止屏幕在 Console 终端下休眠</h1><p>执行下面的命令就可以解决这个问题。<br>setterm -blank 0<br>重启后此命令会失效，所以需要装这个命令加入到启动脚本中，每次开机后自动启动。<br>Raspbian 和 Archlinux 在 /etc/bash.bashrc 文件中加入，CentOS 则是在/etc/bashrc加入:<br>setterm -blank 0<br>更多相关设置：<br>setterm -blank [0-60|force|poke]<br>setterm -powersave [on|vsync|hsync|powerdown|off]<br>setterm -powerdown [0-60]<br>以上参数为0时表示禁用。例如下面的指令表示禁止屏幕进入保护和关闭状态<br>setterm -blank 0 -powerdown 0</p>
 
       
     </div>
@@ -640,8 +640,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -658,7 +667,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-count">39</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -753,6 +762,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#禁止屏幕在图形界面下休眠"><span class="nav-number">1.</span> <span class="nav-text">禁止屏幕在图形界面下休眠</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#禁止屏幕在-Console-终端下休眠"><span class="nav-number">2.</span> <span class="nav-text">禁止屏幕在 Console 终端下休眠</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
         <div class="back-to-top">
@@ -787,7 +812,7 @@
     
       <span class="post-meta-item-text">Blog总字数&#58;</span>
     
-    <span title="Blog总字数">14k</span>
+    <span title="Blog总字数">14.1k</span>
   
 
   
