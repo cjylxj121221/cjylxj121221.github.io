@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://github.com/lxj1091681536/"/>
-  <updated>2020-03-06T13:58:32.822Z</updated>
+  <updated>2020-03-07T13:44:43.665Z</updated>
   <id>https://github.com/lxj1091681536/</id>
   
   <author>
@@ -15,6 +15,45 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2020女神节～</title>
+    <link href="https://github.com/lxj1091681536/2020/03/07/2020%E5%A5%B3%E7%A5%9E%E8%8A%82%EF%BD%9E/"/>
+    <id>https://github.com/lxj1091681536/2020/03/07/2020%E5%A5%B3%E7%A5%9E%E8%8A%82%EF%BD%9E/</id>
+    <published>2020-03-07T13:41:21.000Z</published>
+    <updated>2020-03-07T13:44:43.665Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="君怡女神我爱你"><a href="#君怡女神我爱你" class="headerlink" title="君怡女神我爱你"></a>君怡女神我爱你</h1><p>君问归期未有期<br>怡怡笑杀月中娥<br>女仙不赋降坛诗<br>神不外驰气自定<br>我作洞霄君作守<br>爱日新添春一线<br>你那里针劄不入</p><h1 id="君怡小可爱"><a href="#君怡小可爱" class="headerlink" title="君怡小可爱"></a>君怡小可爱</h1><p>君臣相顾尽沾衣<br>怡然气貌渐还婴<br>小弦切切如私语<br>可怜楼上月徘徊<br>爱将芜语追前事</p><a id="more"></a><p>代码和数据下载：<br>完整代码在我的github，<a href="https://github.com/HqWei/Automatic-creation-of-Tibetan-poetry-and-Tang-poetry">github链接</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;君怡女神我爱你&quot;&gt;&lt;a href=&quot;#君怡女神我爱你&quot; class=&quot;headerlink&quot; title=&quot;君怡女神我爱你&quot;&gt;&lt;/a&gt;君怡女神我爱你&lt;/h1&gt;&lt;p&gt;君问归期未有期&lt;br&gt;怡怡笑杀月中娥&lt;br&gt;女仙不赋降坛诗&lt;br&gt;神不外驰气自定&lt;br&gt;我作洞霄君作守&lt;br&gt;爱日新添春一线&lt;br&gt;你那里针劄不入&lt;/p&gt;
+&lt;h1 id=&quot;君怡小可爱&quot;&gt;&lt;a href=&quot;#君怡小可爱&quot; class=&quot;headerlink&quot; title=&quot;君怡小可爱&quot;&gt;&lt;/a&gt;君怡小可爱&lt;/h1&gt;&lt;p&gt;君臣相顾尽沾衣&lt;br&gt;怡然气貌渐还婴&lt;br&gt;小弦切切如私语&lt;br&gt;可怜楼上月徘徊&lt;br&gt;爱将芜语追前事&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Markdown语法</title>
+    <link href="https://github.com/lxj1091681536/2020/03/07/Markdown%E8%AF%AD%E6%B3%95/"/>
+    <id>https://github.com/lxj1091681536/2020/03/07/Markdown%E8%AF%AD%E6%B3%95/</id>
+    <published>2020-03-07T03:14:28.000Z</published>
+    <updated>2020-03-07T03:17:58.140Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="写作介绍"><a href="#写作介绍" class="headerlink" title="写作介绍"></a>写作介绍</h1><a id="more"></a><h2 id="字体介绍"><a href="#字体介绍" class="headerlink" title="字体介绍"></a>字体介绍</h2><p><em>这是斜体</em> 或 <em>这也是斜体</em><br><strong>这是粗体</strong><br><strong><em>这是加粗斜体</em></strong><br><del>这是删除线</del></p><h2 id="分级标题"><a href="#分级标题" class="headerlink" title="分级标题"></a>分级标题</h2><h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6><h2 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h2><p>写法：</p><p>形式：<a href="https://cjylxj121221.github.io/" target="_blank" rel="noopener">我的博客</a></p><h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><p>无序列表：<br>写法：</p><ul><li>无序列表项1</li></ul><ul><li>无序列表项2</li></ul><ul><li>无序列表项3</li></ul><p>有序列表：<br>写法：<br>1.有序列表项1<br>2.有序列表项2<br>3.有序列表项3</p><h2 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h2><p>在 Hexo 中插入图片，首先需要将图片放在 source/img/ 文件夹下，然后如下方式进行插入：</p><p><img src="/.com//xxxx.jpg" alt></p><h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><table><thead><tr><th>表头1</th><th align="left">表头2</th><th align="center">表头3</th><th align="right">表头4</th></tr></thead><tbody><tr><td>默认左对齐</td><td align="left">左对齐</td><td align="center">居中对其</td><td align="right">右对齐</td></tr><tr><td>默认左对齐</td><td align="left">左对齐</td><td align="center">居中对其</td><td align="right">右对齐</td></tr><tr><td>默认左对齐</td><td align="left">左对齐</td><td align="center">居中对其</td><td align="right">右对齐</td></tr></tbody></table><h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"># 写作介绍</span><br><span class="line">## 字体介绍</span><br><span class="line">*这是斜体* 或 _这也是斜体_ </span><br><span class="line">**这是粗体**</span><br><span class="line">***这是加粗斜体***</span><br><span class="line">~~这是删除线~~</span><br><span class="line">## 分级标题</span><br><span class="line"># 一级标题</span><br><span class="line">## 二级标题</span><br><span class="line">### 三级标题</span><br><span class="line">#### 四级标题</span><br><span class="line">##### 五级标题</span><br><span class="line">###### 六级标题</span><br><span class="line">## 超链接</span><br><span class="line">写法：</span><br><span class="line"></span><br><span class="line">行内形式：[我的博客](https://cjylxj121221.github.io/)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 列表</span><br><span class="line">无序列表：</span><br><span class="line">写法：</span><br><span class="line"></span><br><span class="line">* 无序列表项1</span><br><span class="line">+ 无序列表项2</span><br><span class="line">- 无序列表项3</span><br><span class="line"></span><br><span class="line">有序列表：</span><br><span class="line">写法：</span><br><span class="line">1.有序列表项1</span><br><span class="line">2.有序列表项2</span><br><span class="line">3.有序列表项3</span><br><span class="line"></span><br><span class="line">## 插入图片</span><br><span class="line">在 Hexo 中插入图片，首先需要将图片放在 source/img/ 文件夹下，然后如下方式进行插入：</span><br><span class="line"></span><br><span class="line">![](xxxx.jpg)</span><br><span class="line"></span><br><span class="line">## 表格</span><br><span class="line">| 表头1|表头2|表头3|表头4</span><br><span class="line">|-| :- | :-: | -: |</span><br><span class="line">|默认左对齐|左对齐|居中对其|右对齐|</span><br><span class="line">|默认左对齐|左对齐|居中对其|右对齐|</span><br><span class="line">|默认左对齐|左对齐|居中对其|右对齐|</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;写作介绍&quot;&gt;&lt;a href=&quot;#写作介绍&quot; class=&quot;headerlink&quot; title=&quot;写作介绍&quot;&gt;&lt;/a&gt;写作介绍&lt;/h1&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>ArchLinux的安装</title>
@@ -418,52 +457,6 @@
       
       
         &lt;p&gt;General Purpose Input Output （通用输入/输出）简称为GPIO，或总线扩展器，人们利用工业标准I2C、SMBus或SPI接口简化了I/O口的扩展。当微控制器或芯片组没有足够的I/O端口，或当系统需要采用远端串行通信或控制时，GPIO产品能够提供额
-      
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>树莓派3代进阶玩法</title>
-    <link href="https://github.com/lxj1091681536/2019/09/28/%E6%B4%BE3%E4%BB%A3%E8%BF%9B%E9%98%B6%E7%8E%A9%E6%B3%95/"/>
-    <id>https://github.com/lxj1091681536/2019/09/28/%E6%B4%BE3%E4%BB%A3%E8%BF%9B%E9%98%B6%E7%8E%A9%E6%B3%95/</id>
-    <published>2019-09-28T15:21:14.000Z</published>
-    <updated>2019-09-28T15:23:34.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>基础玩法讲地差不多了，该开始有些进阶玩法（作死玩法）<br>开更，填坑</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;基础玩法讲地差不多了，该开始有些进阶玩法（作死玩法）&lt;br&gt;开更，填坑&lt;/p&gt;
-
-      
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>十三、超时闲置断开</title>
-    <link href="https://github.com/lxj1091681536/2019/09/28/%E4%B8%89%E3%80%81%E8%B6%85%E6%97%B6%E9%97%B2%E7%BD%AE%E6%96%AD%E5%BC%80/"/>
-    <id>https://github.com/lxj1091681536/2019/09/28/%E4%B8%89%E3%80%81%E8%B6%85%E6%97%B6%E9%97%B2%E7%BD%AE%E6%96%AD%E5%BC%80/</id>
-    <published>2019-09-28T14:51:53.000Z</published>
-    <updated>2020-03-06T13:48:16.782Z</updated>
-    
-    <content type="html"><![CDATA[<p>用SSH过程连接电脑时，经常遇到长时间不操作而被服务器踢出的情况，常见的提示如：<br><code>Write failed: Broken pipe</code><br>这是因为如果有一段时间在SSH连接上无数据传输，连接就会断开。解决此问题有两种方法。</p><h1 id="在客户端设置"><a href="#在客户端设置" class="headerlink" title="在客户端设置"></a>在客户端设置</h1><p>方法很简单，只需在客户端电脑上编辑（需要root权限）<code>/etc/ssh/ssh_config</code>，并添加如下一行：<br><code>ServerAliveInterval 60</code><br>此后该系统里的用户连接SSH时，每60秒会发一个KeepAlive请求，避免被踢。</p><h1 id="在服务器端设置"><a href="#在服务器端设置" class="headerlink" title="在服务器端设置"></a>在服务器端设置</h1><p>如果有相应的权限，也可以在服务器端设置，即编辑<code>/etc/ssh/sshd_config</code>，并添加：<br><code>ClientAliveInterval 60</code><br>重启SSH服务器后该项设置会生效。<br><code>/etc/init.d/sshd restart</code><br>每一个连接到此服务器上的客户端都会受其影响。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;用SSH过程连接电脑时，经常遇到长时间不操作而被服务器踢出的情况，常见的提示如：&lt;br&gt;&lt;code&gt;Write failed: Broken pipe&lt;/code&gt;&lt;br&gt;这是因为如果有一段时间在SSH连接上无数据传输，连接就会断开。解决此问题有两种方法。&lt;/p&gt;
-&lt;h1 
       
     
     </summary>
